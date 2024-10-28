@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RedirectController;
-use App\Http\Controllers\SuperadminController;
-use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KasirController;
 
 //  jika user belum login
 Route::group(['middleware' => 'guest'], function() {
