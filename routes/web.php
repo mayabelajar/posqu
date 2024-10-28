@@ -30,3 +30,9 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
     Route::get('/kasir', [KasirController::class, 'index']);
 
 });
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/admin', 'AdminController@index');
