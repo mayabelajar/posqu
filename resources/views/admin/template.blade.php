@@ -9,12 +9,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>POSq</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -29,7 +29,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @include('admin/sidebar')
 <!-- Content Wrapper. Contains page content -->
 
-  <!-- Content Wrapper. Contains page content -->
+<!-- Kategori -->
+<div class="container text-center">
+  <div class="row align-items-center">
+    <div class="col">
+      <div class="card w-50">
+      <div class="card-body">
+        <h5 class="card-title">tes manteman</h5>
+          <p class="card-text">test masuk apa tidak</p>
+          <a href="#" class="btn btn-primary">Button</a>
+      </div>
+      </div>
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+</div>
+
+  Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -125,7 +146,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
-  <!-- /.control-sidebar -->
+  <!-- /.control-sidebar
 
 <!-- Main Footer -->
 @include('admin/footer')
@@ -135,10 +156,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script> -->
 <!-- Bootstrap 4 -->
-<script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
 <!-- AdminLTE App -->
-<script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script>
+<!-- <script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script> -->
+
+<!-- Bootstrap CSS -->
+ <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+ <!-- Bootstrap JS -->
+  <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

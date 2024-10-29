@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
 
 });
 
+Route::get('/template', [AdminController::class, 'admin']);
+
 
 // Route::get('/', function () {
 //     return view('welcome');
