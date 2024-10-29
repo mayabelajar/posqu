@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
 
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/admin', 'AdminController@index');
+// Route::get('/admin', 'AdminController@index');
