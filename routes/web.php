@@ -32,11 +32,6 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
 
 });
 
-// Route::group(['middleware' => ['checkrole:3']], function() {
-//     Route::get('/payment', [PaymentController::class, 'index']);   
-
-// });
-
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
 // Route::get('/', function () {
 //     return view('welcome');
