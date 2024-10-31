@@ -17,7 +17,7 @@
         <div class="info">
           <a href="#" class="d-block">LinSya</a>
         </div>
-      </div>
+    </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
