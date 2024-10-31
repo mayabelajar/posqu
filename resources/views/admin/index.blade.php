@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('contents')
+@section('content')
     <div class="container">
         <h2>Selamat Datang Admin</h2>
         <form action="/logout" method="post">
