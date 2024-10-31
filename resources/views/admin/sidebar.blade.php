@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
       <img src="{{ asset('/lte/dist/img/logoPOS.png') }}" alt="POSq Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">POSq</span>
+      <!-- <span class="brand-text font-weight-light">POSq</span> -->
     </a>
 
     <!-- Sidebar -->
@@ -34,7 +34,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
+              <i class="nav-icon fa fa-th-list"></i>
               <p>
                 Daftar Produk
               </p>
@@ -42,7 +42,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
+              <i class="nav-icon fa fa-google-wallet"></i>
               <p>
                 Transaksi
               </p>
@@ -50,7 +50,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
+              <i class="nav-icon fa fa-file"></i>
               <p>
                 Laporan
               </p>
@@ -58,7 +58,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
+              <i class="nav-icon fa fa-close"></i>
               <p>
                 Keluar
               </p>
