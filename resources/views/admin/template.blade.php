@@ -11,6 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <title>POSq</title>
 
+  
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/lte/plugins/font-awesome/css/font-awesome.min.css">
   <!-- Theme style -->
