@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
 <!-- Navbar -->
-@include('admin/header')
+<!-- @include('admin/header') -->
 <!-- navbar -->
 
 <!-- Main Sidebar Container -->
@@ -54,6 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
@@ -178,10 +179,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
   <!-- /.control-sidebar -->
 
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <script src="src/app.js"></script>
-
 <!-- Main Footer -->
 @include('admin/footer')
 </div>
@@ -200,5 +197,3 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </body>
 </html>
-
-
