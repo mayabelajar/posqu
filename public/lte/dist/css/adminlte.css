@@ -13315,3 +13315,53 @@ a.text-muted:hover {
   letter-spacing: 2px;
   font-family: "Courier New", Courier, monospace;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.payment-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.payment-method, .order-summary {
+  width: 45%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.payment-option {
+  margin-bottom: 10px;
+}
+
+.payment-option input[type="radio"] {
+  margin-right: 5px;
+}
+
+.payment-option .payment-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.order-summary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-summary li {
+  margin-bottom: 10px;
+}
+
+.order-summary button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
