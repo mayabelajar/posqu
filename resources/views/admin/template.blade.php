@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
+
 @extends('admin.nyobasb')
 
 @section('content') 
@@ -55,44 +57,52 @@
         <div class="row">
         <div class="col-3">
         <div class="card" style="width: 100%;">
-          <img src="..." class="card-img-top" alt="...">
+          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="text-center card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Rujak Cingur</h5>
+              <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
+              <h5 class="card-title">Rp12.000</h5>
+              <button type="button" class="btn btn-success">Beli Sekarang</button>
+              <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
         </div>
         </div>
-          <div class="col-3">
-          <div class="card" style="width: 100%;">
-          <img src="..." class="card-img-top" alt="...">
+        <div class="col-3">
+        <div class="card" style="width: 100%;">
+          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="card-img-top" align="center" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Rujak Cingur</h5>
+              <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
+              <h5 class="card-title">Rp12.000</h5>
+              <button type="button" class="btn btn-success">Beli Sekarang</button>
+              <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
         </div>
         </div>
-          <div class="col-3">
-          <div class="card" style="width: 100%;">
-          <img src="..." class="card-img-top" alt="...">
+        <div class="col-3">
+        <div class="card" style="width: 100%;">
+          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Rujak Cingur</h5>
+              <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
+              <h5 class="card-title">Rp12.000</h5>
+              <button type="button" class="btn btn-success">Beli Sekarang</button>
+              <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
         </div>
-          </div>
-          <div class="col-3">
-          <div class="card" style="width: 100%;">
-          <img src="..." class="card-img-top" alt="...">
+        </div>
+        <div class="col-3">
+        <div class="card" style="width: 100%;">
+          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Rujak Cingur</h5>
+              <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
+              <h5 class="card-title">Rp12.000</h5>
+              <button type="button" class="btn btn-success">Beli Sekarang</button>
+              <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
         </div>
-          </div>
+        </div>
         </div>
     </div>
   </div>
