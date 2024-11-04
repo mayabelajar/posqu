@@ -40,6 +40,7 @@
    </div>
    <div class="flex flex-1 p-4">
     <div class="w-2/3 bg-white shadow rounded-lg p-4 overflow-y-auto">
+    <div class="overflow-auto">
      <div class="flex items-center mb-4">
       <img alt="QRIS icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/X0EMdKx289JeSCy8eiseIpI9ysGw6FFpGvWr28XU5fG2N41OB.jpg" width="40"/>
       <div class="ml-4">
@@ -162,6 +163,7 @@
   </ul>
 </nav>
      </div>
+</div>
     </div>
     <div class="w-1/3 bg-white shadow rounded-lg p-4 ml-4">
      <table class="w-full">

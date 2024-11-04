@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('/public/ini.css') }}">
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
@@ -24,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/template') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Beranda
@@ -32,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/template') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-th-list"></i>
               <p>
                 Daftar Produk
@@ -40,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/transaksi') }}" class="nav-link {{ Request::segment(1) == 'transaksi'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-google-wallet"></i>
               <p>
                 Transaksi
@@ -48,7 +50,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/laporan') }}" class="nav-link {{ Request::segment(1) == 'laporan'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-file"></i>
               <p>
                 Laporan
