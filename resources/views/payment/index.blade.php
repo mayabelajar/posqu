@@ -37,8 +37,14 @@
        </div>
       </div>
      </div>
-     <div class="border border-yellow-500 p-4 rounded-lg mb-4">
-      <img alt="QRIS" class="w-full h-12 object-contain" height="50" src="https://storage.googleapis.com/a1aa/image/8CkLtRQvpeRgA6ZjQH3MluQsBGqO7P9CUtH1N1NQu7ejLeanA.jpg" width="100"/>
+     <div class="border border-yellow-500 p-4 rounded-lg mb-4 row">
+     <div class="radio-group">
+     <div class="flex items-center">
+        <input class="mr-2" id="cash" name="payment" type="radio"/>
+        <label for="cash"> 
+      <img src="{{ asset('/lte/dist/img/qris.PNG') }}" height="80" width="80"/>
+     </div>
+     </div>
      </div>
      <div class="border-t border-yellow-500 mb-4">
      </div>

@@ -37,6 +37,8 @@ Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index
 Route::get('/template', [AdminController::class, 'admin']);
 
 Route::get('/transaksi', [AdminController::class, 'transaksi']);
+
+Route::get('/meja', [AdminController::class, 'meja']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });

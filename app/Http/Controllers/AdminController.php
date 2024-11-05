@@ -19,4 +19,7 @@ class AdminController extends Controller
     public function transaksi() {
         return view('admin.transaksi');
     }
+    public function meja() {
+        return view('admin.meja');
+    }
 }
