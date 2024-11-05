@@ -34,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ url('/template') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
+          <a href="{{ url('/produk') }}" class="nav-link {{ Request::segment(1) == 'produk'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-th-list"></i>
               <p>
                 Daftar Produk

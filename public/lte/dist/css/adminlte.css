@@ -8774,7 +8774,7 @@ body,
   display: block;
   line-height: 1.5;
   white-space: nowrap;
-  background-color: yellow;
+  background-color: #f6c029;
 }
 
 .brand-link:hover {
@@ -13093,7 +13093,7 @@ a.text-muted:hover {
   width: var(--sidebar-width);
   color: var(--text-color);
   padding: 0 20px;
-  background-color: yellow;
+  background-color: #f6c029;
   display: flex;
   flex-direction: column;
   align-items: center;
