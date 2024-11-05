@@ -1,11 +1,11 @@
 <!-- jQuery -->
-<script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script> -->
 <!-- Bootstrap 4 -->
-<script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> -->
 <!-- AdminLTE App -->
 <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -68,19 +68,19 @@
         <div class="row">
         <div class="col-3">
         <div class="card" style="width: 100%;">
-          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="text-center card-img-top" alt="...">
+        <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="rounded-circle mx-auto my-3" width="100px" alt="...">
             <div class="card-body">
               <h5 class="card-title">Rujak Cingur</h5>
               <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
               <h5 class="card-title">Rp12.000</h5>
               <button type="button" class="btn btn-success">Beli Sekarang</button>
-              <button type="button" class="btn btn-success"><i class="bi bi-cart-plus"></i></button>
+              <button type="button" class="btn btn-success my-auto"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
             </div>
         </div>
         </div>
         <div class="col-3">
         <div class="card" style="width: 100%;">
-          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="rounded-circle mx-auto" width="100px" alt="...">
+          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="rounded-circle mx-auto my-3" width="100px" alt="...">
             <div class="card-body">
               <h5 class="card-title">Rujak Cingur</h5>
               <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
@@ -92,25 +92,25 @@
         </div>
         <div class="col-3">
         <div class="card" style="width: 100%;">
-          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="card-img-top rounded-circle" alt="...">
+        <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="rounded-circle mx-auto my-3" width="100px" alt="...">
             <div class="card-body">
               <h5 class="card-title">Rujak Cingur</h5>
               <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
               <h5 class="card-title">Rp12.000</h5>
               <button type="button" class="btn btn-success">Beli Sekarang</button>
-              <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
+              <button type="button" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
             </div>
         </div>
         </div>
         <div class="col-3">
         <div class="card" style="width: 100%;">
-          <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="card-img-top" alt="...">
+        <img src="{{ asset('/lte/dist/img/user8-128x128.jpg') }}" class="rounded-circle mx-auto my-3" width="100px" alt="...">
             <div class="card-body">
               <h5 class="card-title">Rujak Cingur</h5>
               <p class="card-text">Makanan khas Jawa Timur. Perpaduan antara sayuran, buah, tahu, tempe, dan petis yang diuleg bersama petis dan kacang.</p>
               <h5 class="card-title">Rp12.000</h5>
               <button type="button" class="btn btn-success">Beli Sekarang</button>
-              <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i></button>
+              <button type="button" class="btn btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
             </div>
         </div>
         </div>
