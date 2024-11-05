@@ -6,13 +6,26 @@
 .nonactive-link {
     background-color: #f6c029 !important;
 }
-
-.booking-link {
-    background-color: #f6c029 !important;
-    color: #000000 !important;
+#tables {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
-
-.nonbooking-link {
-    background-color: #ffffff !important;
-    color: #000000 !important;
+.table {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333333;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.available {
+    background-color: lightgreen;
+}
+.booked {
+    background-color: lightcoral;
+    pointer-events: none;
 }
