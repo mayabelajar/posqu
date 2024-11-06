@@ -1,4 +1,11 @@
 <link rel="stylesheet" href="{{ asset('/public/ini.css') }}">
+<link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}"> -->
+<link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script> -->
+<script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">
@@ -71,3 +78,72 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
+  <!-- <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSq</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    
+    <div class="sidebar">
+      <div class="top">
+        <div class="logo">
+          <i class="bx bxl-codepen"></i>
+          <span>POSq</span>
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <div class="user">
+        <img src="user-img.jpg" alt="" class="user-img">
+        <div>
+          <p class="bold">Jama Piya</p>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <a href="#">
+            <i class="bx bxs-grid-alt"></i>
+            <span class="nav-item">Beranda</span>
+          </a>
+          <span class="tooltip">Beranda</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-grid-alt"></i>
+            <span class="nav-item">Beranda</span>
+          </a>
+          <span class="tooltip">Beranda</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-grid-alt"></i>
+            <span class="nav-item">Beranda</span>
+          </a>
+          <span class="tooltip">Beranda</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-grid-alt"></i>
+            <span class="nav-item">Beranda</span>
+          </a>
+          <span class="tooltip">Beranda</span>
+        </li>
+      </ul>
+    </div>
+
+  </body>
+
+  <script>
+    let btn = document.querySelector('#btn')
+    let sidebar = documnet.querySelector('.sidebar')
+
+    btn.onclick = function () {
+      sidebar.classList.toggle('active')
+    };
+  </script>
+
+  </html> -->

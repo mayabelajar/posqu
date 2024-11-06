@@ -16,3 +16,173 @@
     background-color: #ffffff !important;
     color: #000000 !important;
 }
+
+.btn-icon {
+    height: 36px;
+    background-color: #60FE7D;
+}
+
+.btn-text {
+    height: 36px;
+} 
+
+/* * {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.user-img {
+    width: 50px !important;
+    border-radius: 100% !important;
+    border: 1px solid #eee !important;
+}
+
+.sidebar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    width: 80px !important;
+    background-color: #12117e !important;
+    padding: 0.4rem 0.8rem !important;
+    transition: all 0.5s ease !important;
+}
+
+.sidebar.active ~ .main-content {
+    left: 250px !important;
+    width: calc(100% - 250px) !important;
+}
+
+.sidebar-active {
+    width: 250px !important;
+}
+
+.sidebar #btn {
+    position: absolute !important;
+    color: #fff !important;
+    top: .4rem !important;
+    left: 50% !important;
+    font-size: 1.2rem !important;
+    line-height: 50px !important;
+    transform: translateX(-50%) !important;
+    cursor: pointer !important;
+}
+
+.sidebar.active #btn {
+    left: 90% !important;
+}
+
+.sidebar .top .logo {
+    color: #fff !important;
+    display: flex !important;
+    height: 50px !important;
+    width: 100% !important;
+    align-items: center !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+.sidebar.active .top .logo {
+    opacity: 1 !important;
+}
+
+.top .logo i {
+    font-size: 2rem !important;
+    margin-right: 5px !important;
+}
+
+.user {
+    display: flex !important;
+    align-items: center !important;
+    margin: 1rem 0 !important;
+}
+
+.user p {
+    color: #fff !important;
+    opacity: 1 !important;
+    margin-left: 1rem !important;
+}
+
+.bold {
+    font-weight: 600 !important;
+}
+
+.sidebar p {
+    opacity: 0 !important;
+}
+
+.sidebar.active {
+    opacity: 1 !important;
+}
+
+.sidebar ul li{
+    position: relative !important;
+    list-style-type: none !important;
+    height: 50px !important;
+    width: 90% !important;
+    margin: 0.8rem  auto !important;
+    line-height: 50px !important;
+}
+
+.sidebar ul li a{
+    color: #fff !important;
+    display: flex!important;
+    align-items: center !important;
+    text-decoration: none !important;
+    border-radius: 0.8rem !important;
+}
+
+.sidebar ul li a:hover {
+    background-color: #fff !important;
+    color: #12171e !important;
+}
+
+.sidebar ul li a i {
+    min-width: 50px !important;
+    text-align: center !important;
+    height: 50px !important;
+    border-radius: 12px !important;
+    line-height: 50px !important;
+}
+
+.sidebar .nav-item {
+    opacity: 0 !important;
+}
+
+.sidebar.active .nav-item {
+    opacity: 1 !important;
+}
+
+.sidebar ul li .tooltip {
+    position: absolute !important;
+    left: 125px !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2) !important;
+    border-radius: .6rem !important;
+    padding: .4rem 1.2rem !important;
+    line-height: 1.8rem !important;
+    z-index: 20 !important;
+    opacity: 0 !important;
+}
+
+.sidebar ul li:hover .tooltip {
+    opacity: 1 !important;
+}
+
+.siderbar.active ul li .tooltip {
+    display: none !important;
+}
+
+.main-content {
+    position: relative !important;
+    background-color: #eee !important;
+    min-height: 100vh !important;
+    top: 0 !important;
+    left: 80px !important;
+    transition: all 0.5s ease !important;
+    width: calc(100% - 80px) !important;
+    padding: 1rem !important;
+} */ 
