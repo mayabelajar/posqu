@@ -22,4 +22,7 @@ class AdminController extends Controller
     public function meja() {
         return view('admin.meja');
     }
+    public function addlist() {
+        return view('admin.addlistproduct');
+    }
 }

@@ -39,6 +39,7 @@ Route::get('/template', [AdminController::class, 'index']);
 Route::get('/transaksi', [AdminController::class, 'transaksi']);
 
 Route::get('/meja', [AdminController::class, 'meja']);
+Route::get('/daftar-product', [AdminController::class, 'addlist']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });
