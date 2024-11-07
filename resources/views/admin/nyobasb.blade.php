@@ -115,13 +115,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <label for="notes">Catatan:</label>
         <textarea id="notes" rows="4" cols="25"></textarea>
     </div>
+    <div class="border-t border-gray-250 mb-4">
+    </div>
+    <div class="detail">
     <p><strong>Item:</strong> 3 items</p>
     <p><strong>Subtotal:</strong> Rp 48.000</p>
     <p><strong>Diskon:</strong> 50%</p>
     <p><strong>Pajak 10%:</strong> Rp 0</p>
     <p><strong>TOTAL:</strong> Rp 24.000</p>
-    <button class="mb-2"><i class="fa fa-plus" aria-hidden="true"></i> Tambahkan Diskon</button>
-    <button>Proses Transaksi</button>
+    </div>
+    <button class="tambah mb-4"><i class="fa fa-plus ml-2" aria-hidden="true"></i> Tambahkan Diskon</button>
+    <button class="proses">Proses Transaksi</button>
     <script>
         // JavaScript untuk menghitung total, mengelola diskon, dll.
     </script>

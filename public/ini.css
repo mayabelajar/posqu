@@ -390,3 +390,19 @@ body {
 .fa-plus {
     color: #f6c029;
 }
+.proses {
+    background-color: #05B926;
+    color: #ffffff;
+    border-radius: 5px;
+    border:none;
+    height: 36px;
+    width: 150px; 
+}
+.tambah {
+    border: none;
+    background-color: #ffffff;
+}
+.detail {
+    color:#000000;
+    font-size: 12px;
+}
