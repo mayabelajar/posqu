@@ -173,6 +173,54 @@ body {
     background-color: #ec971f;
 }
 
+.btn-simpan {
+    float: right !important;
+    background-color: #F6C029 !important;
+    color: #ffffff !important;
+}
+
+body {
+    font-family: Arial, sans-serif !important;
+}
+
+.dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.dropbtn {
+    background-color: #4CAF50 !important; /* Warna latar belakang tombol */
+    color: white !important; /* Warna teks tombol */
+    padding: 10px !important; /* Padding tombol */
+    font-size: 16px !important; /* Ukuran font */
+    border: none !important; /* Hapus border */
+    cursor: pointer !important; /* Kursor pointer saat hover */
+}
+
+.dropdown-content {
+    display: none !important; /* Sembunyikan konten dropdown */
+    position: absolute !important; /* Posisi absolut */
+    background-color: #f9f9f9 !important; /* Warna latar belakang dropdown */
+    min-width: 160px !important; /* Lebar minimum dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important; /* Bayangan */
+    z-index: 1 !important; /* Z-index */
+}
+
+.dropdown-content a {
+    color: black !important; /* Warna teks tautan */
+    padding: 12px 16px !important; /* Padding tautan */
+    text-decoration: none !important; /* Hapus garis bawah */
+    display: block !important; /* Tampilkan sebagai blok */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1 !important; /* Warna latar belakang saat hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important; /* Tampilkan konten saat hover */
+}
+
 
 
 /* #product-image {

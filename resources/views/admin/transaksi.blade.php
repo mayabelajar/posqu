@@ -1,33 +1,35 @@
 <html>
  <head>
-    <!-- jQuery -->
-<script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
-  <!-- Theme style -->
+  <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ asset('/ini.css') }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
  </head>
  <body class="bg-gray-100">
   <div class="flex flex-col h-screen">
    <div class="flex items-center justify-between p-4 bg-white shadow">
     <div class="flex items-center">
-     <i class="fas fa-search text-gray-500">
-     </i>
+     <i class="fas fa-search text-gray-500"></i>
      <input class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text"/>
     </div>
     <div class="flex items-center">
      <span class="mr-4">
       SEMUA
      </span>
-     <i class="fas fa-filter text-blue-500">
-     </i>
+     <div class="dropdown">
+        <button class="dropbtn">
+            <i class="fas fa-cog"></i> <!-- Ganti dengan ikon yang diinginkan -->
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
           Sen, 04 November 2024

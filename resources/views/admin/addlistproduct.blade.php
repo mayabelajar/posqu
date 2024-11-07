@@ -14,9 +14,9 @@
         <div class="card">
             <h2>Add New Product</h2>
             <form class="needs-validation" novalidate>
-            <div class="form-row">
+            <div class="form-row mt-3">
               <div class="col-md-6 mb-3">
-                <label for="product-image">Product Image</label>
+                <label for="product-image">Gambar Produk</label>
                 <input type="file" class="form-control" id="product-image" required>
                 <div class="invalid-feedback">
                   Please provide a valid city.
@@ -43,7 +43,7 @@
                 <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
               </div> -->
             </div>
-            <div class="form-row">
+            <div class="form-row mt-2">
               <div class="col-md-6 mb-3">
                 <label for="validationCustom01">Harga</label>
                 <label class="sr-only" for="inlineFormInputGroup">Harga</label>
@@ -92,7 +92,7 @@
       </div> -->
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Simpan</button>
+  <button class="btn btn-simpan mt-3" type="submit">Tambahkan</button>
 </form>
 
 <script>
@@ -218,6 +218,26 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="flex justify-between items-center mt-4">
+                  <span>
+                    1 - 10 dari 68 data
+                  </span>
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                    </ul>
+                  </nav>
+                </div>
             </div>
         </div>
     </div>
