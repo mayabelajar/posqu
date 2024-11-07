@@ -403,12 +403,21 @@ body {
     border:none;
     height: 36px;
     width: 150px; 
+    font-size: 12px;
 }
 .tambah {
     border: none;
     background-color: #ffffff;
+    font-size: 12px;
 }
 .detail {
     color:#000000;
     font-size: 12px;
 }
+.notes {
+    font-size: 12px;
+}
+.pemesanan {
+    font-size: 12px;
+}
+

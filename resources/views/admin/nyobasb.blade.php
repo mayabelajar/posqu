@@ -85,7 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </style>
 </head>
 <body>
-<div class="mb-4">
+<div class="pemesanan mb-4">
      <div class="flex justify-between items-center mb-2">
       <span>
        Rujak Cingur
@@ -111,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </span>
      </div>
     </div>
-    <div>
+    <div class="notes">
         <label for="notes">Catatan:</label>
         <textarea id="notes" rows="4" cols="25"></textarea>
     </div>
