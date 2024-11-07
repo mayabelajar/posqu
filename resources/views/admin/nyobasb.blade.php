@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+<aside class="control-sidebar control-sidebar-light">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
       <h5>Keranjang</h5>
@@ -85,21 +85,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </style>
 </head>
 <body>
-    <div class="item">
-        <span>Rujak Cingur</span>
-        <span class="quantity">2</span>
-        <span class="price">Rp 24.000</span>
+<div class="mb-4">
+     <div class="flex justify-between items-center mb-2">
+      <span>
+       Rujak Cingur
+      </span>
+      <span>
+       Rp 12.000
+      </span>
+     </div>
+     <div class="flex justify-between items-center mb-2">
+      <span>
+       Rendang
+      </span>
+      <span>
+       Rp 48.000
+      </span>
+     </div>
+     <div class="flex justify-between items-center mb-2">
+      <span>
+       Ayam Betutu
+      </span>
+      <span>
+       Rp 35.000
+      </span>
+     </div>
     </div>
     <div>
         <label for="notes">Catatan:</label>
-        <textarea id="notes" rows="4" cols="50"></textarea>
+        <textarea id="notes" rows="4" cols="25"></textarea>
     </div>
     <p><strong>Item:</strong> 3 items</p>
     <p><strong>Subtotal:</strong> Rp 48.000</p>
     <p><strong>Diskon:</strong> 50%</p>
     <p><strong>Pajak 10%:</strong> Rp 0</p>
     <p><strong>TOTAL:</strong> Rp 24.000</p>
-    <button>Tambahkan Diskon</button>
+    <button class="mb-2"><i class="fa fa-plus" aria-hidden="true"></i> Tambahkan Diskon</button>
     <button>Proses Transaksi</button>
     <script>
         // JavaScript untuk menghitung total, mengelola diskon, dll.

@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="{{ asset('/ini.css') }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
  </head>
  <body class="bg-gray-100">
   <div class="flex flex-col h-screen">
@@ -22,7 +23,7 @@
      </span>
      <div class="dropdown">
         <button class="dropbtn">
-            <i class="fas fa-cog"></i> <!-- Ganti dengan ikon yang diinginkan -->
+            <i class="bx bxs-filter-alt"></i> <!-- Ganti dengan ikon yang diinginkan -->
         </button>
         <div class="dropdown-content">
             <a href="#">Link 1</a>
