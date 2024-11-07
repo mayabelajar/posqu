@@ -189,8 +189,8 @@ body {
 }
 
 .dropbtn {
-    background-color: #4CAF50 !important; /* Warna latar belakang tombol */
-    color: white !important; /* Warna teks tombol */
+    background-color: white !important; /* Warna latar belakang tombol */
+    color: black !important; /* Warna teks tombol */
     padding: 10px !important; /* Padding tombol */
     font-size: 16px !important; /* Ukuran font */
     border: none !important; /* Hapus border */
@@ -201,7 +201,7 @@ body {
     display: none !important; /* Sembunyikan konten dropdown */
     position: absolute !important; /* Posisi absolut */
     background-color: #f9f9f9 !important; /* Warna latar belakang dropdown */
-    min-width: 160px !important; /* Lebar minimum dropdown */
+    min-width: 200px !important; /* Lebar minimum dropdown */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important; /* Bayangan */
     z-index: 1 !important; /* Z-index */
 }
@@ -221,7 +221,13 @@ body {
     display: block !important; /* Tampilkan konten saat hover */
 }
 
+.total {
+    border: solid #F6C029 !important;
+    border-radius: 3px !important;
+    padding: 12px !important;
+}
 
+/* flex justify-end items-center mt-4 p-4 bg-yellow-500 text-white rounded bottom */
 
 /* #product-image {
     padding: 25px !important;

@@ -18,17 +18,17 @@
      <input class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text"/>
     </div>
     <div class="flex items-center">
-     <span class="mr-4">
-      SEMUA
+     <span>
+      SEMUA METODE
      </span>
-     <div class="dropdown">
+     <div class="dropdown mr-4">
         <button class="dropbtn">
             <i class="bx bxs-filter-alt"></i> <!-- Ganti dengan ikon yang diinginkan -->
         </button>
         <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+          <a href=""><i class="bx bx-wallet-alt"></i>   SEMUA METODE</a>
+          <a href=""><i class="bx bx-money-withdraw"></i>   CASH</a>
+          <a href=""><i class="bx bx-qr-scan"></i>   QRIS</a>
         </div>
     </div>
      <li class="nav-item dropdown">
@@ -45,7 +45,7 @@
     <div class="w-2/3 bg-white shadow rounded-lg p-4 overflow-y-auto">
     <div class="overflow-auto">
      <div class="flex items-center mb-4">
-      <img alt="QRIS icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/X0EMdKx289JeSCy8eiseIpI9ysGw6FFpGvWr28XU5fG2N41OB.jpg" width="40"/>
+      <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/qriskecil.png') }}" width="40"/>
       <div class="ml-4">
        <div>
         1MK011510240001
@@ -62,7 +62,7 @@
       </div>
      </div>
      <div class="flex items-center mb-4">
-      <img alt="Cash icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/cReN1IMn1G0lfkEdDKx1yi7SREpXsemL9SwBo8ORpkk8G8anA.jpg" width="40"/>
+      <img alt="Cash icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40"/>
       <div class="ml-4">
        <div>
         1MK011510240001
@@ -79,7 +79,7 @@
       </div>
      </div>
      <div class="flex items-center mb-4">
-      <img alt="QRIS icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/X0EMdKx289JeSCy8eiseIpI9ysGw6FFpGvWr28XU5fG2N41OB.jpg" width="40"/>
+      <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/qriskecil.png') }}" width="40"/>
       <div class="ml-4">
        <div>
         1MK011510240001
@@ -96,7 +96,7 @@
       </div>
      </div>
      <div class="flex items-center mb-4">
-      <img alt="QRIS icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/X0EMdKx289JeSCy8eiseIpI9ysGw6FFpGvWr28XU5fG2N41OB.jpg" width="40"/>
+      <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/qriskecil.png') }}" width="40"/>
       <div class="ml-4">
        <div>
         1MK011510240001
@@ -113,7 +113,7 @@
       </div>
      </div>
      <div class="flex items-center mb-4">
-      <img alt="Cash icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/cReN1IMn1G0lfkEdDKx1yi7SREpXsemL9SwBo8ORpkk8G8anA.jpg" width="40"/>
+      <img alt="Cash icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40"/>
       <div class="ml-4">
        <div>
         1MK011510240001
@@ -130,7 +130,7 @@
       </div>
      </div>
      <div class="flex items-center mb-4">
-      <img alt="QRIS icon" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/X0EMdKx289JeSCy8eiseIpI9ysGw6FFpGvWr28XU5fG2N41OB.jpg" width="40"/>
+      <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/qriskecil.png') }}" width="40"/>
       <div class="ml-4">
        <div>
         1MK011510240001
@@ -219,7 +219,7 @@
        </tr>
       </tbody>
      </table>
-     <div class="flex justify-end items-center mt-4 p-4 bg-yellow-500 text-white rounded">
+     <div class="total flex justify-end items-center mt-4">
       <span>
        Rp 38.000
       </span>
