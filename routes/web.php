@@ -6,6 +6,7 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ModalController;
 
 //  jika user belum login
 Route::group(['middleware' => 'guest'], function() {
@@ -40,6 +41,8 @@ Route::get('/transaksi', [AdminController::class, 'transaksi']);
 
 Route::get('/meja', [AdminController::class, 'meja']);
 Route::get('/daftar-product', [AdminController::class, 'addlist']);
+Route::get('/diskon', [ModalController::class, 'diskon']);
+Route::get('/nota', [ModalController::class, 'nota']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });
