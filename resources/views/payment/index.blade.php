@@ -72,7 +72,7 @@
       Order Summary
      </h2>
      <div class="border-b border-yellow-500 mb-4">
-      <div class="flex justify-between mb-2 m-auto">
+     <div class="flex justify-between mb-2">
        <span>
         Rujak Cingur
        </span>
@@ -83,7 +83,7 @@
         Rp 12.000
        </span>
       </div>
-      <div class="flex justify-between mb-2 m-auto">
+      <div class="flex justify-between mb-2">
        <span>
         Es Dawet
        </span>
@@ -94,7 +94,7 @@
         Rp 16.000
        </span>
       </div>
-      <div class="flex justify-between mb-2 m-auto">
+      <div class="flex justify-between mb-2">
        <span>
         Cenil
        </span>
@@ -105,7 +105,7 @@
         Rp 10.000
        </span>
       </div>
-     </div>
+      </div>
      <div class="mb-4">
       <div class="flex justify-between mb-2">
        <span>

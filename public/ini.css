@@ -6,6 +6,13 @@
 .nonactive-link {
     background-color: #f6c029 !important;
 }
+.booking-link {
+    background-color: #f6c029 !important;
+    color: #ffffff !important;
+}
+.nonbooking-link {
+    background-color: #ffffff !important;
+}
 #tables {
     display: flex;
     justify-content: center;

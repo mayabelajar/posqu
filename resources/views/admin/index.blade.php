@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-light">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
       <h5>Keranjang</h5>
@@ -153,11 +153,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </style>
 </head>
 <body>
-    <h1>Keranjang</h1>
-    <div class="item">
-        <span>Rujak Cingur</span>
-        <span class="quantity">2</span>
-        <span class="price">Rp 24.000</span>
+<div class="mb-4">
+     <div class="flex justify-between items-center mb-2">
+      <span>
+       Rujak Cingur
+      </span>
+      <span>
+       Rp 12.000
+      </span>
+     </div>
+     <div class="flex justify-between items-center mb-2">
+      <span>
+       Rendang
+      </span>
+      <span>
+       Rp 48.000
+      </span>
+     </div>
+     <div class="flex justify-between items-center mb-2">
+      <span>
+       Ayam Betutu
+      </span>
+      <span>
+       Rp 35.000
+      </span>
+     </div>
     </div>
     <div>
         <label for="notes">Catatan:</label>
