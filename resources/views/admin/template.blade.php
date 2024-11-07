@@ -148,7 +148,7 @@
         <img src="{{ asset('/lte/dist/img/wedanguwuh.jpeg') }}" class="rounded-circle mx-auto my-3" width="100px" alt="...">
             <div class="card-body">
               <h5 class="card-title">Wedang Uwuh</h5>
-              <p class="card-text">Minnuman Khas Yogyakarta. Minuman tradisional yang terbuat dengan rempah-rempah untuk menyehatkan badan.</p>
+              <p class="card-text">Minuman Khas Yogyakarta. Minuman tradisional yang terbuat dengan rempah-rempah untuk menyehatkan badan.</p>
               <h5 class="card-title">Rp10.000</h5>
               <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
               <button type="button" class="btn btn-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
@@ -160,7 +160,7 @@
         <img src="{{ asset('/lte/dist/img/mieaceh.jpeg') }}" class="rounded-circle mx-auto my-3" width="100px" alt="...">
             <div class="card-body">
               <h5 class="card-title">Mie Aceh</h5>
-              <p class="card-text">Makanan khas Aceh. Mie tebal berwarna kuning yang dimasak dengan bumbu kari dan diberi topping seafood.</p>
+              <p class="card-text">Makanan khas Aceh. Mie dengan ukuran tebal berwarna kuning yang dimasak dengan bumbu kari dan diberi topping seafood.</p>
               <h5 class="card-title">Rp15.000</h5>
               <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
               <button type="button" class="btn btn-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>

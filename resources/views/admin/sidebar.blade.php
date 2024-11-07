@@ -33,7 +33,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/template') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
+            <a href="{{ url('/admin') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Beranda
@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ url('/produk') }}" class="nav-link {{ Request::segment(1) == 'produk'? 'active-link' : 'nonactive-link' }}">
+          <a href="{{ url('/daftar-product') }}" class="nav-link {{ Request::segment(1) == 'addlist'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-th-list"></i>
               <p>
                 Daftar Produk

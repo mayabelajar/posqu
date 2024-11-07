@@ -14,56 +14,54 @@
         <div class="card">
             <h2>Add New Product</h2>
             <form class="needs-validation" novalidate>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-    <label for="product-image">Product Image</label>
-      <input type="file" class="form-control" id="product-image" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
-      <!-- <label for="validationCustom01">Nama Produk</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Masukkan nama produk" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div> -->
-    </div>
-    <div class="col-md-6 mb-3">
-    <label for="validationCustom01">Nama Produk</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Masukkan nama produk" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <!-- <label for="validationCustom01">Harga</label>
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Rp</div>
-        </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-      </div>
-    </div> -->
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-    <label for="validationCustom01">Harga</label>
-      <label class="sr-only" for="inlineFormInputGroup">Harga</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Rp</div>
-        </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Masukkan harga produk">
-      </div>
-    </div>
-
-        <!-- <label for="product-image">Product Image</label>
-      <input type="file" class="form-control" id="product-image" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div> -->
-    </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="product-image">Product Image</label>
+                <input type="file" class="form-control" id="product-image" required>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <!-- <label for="validationCustom01">Nama Produk</label>
+              <input type="text" class="form-control" id="validationCustom01" value="Masukkan nama produk" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div> -->
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Nama Produk</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Masukkan nama produk" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <!-- <label for="validationCustom01">Harga</label>
+              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Rp</div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+              </div> -->
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Harga</label>
+                <label class="sr-only" for="inlineFormInputGroup">Harga</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Rp</div>
+                  </div>
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Masukkan harga produk">
+                </div>
+              </div>
+              <!-- <label for="product-image">Product Image</label>
+              <input type="file" class="form-control" id="product-image" required>
+              <div class="invalid-feedback">
+                Please provide a valid city.
+              </div> -->
     <div class="col-md-3 mb-3">
     <label for="validationCustom05">Stok</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
+      <input type="text" class="form-control" id="validationCustom05" placeholder="Masukkan jumlah stok" required>
       <div class="invalid-feedback">
         Please provide a valid zip.
       </div>
