@@ -57,12 +57,13 @@
        <label class="flex items-center" for="indoor">
         Indoor
        </label>
-      </div>
-      <div class="flex items-center">
+       
+      <div class="flex items-center ml-5">
        <input class="mr-2" id="outdoor" name="table" type="radio"/>
        <label class="flex items-center" for="outdoor">
         Outdoor
        </label>
+      </div>
       </div>
      </div>
     </div>
@@ -71,7 +72,7 @@
       Order Summary
      </h2>
      <div class="border-b border-yellow-500 mb-4">
-      <div class="flex justify-between mb-2">
+     <div class="flex justify-between mb-2">
        <span>
         Rujak Cingur
        </span>
@@ -104,7 +105,7 @@
         Rp 10.000
        </span>
       </div>
-     </div>
+      </div>
      <div class="mb-4">
       <div class="flex justify-between mb-2">
        <span>
