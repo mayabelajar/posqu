@@ -1,6 +1,7 @@
+@extends('admin.sidebar')
+
+@section('content')
 <html>
-<head>
-    <title>Daftar Produk</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('/ini.css') }}">
     <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
@@ -8,6 +9,8 @@
     <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
+<head>
+    <title>Daftar Produk</title>
 </head>
 <body>
     <div class="container">
@@ -116,9 +119,6 @@
 })();
 </script>
         </div>
-
-        
-
         <div class="card">
             <h2>List Product</h2>
             <div class="row mt-3">
@@ -137,8 +137,6 @@
             </div>
             </div>
             </div>
-            
-            
             <div class="table-container">
                 <table class="table table-striped table-default mt-4">
                     <thead>
@@ -243,3 +241,4 @@
     </div>
 </body>
 </html>
+@endsection

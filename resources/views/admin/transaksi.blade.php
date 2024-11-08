@@ -1,3 +1,6 @@
+@extends('admin.sidebar')
+
+@section('content')
 <html>
  <head>
   <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
@@ -229,3 +232,5 @@
   </div>
  </body>
 </html>
+
+@endsection

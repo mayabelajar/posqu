@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="{{ asset('/public/ini.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
-<!-- <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}"> -->
+<link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <!-- <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script> -->
 <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">
@@ -34,7 +35,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ url('/admin') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
-              <i class="nav-icon fa fa-home"></i>
+              <i class="nav-icon bx bxs-home"></i>
               <p>
                 Beranda
               </p>
@@ -42,7 +43,7 @@
           </li>
           <li class="nav-item">
           <a href="{{ url('/daftar-product') }}" class="nav-link {{ Request::segment(1) == 'addlist'? 'active-link' : 'nonactive-link' }}">
-              <i class="nav-icon fa fa-th-list"></i>
+              <i class="nav-icon bx bxs-notepad"></i>
               <p>
                 Daftar Produk
               </p>
@@ -50,7 +51,7 @@
           </li>
           <li class="nav-item">
           <a href="{{ url('/transaksi') }}" class="nav-link {{ Request::segment(1) == 'transaksi'? 'active-link' : 'nonactive-link' }}">
-              <i class="nav-icon fa fa-google-wallet"></i>
+              <i class="nav-icon bx bxs-wallet"></i>
               <p>
                 Transaksi
               </p>
@@ -58,7 +59,7 @@
           </li>
           <li class="nav-item">
           <a href="{{ url('/laporan') }}" class="nav-link {{ Request::segment(1) == 'laporan'? 'active-link' : 'nonactive-link' }}">
-              <i class="nav-icon fa fa-file"></i>
+              <i class="nav-icon bx bxs-report"></i>
               <p>
                 Laporan
               </p>
@@ -79,6 +80,31 @@
     <!-- /.sidebar -->
   </aside>
 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <!-- <div class="row mb-2"> -->
+          <!-- <div class="col-sm-6">
+            <h5 class="m-0 text-dark">Kategori</h5>
+          </div>/.col -->
+        <!-- </div>/.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        @yield('content')
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  @include('admin/footer')
   <!-- <!DOCTYPE html>
   <html lang="en">
   <head>
