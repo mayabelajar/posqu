@@ -415,9 +415,15 @@ body {
     font-size: 12px;
 }
 .notes {
-    font-size: 12px;
+    font-size: 10px;
 }
 .pemesanan {
     font-size: 12px;
 }
-
+.keranjang {
+    color: #000000;
+}
+.kirim {
+    background-color: #F86D10;
+    color: #ffffff;
+}

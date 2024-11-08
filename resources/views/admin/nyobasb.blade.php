@@ -59,7 +59,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <aside class="control-sidebar control-sidebar-light">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5>Keranjang</h5>
+      <div class="keranjang">
+      <h4>Keranjang<h4>
+      </div>
 
       <!DOCTYPE html>
 <html>
