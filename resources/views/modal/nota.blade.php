@@ -26,14 +26,16 @@
      </div>
     </div>
     <div class="flex space-x-4">
+      <div class="kirim">
      <button class="bg-red-500 text-white py-2 px-4 rounded-lg">
       Kirim ke Dapur
      </button>
+     </div>
      <button class="bg-yellow-500 text-white py-2 px-4 rounded-lg">
       Cetak Struk
      </button>
      <button class="bg-green-500 text-white py-2 px-4 rounded-lg">
-      + Baru
+      Baru
      </button>
     </div>
    </div>
