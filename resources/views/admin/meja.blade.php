@@ -19,27 +19,27 @@
         <h1 class="text-center text-2xl font-semibold mb-8">Pilih Meja</h1>
         <div class="flex justify-around">
             <!-- Indoor Section -->
-            
+
             <div class="border border-yellow-500 p-4 rounded-lg">
                 <h2 class="text-lg font-semibold mb-4">Indoor</h2>
                 <div id="tables">
                 <div class="grid grid-cols-4 gap-4">
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 1</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg" >Meja 5</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg" >Meja 9</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg" >Meja 13</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 2</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 6</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 10</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 14</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 3</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 7</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 11</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 15</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 4</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 8</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 12</button>
-                    <button class="border border-yellow-500 py-2 px-4 rounded-lg">Meja 16</button>
+                    <button data-mj="01" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 1</button>
+                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 5</button>
+                    <button data-mj="09" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 9</button>
+                    <button data-mj="13" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 13</button>
+                    <button data-mj="02" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 2</button>
+                    <button data-mj="06" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 6</button>
+                    <button data-mj="10" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 10</button>
+                    <button data-mj="14" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 14</button>
+                    <button data-mj="03" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 3</button>
+                    <button data-mj="07" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 7</button>
+                    <button data-mj="11" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 11</button>
+                    <button data-mj="15" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 15</button>
+                    <button data-mj="04" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 4</button>
+                    <button data-mj="08" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 8</button>
+                    <button data-mj="12" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 12</button>
+                    <button data-mj="16" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 16</button>
                 </div>
                 </div>
             </div>
@@ -52,28 +52,28 @@
                     <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 5</button>
                     <button data-mj="09" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 9</button>
                     <button data-mj="13" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 13</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 2</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 6</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 10</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 14</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 3</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 7</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 11</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 15</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 4</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 8</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 12</button>
-                    <button data-mj="05" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 16</button>
+                    <button data-mj="02" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 2</button>
+                    <button data-mj="06" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 6</button>
+                    <button data-mj="10" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 10</button>
+                    <button data-mj="14" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 14</button>
+                    <button data-mj="03" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 3</button>
+                    <button data-mj="07" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 7</button>
+                    <button data-mj="11" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 11</button>
+                    <button data-mj="15" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 15</button>
+                    <button data-mj="04" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 4</button>
+                    <button data-mj="08" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 8</button>
+                    <button data-mj="12" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 12</button>
+                    <button data-mj="16" class="tombol border border-yellow-500 py-2 px-4 rounded-lg">Meja 16</button>
                 </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="booking-info">
+    <!-- <div id="booking-info">
         <h2>Booking Info</h2>
         <input type="text" id="name" placeholder="Nama Anda" />
         <button id="bookButton">Booking Meja</button>
-    </div>
+    </div> -->
     <script src="ini.js"></script>
     <script>
         $(document).ready(function(){
