@@ -426,4 +426,21 @@ body {
 .kirim {
     background-color: #F86D10;
     color: #ffffff;
+    border: none;
+    border-radius: 5px;
 }
+.cetak {
+    background-color: #F6C029;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+.baru {
+    background-color: #129B1B;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+.fa-plus {
+    color: white;
+} 
