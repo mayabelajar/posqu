@@ -34,7 +34,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/admin') }}" class="nav-link {{ Request::segment(1) == 'template'? 'active-link' : 'nonactive-link' }}">
+            <a href="{{ url('/admin') }}" class="nav-link {{ Request::segment(1) == 'admin'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon bx bxs-home"></i>
               <p>
                 Beranda
@@ -42,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ url('/daftar-product') }}" class="nav-link {{ Request::segment(1) == 'addlist'? 'active-link' : 'nonactive-link' }}">
+          <a href="{{ url('/daftar-product') }}" class="nav-link {{ Request::segment(1) == 'daftar-product'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon bx bxs-notepad"></i>
               <p>
                 Daftar Produk
@@ -66,7 +66,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/laporan') }}" class="nav-link {{ Request::segment(1) == 'logout'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon fa fa-sign-out"></i>
               <p>
                 Keluar
