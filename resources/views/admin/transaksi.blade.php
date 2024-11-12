@@ -1,23 +1,15 @@
-@extends('admin.sidebar')
+@extends('admin.index')
 
 @section('content')
 <html>
  <head>
-  <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
-  <!-- <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
-  <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="{{ asset('/ini.css') }}">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> -->
  </head>
  <body class="bg-gray-100">
   <div class="flex flex-col h-screen">
    <div class="flex items-center justify-between p-4 bg-white shadow">
     <div class="flex items-center">
-     <i class="fas fa-search text-gray-500"></i>
+     <i class="fa fa-search text-gray-500"></i>
      <input class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text"/>
     </div>
     <div class="flex items-center">
