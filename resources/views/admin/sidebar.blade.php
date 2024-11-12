@@ -10,7 +10,6 @@
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="index3.html" class="brand-link text-center">
       <img src="{{ asset('/lte/dist/img/logoPOS.png') }}" alt="POSq Logo" class="img-circle elevation-3"
            style="opacity: .8">
@@ -31,8 +30,6 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ url('/admin') }}" class="nav-link {{ Request::segment(1) == 'admin'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon bx bxs-home"></i>
@@ -75,34 +72,24 @@
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <!-- <div class="row mb-2"> -->
-          <!-- <div class="col-sm-6">
-            <h5 class="m-0 text-dark">Kategori</h5>
-          </div>/.col -->
-        <!-- </div>/.row -->
-      </div><!-- /.container-fluid -->
+      </div>
     </div>
-    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
         @yield('content')
-      </div><!-- /.container-fluid -->
+      </div>
     </div>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   @include('admin/footer')
   <!-- <!DOCTYPE html>
@@ -110,8 +97,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POSq</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>POSq</title> 
   </head>
   <body>
     
