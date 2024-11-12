@@ -565,3 +565,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .bayar{
+    background-color: #f6c029;
+    color: #ffffff;
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  .border{
+    border-color: #f6c029 !important;
+  }

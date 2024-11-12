@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   @include('admin/header')
 
-  @include('admin/sidebar')
+     @include('admin/sidebar')
 
     <!-- Main content -->
     <div class="content-wrapper">
