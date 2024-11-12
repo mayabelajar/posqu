@@ -1,15 +1,19 @@
 
 <html>
- <head>
- <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
+<head>
+  <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
+  <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <title>
-   Payment Page
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <!-- <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
+  <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ asset('/ini.css') }}">
+  <link rel="stylesheet" href="{{ asset('/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
  </head>
  <body class="bg-[#e8e3c9] flex justify-center items-center h-screen">
   <div class="bg-white p-8 rounded-lg shadow-lg w-[800px]">
@@ -18,7 +22,7 @@
      <h2 class="text-xl font-bold mb-4">
       Choose Payment Method
      </h2>
-     <div class="border border-yellow-500 p-4 rounded-lg mb-4">
+     <div class="border border-yellow-500 p-4 rounded-lg mb-2">
       <div class="flex items-center mb-4">
        <input class="mr-2" id="cash" name="payment" type="radio"/>
        <label class="flex items-center" for="cash">
@@ -40,7 +44,7 @@
        </div>
       </div>
      </div>
-     <div class="border border-yellow-500 p-4 rounded-lg mb-4 row">
+     <div class="border border-yellow-500 p-4 rounded-lg mb-2">
      <div class="radio-group">
      <div class="flex items-center">
         <input class="mr-2" id="cash" name="payment" type="radio"/>
@@ -49,7 +53,7 @@
      </div>
      </div>
      </div>
-     <div class="border-t border-yellow-500 mb-4">
+     <div class="border-t border-yellow-500 mb-2">
      </div>
      <div class="border border-yellow-500 p-4 rounded-lg">
       <label class="block mb-2">
@@ -145,21 +149,14 @@
        Rp 19.000
       </span>
      </div>
-     <div class="flex justify-between items-center">
-      <span>
-       Rp 19.000
-      </span>
-      <button class="bg-yellow-500 text-white px-4 py-2 rounded-lg">
-       Bayar
-  </button>
+   <!-- Button trigger modal -->
+<button type="button" class="bayar w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Simpan 
+</button>
      </div>
     </div>
    </div>
   </div>
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -170,7 +167,38 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+      <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+   <div class="bg-white p-8 rounded-lg text-center">
+    <i class="fa fa-check-circle"></i>
+    <div class="text-xl font-bold mb-2">
+     1MK011510240001
+    </div>
+    <div class="flex justify-between mb-4">
+     <div>
+      <div class="text-gray-600">
+       Total Pembayaran
+      </div>
+      <div class="text-2xl font-bold">
+       Rp 30.000
+      </div>
+     </div>
+     <div>
+      <div class="text-gray-600">
+       Kembalian
+      </div>
+      <div class="text-2xl font-bold">
+       Rp 6.000
+      </div>
+     </div>
+    </div>
+    <div class="flex space-x-4">
+    <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
+    <button class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
+    <button class="baru py-2 px-4"><i class="fa fa-plus"> </i> Baru</button>
+    </div>
+   </div>
+   </div>
+</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
