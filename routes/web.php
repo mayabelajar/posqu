@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
 
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
 
-Route::get('/template', [AdminController::class, 'index']);
+// Route::get('/template', [AdminController::class, 'index']);
 
 Route::get('/transaksi', [AdminController::class, 'transaksi']);
 

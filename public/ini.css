@@ -444,3 +444,124 @@ body {
 .fa-plus {
     color: white;
 } 
+
+.main--content{
+    position: relative;
+    background: #ebe9e9;
+    width: 100%;
+    padding: 1rem;
+  }
+  .card--container{
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .card-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .main--title{
+    color: rgba(113, 99, 186, 255);
+    padding-bottom: 10px;
+    font-size: 15px; 
+  }
+  .categories{
+    background: rgb(229, 223, 223);
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 290px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+  }
+  .categories:hover{
+    transform: translateY(-5px);
+  }
+  .card--header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .amount{
+    display: flex;
+    flex-direction: column;
+  }
+  .title{
+    font-size: 12px;
+    font-weight: 200;
+  }
+  .amount--value{
+    font-size: 24px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+  }
+  .icon{
+    color: #fff;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background: red;
+  }
+  .card-detail{
+    font-size: 18px;
+    color: #777777;
+    letter-spacing: 2px;
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+  }
+  
+  .payment-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+  .payment-method, .order-summary {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .payment-option {
+    margin-bottom: 10px;
+  }
+  
+  .payment-option input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  .payment-option .payment-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  
+  .order-summary ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .order-summary li {
+    margin-bottom: 10px;
+  }
+  
+  .order-summary button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
