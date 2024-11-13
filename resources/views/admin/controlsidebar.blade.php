@@ -1,14 +1,14 @@
-<aside class="control-sidebar control-sidebar-light">
+<!-- <aside class="control-sidebar control-sidebar-light"> -->
     <!-- Control sidebar content goes here -->
-    <div class="p-3">
+    <!-- <div class="p-3">
       <div class="keranjang">
       <h4>Keranjang<h4>
       </div>
 
       
     <title>Keranjang Belanja</title>
-    <style>
-        /* Gaya CSS di sini */
+    <style> -->
+        <!-- /* Gaya CSS di sini */
         body {
             font-family: Arial, sans-serif;
         }
@@ -23,10 +23,10 @@
         }
         .price {
             text-align: right;
-        }
-    </style>
+        } -->
+    <!-- </style> -->
 
-<div class="pemesanan mb-4">
+<!-- <div class="pemesanan mb-4">
      <div class="flex justify-between items-center mb-2">
       <span>
        Rujak Cingur
@@ -67,9 +67,8 @@
     </div>
     <button class="tambah mb-4"><i class="fa fa-plus ml-2" aria-hidden="true"></i> Tambahkan Diskon</button>
     <button class="proses">Proses Transaksi</button>
-    <script>
-        // JavaScript untuk menghitung total, mengelola diskon, dll.
+    <script> -->
+        <!-- // JavaScript untuk menghitung total, mengelola diskon, dll.
     </script>
-
     </div>
-  </aside>
+  </aside> -->

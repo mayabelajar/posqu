@@ -8819,6 +8819,7 @@ body,
   padding-right: 0.5rem;
   overflow-y: auto;
   height: calc(100% - 4rem);
+  background-color: #f6c029;
 }
 
 .user-panel {
@@ -13073,7 +13074,7 @@ a.text-muted:hover {
 }
 
 /* Color Variables */
-:root {
+/* :root {
   --sidebar-bg: #2f323a;
   --sidebar-width: 100%;
   --sidebar-width-active: 150px;
@@ -13170,10 +13171,10 @@ a.text-muted:hover {
   border-radius: 3px;
   cursor: pointer;
   color: var(--menu-item-color);
-}
+} */
 
 /* when sidebar menu is active */
-.sidebar.active {
+/* .sidebar.active {
   width: var(--sidebar-width-active);
 }
 
@@ -13181,10 +13182,10 @@ a.text-muted:hover {
 .sidebar.active .menu-item,
 .sidebar.active .logout {
   justify-content: flex-start;
-}
+} */
 
 /* when sidebar is active show the nav items */
-.sidebar.active .logo span,
+/* .sidebar.active .logo span,
 .sidebar.active .menu-item span,
 .sidebar.active .logout span {
   display: block;
@@ -13193,10 +13194,10 @@ a.text-muted:hover {
 .sidebar.active .menu-header {
   font-size: 20px;
   text-align: left;
-}
+} */
 
 /* toggle menu */
-.toggle-menu {
+/* .toggle-menu {
   position: absolute;
   top: 10px;
   right: -20px;
@@ -13209,10 +13210,10 @@ a.text-muted:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* menu item tooltip */
-[data-tooltip] {
+/* [data-tooltip] {
   position: relative;
 }
 [data-tooltip]::before {
@@ -13317,7 +13318,7 @@ a.text-muted:hover {
   border-radius: 50%;
   font-size: 1.5rem;
   background: red;
-}
+} */
 .card-detail{
   font-size: 18px;
   color: #777777;
