@@ -577,3 +577,7 @@ body {
   .border{
     border-color: #f6c029 !important;
   }
+
+  .kecil{
+    overflow-y: hidden;
+  }
