@@ -2,9 +2,11 @@
 
 @section('contents')
 
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('/ini.css') }}">
     <title>Boostrap Login | Ludiflex</title>
 
 
@@ -28,36 +30,41 @@
 
     <!-------------------- ------ Right Box ---------------------------->
         
-       <div class="col-md-6 right-box">
+    @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif   
+    
+    <div class="col-md-6 right-box">
           <div class="row align-items-center">
                 <div class="header-text mb-4">
-                     <h2>Hello,Again</h2>
+                     <h2>Hello Again,</h2>
                      <p>We are happy to have you back.</p>
                 </div>
+                <form method="post" action="/">
+                @csrf
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                    <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email address">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="input-group mb-1">
-                    <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password">
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                      @enderror
                 </div>
-                <div class="input-group mb-5 d-flex justify-content-between">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="formCheck">
-                        <label for="formCheck" class="form-check-label text-secondary"><small>Remember Me</small></label>
-                    </div>
-                    <div class="forgot">
-                        <small><a href="#">Forgot Password?</a></small>
-                    </div>
+                <div class="input-group mt-4 mb-3">
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                 </div>
-                <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
-                </div>
-                <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6"><img src="images/google.png" style="width:20px" class="me-2"><small>Sign In with Google</small></button>
-                </div>
-                <div class="row">
-                    <small>Don't have account? <a href="#">Sign Up</a></small>
-                </div>
+</form>
           </div>
        </div> 
 
