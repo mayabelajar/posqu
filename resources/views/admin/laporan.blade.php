@@ -1,37 +1,90 @@
-<div class="container mx-auto space-y-4 p-4 sm:p-0">
-    <ul class="flex flex-col sm:flex-row sm:space-x-8 sm:items-center">
-        @foreach ($products as $product)
-            <li>
-                <input type="checkbox" value="{{ $product->id }}" wire:model="productId"/>
-                <span> {{ $product->nama_product }} </span>
-            </li>
-        @endforeach
-    </ul>
-    <div class="card-body">
-        <div class="row">
-
-            <div class="col" style="height: 300px !important;">
-                <livewire:livewire-column-chart
-                    key="{{ $columnChartModel->reactiveKey() }}"
-                    :column-chart-model="$columnChartModel"
-                />
-            </div>
-            <div class="col" style="height: 300px !important;">
-                <livewire:livewire-pie-chart
-                    key="{{ $pieChartModel->reactiveKey() }}"
-                    :pie-chart-model="$pieChartModel"
-                />
-            </div>
-            {{-- <div class="col" style="height: 300px !important;">
-                <livewire:livewire-column-chart
-                    :column-chart-model="$columnChartModel"
-                />
-            </div>
-            <div class="col" style="height: 300px !important;">
-                <livewire:livewire-pie-chart
-                    :pie-chart-model="$pieChartModel"
-                />
-            </div> --}}
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
     </div>
-</div>
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'Oct',
+            'November',
+            'December',
+        ];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Laporan Bulanan',
+                backgroundColor: '#f6c029',
+                borderColor: 'yellow',
+                data: [10, 15, 20, 25, 30, 30, 25, 45, 50, 45, 60, 61],
+        }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            option: {}
+        };
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+    <div>
+        <canvas id="Chartku"></canvas>
+    </div>
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'Oct',
+            'November',
+            'December',
+        ];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Laporan Bulanan',
+                backgroundColor: '#f6c029',
+                borderColor: 'yellow',
+                data: [10, 15, 20, 25, 30, 30, 25, 45, 50, 45, 60, 61],
+        }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            option: {}
+        };
+
+        var Chartku = new Chartt(
+            document.getElementById('Chartku'),
+            config
+        );
+    </script>
+</body>
+</html>
