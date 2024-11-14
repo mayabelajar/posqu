@@ -20,12 +20,12 @@
 
     <!--------------------------- Left Box ----------------------------->
 
-       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
-           <div class="featured-image mb-3">
-            <img src="images/1.png" class="img-fluid" style="width: 250px;">
+       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #F6C029;">
+           <div class="featured-image mt-3 mb-3">
+            <img src="{{ asset('/lte/dist/img/kasir.png') }}" class="img-fluid" style="width: 250px;">
            </div>
-           <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be Verified</p>
-           <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Join experienced Designers on this platform.</small>
+           <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">You did it!</p>
+           <small class="text-white text-wrap text-center mb-3" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Mulai usahamu dari sini</small>
        </div> 
 
     <!-------------------- ------ Right Box ---------------------------->
@@ -62,7 +62,7 @@
                       @enderror
                 </div>
                 <div class="input-group mt-4 mb-3">
-                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                    <button type="submit" class="btn btn-lg btn-warning w-100 fs-6">Login</button>
                 </div>
 </form>
           </div>
