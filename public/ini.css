@@ -581,3 +581,24 @@ body {
   .kecil{
     overflow-y: hidden;
   }
+  .pendapatan {
+    position: relative;
+    background: #ffffff;
+    width: 50%;
+    border-radius: 16px;
+    box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+  }
+  .menu {
+    position: relative;
+    background: #ffffff;
+    width: 50%;
+    border-radius: 16px;
+    box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+  }
+  .pelanggan {
+    position: relative;
+    background: #ffffff;
+    width: 50%;
+    border-radius: 16px;
+    box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+  }

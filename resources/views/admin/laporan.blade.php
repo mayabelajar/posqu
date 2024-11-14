@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
     <div class="row">
-        <div class="dropdown">
+        <div class="dropdown mb-4">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                 Dropdown button
             </button>
@@ -15,13 +15,15 @@
             </div>
         </div>
     <div class="row">
-        <div class="pendapatan col-6">
-        One of three columns
+        <div class="pendapatan col-6 mb-4 mr-4">
+            One of three columns
         </div>
-        <div class="menu col-6">
-            <div style="width: 300px;">
+        <div class="row">
+        <div class="menu col-6 mb-4">
+            <div style="width: 300px align: center;">
                 <canvas id="myChart1"></canvas>
             </div>
+        </div>
         </div>
         <script>
             const data1= {
@@ -49,8 +51,10 @@
                 }
             });
         </script>
-        <div class="pelanggan col-sm">
-        <div style="width: 800px align: center; ">
+    </div>
+    <div class="row">
+    <div class="pelanggan col-sm mb-4">
+        <div style="width: 400px align: center; ">
         <canvas id="myChart2"></canvas>
         </div>
         <script>
@@ -71,7 +75,9 @@
                 }
             });
         </script>
-        </div>
+        </div> 
     </div>
+        
+    
     </div>
 @endsection
