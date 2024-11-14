@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-<!-- <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script> -->
+<script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<!-- <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script> --> <!-- Ini komen dropdown muncul -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Ini komen beranda bisa -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> -->
