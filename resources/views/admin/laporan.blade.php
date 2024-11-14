@@ -5,26 +5,25 @@
     <div class="row">
         <div class="dropdown mb-4">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+                Laporan
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Hari Ini</a>
+                <a class="dropdown-item" href="#">Bulan</a>
+                <a class="dropdown-item" href="#">Tahun</a>
             </div>
             </div>
         </div>
     <div class="row">
-        <div class="pendapatan col-6 mb-4 mr-4">
+        <div class="pendapatan mb-4 mr-4">
             One of three columns
         </div>
-        <div class="row">
-        <div class="menu col-6 mb-4">
-            <div style="width: 300px align: center;">
+        <div class="menu col mb-4">
+            <div style="width: 300px">
                 <canvas id="myChart1"></canvas>
             </div>
         </div>
-        </div>
+    </div>
         <script>
             const data1= {
             labels: ['Rujak Cingur', 'Kerak Telor', 'Dawet Ayu', 'Lumpia', 'Papeda', 'Sekoteng'],
@@ -78,6 +77,6 @@
         </div> 
     </div>
         
-    
+
     </div>
 @endsection

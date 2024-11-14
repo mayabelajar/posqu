@@ -150,7 +150,10 @@
       </span>
      </div>
    <!-- Button trigger modal -->
-<button type="button" class="bayar w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="kembali" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Kembali 
+</button>
+<button type="button" class="bayar" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Simpan 
 </button>
      </div>
@@ -207,5 +210,3 @@
     </div>
   </div>
 </div>
- </body>
-</html>
