@@ -16,10 +16,11 @@
         </div>
     <div class="row">
         <div class="pendapatan mb-4 mr-4">
-            One of three columns
+            Pendapatan Hari Ini
         </div>
         <div class="menu col mb-4">
             <div style="width: 300px">
+                <span>Menu Paling Laku</span>
                 <canvas id="myChart1"></canvas>
             </div>
         </div>
@@ -53,6 +54,7 @@
     </div>
     <div class="row">
     <div class="pelanggan col-sm mb-4">
+        <span>Jumlah Pelanggan</span>
         <div style="width: 400px align: center; ">
         <canvas id="myChart2"></canvas>
         </div>

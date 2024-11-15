@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ModalController;
+use App\Http\Controllers\LaporanController;
 
 //  jika user belum login
 Route::group(['middleware' => 'guest'], function() {
@@ -43,7 +44,8 @@ Route::get('/meja', [AdminController::class, 'meja']);
 Route::get('/daftar-product', [AdminController::class, 'addlist']);
 Route::get('/diskon', [ModalController::class, 'diskon']);
 Route::get('/nota', [ModalController::class, 'nota']);
-Route::get('/laporan', [AdminController::class, 'laporan']);
+Route::get('/harian', [LaporanController::class, 'harian']);
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
