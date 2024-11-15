@@ -17,6 +17,9 @@ class LaporanController extends Controller
     public function harian() {
         return view('laporan.harian');
     }
+    public function bulanan() {
+        return view('laporan.bulanan');
+    }
 
     /**
      * Show the form for creating a new resource.
