@@ -20,6 +20,9 @@ class LaporanController extends Controller
     public function bulanan() {
         return view('laporan.bulanan');
     }
+    public function tahunan() {
+        return view('laporan.tahunan');
+    }
 
     /**
      * Show the form for creating a new resource.

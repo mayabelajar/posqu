@@ -46,6 +46,7 @@ Route::get('/diskon', [ModalController::class, 'diskon']);
 Route::get('/nota', [ModalController::class, 'nota']);
 Route::get('/harian', [LaporanController::class, 'harian']);
 Route::get('/bulanan', [LaporanController::class, 'bulanan']);
+Route::get('/tahunan', [LaporanController::class, 'tahunan']);
 
 // Route::get('/', function () {
 //     return view('welcome');

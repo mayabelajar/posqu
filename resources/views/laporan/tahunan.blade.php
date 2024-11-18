@@ -10,10 +10,10 @@
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Januari', 'Feburari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+        labels: ['2021', '2022', '2023', '2024'],
         datasets: [{
           label: 'My First Dataset',
-          data: [10000000, 15000000, 20000000, 20000000, 25000000, 35000000, 40000000, 45000000, 50000000, 45000000, 40000000, 50000000],
+          data: [150000000, 230000000, 301000000, 405000000],
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
