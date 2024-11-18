@@ -20,6 +20,13 @@
 
     <!--------------------------- Left Box ----------------------------->
 
+     @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #F6C029;">
            <div class="featured-image mt-3 mb-3">
             <img src="{{ asset('/lte/dist/img/kasir.png') }}" class="img-fluid" style="width: 250px;">
@@ -30,12 +37,7 @@
 
     <!-------------------- ------ Right Box ---------------------------->
         
-    @if (session()->has('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif   
+      
     
     <div class="col-md-6 right-box">
           <div class="row align-items-center">
