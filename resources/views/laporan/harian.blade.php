@@ -8,23 +8,21 @@
                 Laporan
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Hari Ini</a>
-                <a class="dropdown-item" href="#">Bulan</a>
-                <a class="dropdown-item" href="#">Tahun</a>
+                <a class="dropdown-item" href="{{ url('/harian') }}">Hari Ini</a>
+                <a class="dropdown-item" href="{{ url('/bulanan') }}">Bulan</a>
+                <a class="dropdown-item" href="{{ url('/tahunan') }}">Tahun</a>
             </div>
             </div>
         </div>
     <div class="row">
         <div class="pendapatan mb-4 mr-4">
-            Pendapatan Hari Ini
+            <strong class="ml-4">Pendapatan Hari Ini</strong>
         </div>
         <div class="menu col mb-4">
-            <div style="width: 300px">
-                <span>Menu Paling Laku</span>
+            <div style="width: 400px">
+                <strong class="ml-4">Menu Paling Laku</strong>
                 <canvas id="myChart1"></canvas>
-            </div>
-        </div>
-    </div>
+
         <script>
             const data1= {
             labels: ['Rujak Cingur', 'Kerak Telor', 'Dawet Ayu', 'Lumpia', 'Papeda', 'Sekoteng'],
@@ -52,10 +50,12 @@
             });
         </script>
     </div>
+    </div>
+    </div>
     <div class="row">
     <div class="pelanggan col-sm mb-4">
-        <span>Jumlah Pelanggan</span>
-        <div style="width: 400px align: center; ">
+        <strong class="ml-4">Jumlah Pelanggan</strong>
+        <div style="width: 400px align: center;">
         <canvas id="myChart2"></canvas>
         </div>
         <script>

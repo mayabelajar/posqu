@@ -1,6 +1,20 @@
 @extends('admin.sidebar')
 
 @section('content')
+      <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                Laporan
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ url('/harian') }}">Hari Ini</a>
+                <a class="dropdown-item" href="{{ url('/bulanan') }}">Bulan</a>
+                <a class="dropdown-item" href="{{ url('/tahunan') }}">Tahun</a>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+    <div class="row">
+    <div class="bulanan">
 <canvas id="myChart"
  width="400" height="200"></canvas>
 
@@ -28,4 +42,6 @@
       }
     });
   </script>
+  </div>
+</div>
 @endsection

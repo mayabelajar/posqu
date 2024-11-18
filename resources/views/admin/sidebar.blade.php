@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('/ini.css') }}">
-<link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/4.7.0/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -9,7 +9,7 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Ini komen beranda bisa -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> -->
+   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>  -->
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">

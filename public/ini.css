@@ -596,6 +596,7 @@ body {
     width: 50%;
     border-radius: 16px;
     box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+    font-size: 32px;
   }
   .menu {
     position: relative;
@@ -603,6 +604,7 @@ body {
     width: 50%;
     border-radius: 16px;
     box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+    font-size: 32px;
   }
   .pelanggan {
     position: relative;
@@ -610,6 +612,8 @@ body {
     width: 50%;
     border-radius: 16px;
     box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+    font-size: 32px;
+    align: center;
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
@@ -662,3 +666,18 @@ body{
      }
 
 }
+.bulanan{
+    position: relative;
+    background: #ffffff;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+}
+.tahunan{
+    position: relative;
+    background: #ffffff;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
+}
+    
