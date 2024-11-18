@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ url('/daftar-product') }}" class="nav-link {{ Request::segment(1) == 'daftar-product'? 'active-link' : 'nonactive-link' }}">
+          <a href="{{ url('/produks') }}" class="nav-link {{ Request::segment(1) == 'produks'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon bx bxs-notepad"></i>
               <p>
                 Daftar Produk

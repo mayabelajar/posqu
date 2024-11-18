@@ -41,12 +41,12 @@ Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index
 Route::get('/transaksi', [AdminController::class, 'transaksi']);
 
 Route::get('/meja', [AdminController::class, 'meja']);
-Route::get('/daftar-product', [AdminController::class, 'addlist']);
 Route::get('/diskon', [ModalController::class, 'diskon']);
 Route::get('/nota', [ModalController::class, 'nota']);
 Route::get('/harian', [LaporanController::class, 'harian']);
 Route::get('/bulanan', [LaporanController::class, 'bulanan']);
 Route::get('/tahunan', [LaporanController::class, 'tahunan']);
+Route::resource('produks', App\Http\Controllers\ProdukController::class);
 
 // Route::get('/', function () {
 //     return view('welcome');
