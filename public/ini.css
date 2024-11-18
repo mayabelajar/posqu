@@ -6,14 +6,7 @@
 .nonactive-link {
     background-color: #f6c029 !important;
 }
-.booking-link {
-    background-color: #f6c029 !important;
-    color: #ffffff !important;
-}
-.nonbooking-link {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-}
+
 #tables {
     display: flex;
     justify-content: center;
@@ -613,7 +606,7 @@ body {
     border-radius: 16px;
     box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
     font-size: 32px;
-    align: center;
+
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
@@ -680,4 +673,22 @@ body{
     border-radius: 16px;
     box-shadow: 6px 6px 6px rgba(0.1, 0.1, 0.1, 0.1);
 }
-    
+.gambar1{
+    height: 36px;
+    width: 36px;
+    border-radius: 3px;
+}    
+.gambar2{
+    height: 36px;
+    width: 36px;
+    border-radius: 3px;
+}    
+.gambar3{
+    height: 36px;
+    width: 36px;
+    border-radius: 3px;
+}
+.krj{
+    size: 12px;
+    color: #ec971f;
+}

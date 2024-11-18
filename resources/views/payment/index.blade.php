@@ -150,9 +150,7 @@
       </span>
      </div>
    <!-- Button trigger modal -->
-<button type="button" class="kembali" ><a href="{{ url('/admin') }}"></a>
-  Kembali 
-</button>
+<button type="button" class="kembali" ><a href="{{ url('/admin') }}">Kembali</a> </button>
 <button type="button" class="bayar" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Simpan 
 </button>

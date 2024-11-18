@@ -66,15 +66,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body>
 <div class="pemesanan mb-4">
-     <div class="flex justify-between items-center mb-2">
+     <div class="flex justify-between mb-2">
+      <img class="gambar1" src="{{ asset('/lte/dist/img/rujakcingur.jpeg') }}">
       <span>
        Rujak Cingur
       </span>
+      <button class="krj">
+        <i class="fa fa-plus-circle"></i>
+      </button>
+      <button class="krj">
+        <i class="fa fa-minus-circle"></i>
+      </button>
       <span>
        Rp 12.000
       </span>
      </div>
      <div class="flex justify-between items-center mb-2">
+     <img class="gambar2" src="{{ asset('/lte/dist/img/rendang.jpeg') }}">
       <span>
        Rendang
       </span>
@@ -83,6 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </span>
      </div>
      <div class="flex justify-between items-center mb-2">
+     <img class="gambar3" src="{{ asset('/lte/dist/img/ayambetutu.jpeg') }}">
       <span>
        Ayam Betutu
       </span>
