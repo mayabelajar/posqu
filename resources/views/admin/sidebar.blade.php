@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ url('/laporan') }}" class="nav-link {{ Request::segment(1) == 'laporan'? 'active-link' : 'nonactive-link' }}">
+          <a href="{{ url('/harian') }}" class="nav-link {{ Request::segment(1) == 'harian'? 'active-link' : 'nonactive-link' }}">
               <i class="nav-icon bx bxs-report"></i>
               <p>
                 Laporan
