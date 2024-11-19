@@ -45,3 +45,11 @@ bookButton.addEventListener('click', function() {
     nameInput.value = '';
     alert('Meja berhasil dipesan!');
 });
+function redirectToPage() {
+    const form = document.getElementById('myForm');
+    const pilihan = form.querySelector('input[name="pilihan"]:checked').value;
+
+    if (pilihan === "meja") {
+        window.location.href = "meja.blade.php";
+    }
+}

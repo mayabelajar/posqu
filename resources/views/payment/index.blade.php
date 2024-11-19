@@ -53,26 +53,6 @@
      </div>
      </div>
      </div>
-     <div class="border-t border-yellow-500 mb-2">
-     </div>
-     <div class="border border-yellow-500 p-4 rounded-lg">
-      <label class="block mb-2">
-       Meja
-      </label>
-      <div class="flex items-center mb-2">
-       <input class="mr-2" id="indoor" name="table" type="radio"/>
-       <label class="flex items-center" for="indoor">
-        Indoor
-       </label>
-       
-      <div class="flex items-center ml-5">
-       <input class="mr-2" id="outdoor" name="table" type="radio"/>
-       <label class="flex items-center" for="outdoor">
-        Outdoor
-       </label>
-      </div>
-      </div>
-     </div>
     </div>
     <div>
      <h2 class="text-xl font-bold mb-4">
@@ -139,9 +119,9 @@
        </span>
       </div>
      </div>
-     <div class="border-t border-yellow-500 mb-4">
+     <div class="border-t border-yellow-500 mb-3">
      </div>
-     <div class="flex justify-between mb-4">
+     <div class="flex justify-between mb-3">
       <span>
        Total
       </span>
@@ -150,10 +130,13 @@
       </span>
      </div>
    <!-- Button trigger modal -->
+<div class="flex justify-between">
 <button type="button" class="kembali" ><a href="{{ url('/admin') }}">Kembali</a> </button>
+<button type="button" class="plh" ><a href="{{ url('/meja') }}">Pilih Meja</a> </button>
 <button type="button" class="bayar" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Simpan 
-</button>
+</button> 
+</div>    
      </div>
     </div>
    </div>
@@ -195,7 +178,7 @@
     <div class="flex space-x-4">
     <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
     <button class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
-    <button class="baru py-2 px-4"><i class="fa fa-plus"> </i> Baru</button>
+    <button class="baru py-2 px-4"><i class="fa fa-plus"> </i><a href="{{ url('/admin') }}">Baru</a></button>
     </div>
    </div>
    </div>

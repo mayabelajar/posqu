@@ -20,7 +20,7 @@
         <div class="flex justify-around">
             <!-- Indoor Section -->
              
-            <div class="border border-yellow-500 p-4 rounded-lg">
+            <div class="border border-yellow-500 p-4 rounded-lg mb-4 ml-2">
                 <h2 class="text-lg font-semibold mb-4">Indoor</h2>
                 <div id="tables">
                 <div class="grid grid-cols-4 gap-4">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <!-- Outdoor Section -->
-            <div class="border border-yellow-500 p-4 rounded-lg">
+            <div class="border border-yellow-500 p-4 rounded-lg mb-4 ml-2">
                 <h2 class="text-lg font-semibold mb-4">Outdoor</h2>
                 <div id="tables">
                 <div class="grid grid-cols-4 gap-4">
@@ -68,7 +68,12 @@
                 </div>
             </div>
         </div>
+        <div class="bumej">
+        <button type="button" class="kbl" ><a href="{{ url('/payment') }}">Kembali</a> </button>
+        <button type="button" class="smp" ><a href="{{ url('/payment') }}">Simpan</a> </button>
+        </div>
     </div>
+    
     <!-- <div id="booking-info">
         <h2>Booking Info</h2>
         <input type="text" id="name" placeholder="Nama Anda" />
