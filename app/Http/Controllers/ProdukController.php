@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Htttp\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 use App\Models\Produk;
 
@@ -14,7 +16,7 @@ class ProdukController extends Controller
      */
     public function index() : view
    {
-        $produks = Produk::latest()->paginate(10);
+        $produks = Produk::latest()->paginate();
 
         return view('produk.index', compact('produks'));
    }
@@ -32,7 +34,27 @@ class ProdukController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //
+        $this->validate($request, [
+            'image'         => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'nama'          => 'required',
+            'kategori'      => 'required',
+            'stok'          => 'required',
+            'harga'         => 'required'
+        ]);
+
+ 
+        $image = $request->file('image');
+        $image->storeAs('public/produks', $image->hashName());
+
+        Produk::create([
+            'image'         => $image->hashName(),
+            'nama'          => $request->nama,
+            'kategori'      => $request->kategori,
+            'stok'          => $request->stok,
+            'harga'         => $request->harga
+        ]);
+
+        return redirect()->route('produks.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -46,17 +68,46 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): view
     {
-        //
+        $produks = Produk::findOrFail($id);
+
+        return view('produk.edit', compact('produks'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $produks = Produk::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $image->storeAs('public/produks', $image->hashName());
+
+            Storage::delete('public/produks/'.$post->image);
+
+            $produks->update([
+                'image'         => $image->hashName(),
+                'nama'          => $request->nama,
+                'kategori'      => $request->kategori,
+                'stok'          => $request->stok,
+                'harga'         => $request->harga
+            ]);
+
+        } else {
+
+            $produks->update([
+                'nama'          => $request->nama,
+                'kategori'      => $request->kategori,
+                'stok'          => $request->stok,
+                'harga'         => $request->harga
+            ]);
+        }
+
+        return redirect()->route('produks.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**

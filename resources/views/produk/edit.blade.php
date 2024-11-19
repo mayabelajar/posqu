@@ -1,7 +1,7 @@
 @extends('admin.sidebar')
 
 @section('content')
-<form action="{{ route('produks.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('produks.update', $produks->id) }}" method="POST" enctype="multipart/form-data">
   @csrf
 <div class="contaier">
 <div class="card">
@@ -22,7 +22,7 @@
               </div> -->
               <div class="col-md-6 mb-3">
                 <label for="validationCustom01">Nama Produk</label>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan nama produk" required>
+                <input type="text" class="form-control" value="{{ old('nama', $produks->nama) }}" name="nama" placeholder="Masukkan nama produk" required>
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -44,7 +44,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Rp</div>
                   </div>
-                  <input type="text" class="form-control" name="harga" placeholder="Masukkan harga produk">
+                  <input type="text" class="form-control" name="harga" value="{{ old('harga', $produks->harga) }}" placeholder="Masukkan harga produk">
                 </div>
               </div>
               <!-- <label for="product-image">Product Image</label>
@@ -54,7 +54,7 @@
               </div> -->
     <div class="col-md-3 mb-3">
     <label for="validationCustom05">Stok</label>
-      <input type="text" class="form-control" name="stok" placeholder="Masukkan jumlah stok" required>
+      <input type="text" class="form-control" name="stok" value="{{ old('stok', $produks->stok) }}" placeholder="Masukkan jumlah stok" required>
       <div class="invalid-feedback">
         Please provide a valid zip.
       </div>
@@ -69,7 +69,7 @@
     </div>
     <div class="col-md-3 mb-3">
     <label for="inputState">Kategori</label>
-      <select class="form-control" name="kategori">
+      <select class="form-control" name="kategori" value="{{ old('kategori', $produks->kategori) }}">
         <option selected>Pilih Kategori</option>
         <option>Makanan</option>
         <option>Minuman</option>

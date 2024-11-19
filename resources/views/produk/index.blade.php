@@ -14,6 +14,9 @@
             <h2>List Product</h2>
             <div class="row mt-3">
             <div class="col-sm-6">
+            <div>
+              <a class="btn btn-primary btn-md" href="{{ route('produks.create') }}"> <span class="bx bx-list-plus"></span></a>
+            </div>
             <div class="filter-buttons">
                 <button class="active">Semua</button>
                 <button>Makanan</button>
@@ -42,18 +45,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                      @foreach ($produks as $data)
                       <tr>
-                        <td>1MK02</td>
-                        <td>Gudeg</td>
-                        <td>Makanan</td>
-                        <td>15.000</td>
-                        <td>50</td>
-                        <td>14-10-2024 08:09</td>
+                        <td>{{$data->id}}</td>
+                        <td>{{$data->nama}}</td>
+                        <td>{{$data->kategori}}</td>
+                        <td>{{$data->harga}}</td>
+                        <td>{{$data->stok}}</td>
+                        <td>{{$data->created_at}}</td>
                         <td>
                             <a class="btn btn-danger btn-sm" href=""> <span class="bx bxs-trash"></span> </a>
-                            <a class="btn btn-info btn-sm" href=""> <span class="bx bxs-edit"></span> </a>
+                            <a class="btn btn-info btn-sm" href="{{ route('produks.edit', $produks->id) }}"> <span class="bx bxs-edit"></span> </a>
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
                 </table>
                 <div class="flex justify-between items-center mt-4">
