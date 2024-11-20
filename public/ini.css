@@ -398,6 +398,13 @@ body {
     width: 150px; 
     font-size: 12px;
 }
+.kbl{
+    background-color: #f6c029;
+    color: #ffffff;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+}
 .tambah {
     border: none;
     background-color: #ffffff;
@@ -408,7 +415,7 @@ body {
     font-size: 12px;
 }
 .notes {
-    font-size: 10px;
+    font-size: 14px;
 }
 .pemesanan {
     font-size: 12px;
@@ -694,13 +701,7 @@ body{
 .bumej{
     float: right;
 }
-.kbl{
-    background-color: #f6c029;
-    color: #ffffff;
-    height: 30px;
-    width: 100px;
-    border-radius: 5px;
-}
+
 .smp{
     background-color: #f6c029;
     color: #ffffff;
