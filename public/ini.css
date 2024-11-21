@@ -386,9 +386,12 @@ body {
     width: calc(100% - 80px) !important;
     padding: 1rem !important;
 } */ 
-.fa-plus {
-    color: #f6c029;
-    
+.diskon {
+    background-color: #ec971f;
+    color: #ffffff;
+    height: 36px;
+    width: 150px;
+    border-radius: 5px;
 }
 .proses {
     background-color: #05B926;
