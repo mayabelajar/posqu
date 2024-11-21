@@ -391,8 +391,9 @@ body {
     background-color: #ec971f;
     color: #ffffff;
     height: 36px;
-    width: 150px;
+    width: 205px;
     border-radius: 5px;
+    align-items: center;
 }
 .proses {
     background-color: #05B926;

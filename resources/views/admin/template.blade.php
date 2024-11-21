@@ -165,4 +165,52 @@
           </div> <!-- card wrapper -->
         </div> <!-- card container -->
       <!-- </div> main content -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <div class="flex items-center justify-center">
+                    <div class="bg-white rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-yellow-500">
+                        <i class="fa fa-tags mr-2">
+                        </i>
+                        Discount Pesanan
+                        </h2>
+                        <button class="text-yellow-500">
+                        </button>
+                        </div>
+                        <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">
+                        Masukkan jumlah diskon
+                        </label>
+                        <div class="flex items-center">
+                        <input class="w-full p-2 border rounded-l" placeholder="0" type="text"/>
+                        <span class="bg-gray-200 p-2 border rounded-r">
+                        %
+                        </span>
+                        </div>
+                        </div>
+                        <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">
+                        Masukkan kode voucher
+                        </label>
+                        <input class="w-full p-2 border rounded" placeholder="Kode Voucher" type="text"/>
+                        </div>
+                        <button class="bg-green-500 text-white px-4 py-2 rounded w-full">
+                        Pakai Diskon
+                        </button>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+    </div>
 @endsection
