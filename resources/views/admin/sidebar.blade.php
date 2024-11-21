@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ asset('/ini.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -70,7 +71,8 @@
           </li>
           <li class="nav-item">
           <a href="{{ url('/logout') }}" class="nav-link">
-              <i class="nav-icon fa fa-sign-out"></i>
+              <i class="nav-icon bx bx-log-out"></i>
+              <!-- <i class="nav-icon fa fa-sign-out"></i> -->
               <p>
                 Keluar
               </p>

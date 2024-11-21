@@ -388,6 +388,7 @@ body {
 } */ 
 .fa-plus {
     color: #f6c029;
+    
 }
 .proses {
     background-color: #05B926;
@@ -441,9 +442,6 @@ body {
     border: none;
     border-radius: 5px;
 }
-.fa-plus {
-    color: white;
-} 
 
 
 .main--content{

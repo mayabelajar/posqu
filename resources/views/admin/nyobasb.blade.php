@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -61,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     </style>
 
-atas ada 2
+
 
 <div class="pemesanan mb-4">
   <div class="flex justify-between items-center mb-2">
@@ -86,51 +87,20 @@ atas ada 2
   <button class="krj"><i class="fa fa-minus-circle"></i></button>
   <span>Rp35.000</span>
 </div>
-<!-- </div> -->
+
 <div class="notes">
   <label for="notes">Catatan :</label>
   <textarea class="form-control mb-4" name="notes" rows="4"></textarea>
 </div>
-  <button type="button" data-toggle="modal" data-target="#exampleModal">Tambahkan Diskon</button>
+   
   <button type="button" class="proses"><a href="{{ url('/payment') }}">Proses Transaksi</a></button>
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-         <!-- Discount Modal -->
-        <div class="fixed inset-0 flex items-center justify-center bg-opacity-50">
-          <div class="bg-white rounded-lg p-6 w-1/3">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-bold text-yellow-500"><i class="fas fa-tags mr-2"></i>Discount Pesanan</h3>
-              <button class="text-gray-500"><i class="fas fa-times"> </i></button>
-            </div>
-            <div class="mb-4">
-              <label class="block text-gray-700 mb-2">Masukkan jumlah diskon</label>
-              <div class="flex items-center">
-                <input class="w-full p-2 border border-gray-300 rounded-l" placeholder="0" type="text"/>
-                <span class="bg-gray-200 p-2 rounded-r">%</span>
-              </div>
-            </div>
-            <div class="mb-4">
-              <label class="block text-gray-700 mb-2">Masukkan kode voucher</label>
-              <input class="w-full p-2 border border-gray-300 rounded" placeholder="Kode Voucher" type="text"/>
-            </div>
-            <button class="bg-green-500 text-white px-4 py-2 rounded w-full">Pakai Diskon</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
-    </div>
-  </div>
-</div>
-<!-- </div> -->
+  
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
     <script>
         // JavaScript untuk menghitung total, mengelola diskon, dll.
     </script>
@@ -141,6 +111,24 @@ atas ada 2
 
 <!-- Main Footer -->
 
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- ./wrapper -->
 
