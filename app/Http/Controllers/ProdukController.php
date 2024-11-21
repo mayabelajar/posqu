@@ -78,7 +78,7 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
         $produks = Produk::findOrFail($id);
 
@@ -113,8 +113,14 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        $produks = Produk::findOrFail($id);
+
+        Storage::delete('public/produks/'. $produks->image);
+
+        $produks->delete();
+
+        return redirect()->route('produks.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
