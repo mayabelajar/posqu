@@ -6,24 +6,26 @@
         <div class="card">
             <h2>List Product</h2>
             <div class="row mt-3">
-            <div class="col-sm-4">
+              <div class="col-sm">
+              <div class="plus">
+                <a class="btn btn-plus btn-md py-2" href="{{ route('produks.create') }}"> <span class="iconplus bx bx-list-plus"></span> Tambahkan Produk</a>
+              </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+            <div class="col-sm-6">
             <div class="filter-buttons">
-                <button class="active">Semua</button>
-                <button>Makanan</button>
-                <button>Minuman</button>
-                <button>Camilan</button>
+                <button class="btn-md active">Semua</button>
+                <button class="btn-md">Makanan</button>
+                <button class="btn-md">Minuman</button>
+                <button class="btn-md">Camilan</button>
             </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
             <div class="search-container">
                 <input type="text" placeholder="Cari disini">
                 <button><i class="bx bx-search"></i></button>
             </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="plus">
-                <a class="btn btn-primary btn-md" href="{{ route('produks.create') }}"> <span class="bx bx-list-plus"></span></a>
-              </div>
             </div>
             </div>
             <div class="table-container">

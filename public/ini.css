@@ -126,6 +126,18 @@ body {
 /* .table-container tr:hover {
     background-color: #f1f1f1;
 } */
+.btn-plus{
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 5px;
+    font-family: Arial, sans-serif !important;
+    /* height: 38px; */
+    /* padding-bottom: 10px; */
+}
+.iconplus{
+    font-size: 25px;
+}
+
 .filter-buttons {
     display: flex;
     gap: 10px;
@@ -147,7 +159,7 @@ body {
     display: flex;
     /* align-items: center; */
     gap: 10px;
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
 }
 .search-container input {
     flex: 1;
