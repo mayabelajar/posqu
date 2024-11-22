@@ -20,13 +20,13 @@
    <div class="grid grid-cols-2 gap-8">
     <div>
      <h2 class="text-xl font-bold mb-4">
-      Choose Payment Method
+      Pilih Metode Pembayaran
      </h2>
      <div class="border border-yellow-500 p-4 rounded-lg mb-2">
       <div class="flex items-center mb-4">
        <input class="mr-2" id="cash" name="payment" type="radio"/>
        <label class="flex items-center" for="cash">
-        Cash
+        Tunai
        </label>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -53,10 +53,13 @@
      </div>
      </div>
      </div>
+     <div class="border border-yellow-500 p-4 rounded-lg mb-2">
+     <button type="button" class="diskon mb-2" data-toggle="modal" data-target="#Modal"><i class="fa fa-plus mr-4"></i>Tambahkan Diskon</button>
+     </div>
     </div>
     <div>
      <h2 class="text-xl font-bold mb-4">
-      Order Summary
+      Ringkasan Pesanan
      </h2>
      <div class="border-b border-yellow-500 mb-4">
      <div class="flex justify-between mb-2">
@@ -104,7 +107,7 @@
       </div>
       <div class="flex justify-between mb-2">
        <span>
-        Discount
+        Diskon
        </span>
        <span>
         50%
@@ -115,7 +118,7 @@
         No. Table
        </span>
        <span>
-        Indoor 01
+        Dalam Ruangan 01
        </span>
       </div>
      </div>
@@ -147,8 +150,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <span aria-hidden="true">&times;</span>
       </div>
       <div class="modal-body">
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -191,3 +194,52 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <div class="flex items-center justify-center">
+                    <div class="bg-white rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-yellow-500">
+                        <i class="fa fa-tags mr-2">
+                        </i>
+                        Discount Pesanan
+                        </h2>
+                        <button class="text-yellow-500">
+                        </button>
+                        </div>
+                        <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">
+                        Masukkan jumlah diskon
+                        </label>
+                        <div class="flex items-center">
+                        <input class="w-full p-2 border rounded-l" placeholder="0" type="text"/>
+                        <span class="bg-gray-200 p-2 border rounded-r">
+                        %
+                        </span>
+                        </div>
+                        </div>
+                        <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">
+                        Masukkan kode voucher
+                        </label>
+                        <input class="w-full p-2 border rounded" placeholder="Kode Voucher" type="text"/>
+                        </div>
+                        <button class="bg-green-500 text-white px-4 py-2 rounded w-full">
+                        Pakai Diskon
+                        </button>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+    </div>

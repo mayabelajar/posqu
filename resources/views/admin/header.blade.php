@@ -20,7 +20,8 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fa fa-th-large"></i></a>
+            class="fa fa-cart-plus fa-2x"></i></a>
+            <span class="spn">0</span>
       </li>
     </ul>
   </nav>

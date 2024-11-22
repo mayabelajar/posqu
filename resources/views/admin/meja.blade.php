@@ -21,7 +21,7 @@
             <!-- Indoor Section -->
              
             <div class="border border-yellow-500 p-4 rounded-lg mb-4 ml-2">
-                <h2 class="text-lg font-semibold mb-4">Indoor</h2>
+                <h2 class="text-lg font-semibold mb-4">Dalam Ruangan</h2>
                 <div id="tables">
                 <div class="grid grid-cols-4 gap-4">
                     <button data-mj="01" class="tombol border py-2 px-4 rounded-lg">Meja 1</button>
@@ -45,7 +45,7 @@
             </div>
             <!-- Outdoor Section -->
             <div class="border border-yellow-500 p-4 rounded-lg mb-4 ml-2">
-                <h2 class="text-lg font-semibold mb-4">Outdoor</h2>
+                <h2 class="text-lg font-semibold mb-4">Luar Ruangan</h2>
                 <div id="tables">
                 <div class="grid grid-cols-4 gap-4">
                     <button data-mj="01" class="tombol border py-2 px-4 rounded-lg">Meja 1</button>
