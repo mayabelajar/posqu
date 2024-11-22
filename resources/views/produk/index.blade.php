@@ -1,6 +1,7 @@
 @extends('admin.sidebar')
 
 @section('content')
+<form action="{{ route('produks.store') }}" method="POST" enctype="multipart/form-data">
     <title>Daftar Produk</title>
     <div class="container">
         <div class="card">
@@ -15,10 +16,10 @@
             <div class="row mt-3">
             <div class="col-sm-6">
             <div class="filter-buttons">
-                <button class="btn-md active">Semua</button>
-                <button class="btn-md">Makanan</button>
-                <button class="btn-md">Minuman</button>
-                <button class="btn-md">Camilan</button>
+                <button class="kategori btn-md">Semua</button>
+                <button class="kategori btn-md">Makanan</button>
+                <button class="kategori btn-md">Minuman</button>
+                <button class="kategori btn-md">Camilan</button>
             </div>
             </div>
             <div class="col-sm-6">
@@ -63,7 +64,8 @@
                       @endforeach
                     </tbody>
                 </table>
-                <div class="flex justify-between items-center mt-4">
+                {{ $produks->links() }}
+                <!-- <div class="flex justify-between items-center mt-4">
                   <span>
                     1 - 10 dari 68 data
                   </span>
@@ -86,8 +88,21 @@
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+
+    <script src="ini.js"></script> 
+    <script>
+        $(document).ready(function(){
+            $(".kategori").click(function(){
+                $(".kategori").css('background-color', 'white');
+                $(".kategori").css('color', '#F6C029');
+                $(this).css('background-color', '#F6C029');
+                $(this).css('color', 'white');
+                // console.log($(this).attr("data-mj"))
+            });
+        });
+    </script>
 @endsection

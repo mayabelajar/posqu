@@ -16,5 +16,6 @@ class Produk extends Model
         'kategori',
         'stok',
         'harga',
+        'deskripsi',
     ];
 }

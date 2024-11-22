@@ -1,7 +1,6 @@
 @extends('admin.sidebar')
 
 @section('content')
-
 <div class="container">
   <div class="card">
     <form action="{{ route('produks.update', $produks->id) }}" method="POST" enctype="multipart/form-data">
@@ -51,11 +50,57 @@
               <option>Camilan</option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Deskripsi Produk</label>
+            <textarea class="form-control" name="deskripsi" rows="3"></textarea>
+          </div>
           <button class="btn btn-simpan mt-3" type="submit">Tambahkan</button>
         </div>
     </form>
   </div>
 </div>
+
+<!-- <div class="container">
+  <div class="card">
+  <form action="{{ route('produks.update', $produks->id) }}" method="POST" enctype="multipart/form-data">
+@csrf
+@method('PUT')
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Gambar Produk</label>
+    <input type="file" class="form-control-file" name="image">
+    <div class="invalid-feedback">Tolong masukkan gambar yang sesuai.</div>
+  </div>
+  <div class="form-group">
+    <label for="validationCustom01">Nama Produk</label>
+    <input type="text" class="form-control" value="{{ old('nama', $produks->nama) }}" name="nama" placeholder="Masukkan nama produk" required>
+    <div class="valid-feedback">Sukses menambahkan data!</div>
+  </div>
+  <div class="form-group">
+    <label for="validationCustom01">Harga</label>
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Rp</span>
+    </div>
+    <input type="text" class="form-control" name="harga" value="{{ old('harga', $produks->harga) }}" placeholder="Masukkan harga produk">
+  </div>
+  <div class="form-group">
+    <label for="validationCustom05">Stok</label>
+      <input type="text" class="form-control" name="stok" value="{{ old('stok', $produks->stok) }}" placeholder="Masukkan jumlah stok" required>
+      <div class="valid-feedback">Sukses menambahkan data!</div>
+  </div>
+  <div class="form-group">
+    <label for="inputState">Kategori</label>
+    <select class="form-control" name="kategori" value="{{ old('kategori', $produks->kategori) }}">
+      <option selected>Pilih Kategori</option>
+      <option>Makanan</option>
+      <option>Minuman</option>
+      <option>Camilan</option>
+    </select>
+  </div>
+  <button class="btn btn-simpan mt-3" type="submit">Batal</button>
+  <button class="btn btn-simpan mt-3" type="submit">Simpan</button>
+</form>
+  </div>
+</div> -->
 
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields

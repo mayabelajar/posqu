@@ -16,9 +16,10 @@ class ProdukController extends Controller
      */
     public function index() : view
    {
-        $produks = Produk::latest()->paginate();
+        $produks = Produk::latest()->paginate(10);
 
         return view('produk.index', compact('produks'));
+        
    }
 
     /**
@@ -39,7 +40,8 @@ class ProdukController extends Controller
             'nama'          => 'required',
             'kategori'      => 'required',
             'stok'          => 'required',
-            'harga'         => 'required'
+            'harga'         => 'required',
+            'deskripsi'     => 'required'
         ]);
 
  
@@ -51,7 +53,8 @@ class ProdukController extends Controller
             'nama'          => $request->nama,
             'kategori'      => $request->kategori,
             'stok'          => $request->stok,
-            'harga'         => $request->harga
+            'harga'         => $request->harga,
+            'deskripsi'     => $request->deskripsi
         ]);
 
         return redirect()->route('produks.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -87,14 +90,15 @@ class ProdukController extends Controller
             $image = $request->file('image');
             $image->storeAs('public/produks', $image->hashName());
 
-            Storage::delete('public/produks/'.$post->image);
+            Storage::delete('public/produks/'.$produks->image);
 
             $produks->update([
                 'image'         => $image->hashName(),
                 'nama'          => $request->nama,
                 'kategori'      => $request->kategori,
                 'stok'          => $request->stok,
-                'harga'         => $request->harga
+                'harga'         => $request->harga,
+                'deskripsi'     => $request->deskripsi
             ]);
 
         } else {
@@ -103,7 +107,8 @@ class ProdukController extends Controller
                 'nama'          => $request->nama,
                 'kategori'      => $request->kategori,
                 'stok'          => $request->stok,
-                'harga'         => $request->harga
+                'harga'         => $request->harga,
+                'deskripsi'     => $request->deskripsi
             ]);
         }
 
