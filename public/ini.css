@@ -148,7 +148,7 @@ body {
     border: 1px solid #f0ad4e;
     background-color: white;
     color: #f0ad4e;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
 }
 .filter-buttons button.active, .filter-buttons button:hover {
