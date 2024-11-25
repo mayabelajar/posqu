@@ -140,10 +140,10 @@
     <script>
       $(document).ready(function(){
         $(".tmbl").click(function(){
-          console.log($(this).attr("data-id"))
-          console.log($(this).attr("data-nama"))
-          console.log($(this).attr("data-harga"))
-          console.log($(this).attr("data-image"))
+            console.log($(this).attr("data-id"))
+            console.log($(this).attr("data-nama"))
+            console.log($(this).attr("data-harga"))
+            console.log($(this).attr("data-image"))
           var storageproduk = localStorage.getItem(produks);
           if(storageproduk.length>0){ 
             storageproduk.push({
@@ -159,6 +159,8 @@
         })
       })
     </script>
+
+    
 </aside>
     <!-- Modal -->
     <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
