@@ -68,7 +68,7 @@
                       <p class="card-text">{{$data->deskripsi}}</p>
                       <h5 class="card-title">Rp{{$data->harga}}</h5>
                       <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
-                      <button type="button" class="btn btn-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
                     </div> <!-- card body -->
                   </div> <!-- card -->
                 </div> <!-- col -->
@@ -79,8 +79,89 @@
           </div> <!-- card wrapper -->
         </div> <!-- card container -->
       <!-- </div> main content -->
+
+      <aside class="control-sidebar control-sidebar-light">
+    <div class="p-3">
+        <div class="keranjang">
+            <h4><b>Keranjang</b><h4>
+        </div>
+        <title>Keranjang Belanja</title>
+
+        <style>
+            /* Gaya CSS di sini */
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .quantity {
+                width: 20px;    
+                text-align: center;
+            }
+            .price {
+                text-align: right;
+            }
+        </style>
+
+
+
+        <div class="pemesanan mb-4">
+        @foreach ($produks as $data)
+        <div class="flex justify-between items-center mb-2">
+            <img class="gambar1" src="{{ asset('/storage/produks/'.$data->image) }}">
+            <span>{{$data->nama}}</span>
+            <button class="krj"><i class="fa fa-plus-circle"></i></button>
+            <button class="krj"><i class="fa fa-minus-circle"></i></button>
+            <span>{{$data->harga}}</span>
+        </div>
+        @endforeach
+    </div>
+    <div class="notes">
+        <label for="notes">Catatan :</label>
+        <textarea class="form-control mb-4" name="notes" rows="4"></textarea>
+    </div>
+    <div class="border-t border-gray-250 mb-3">
+    </div>
+    <div class="flex justify-between mb-3">
+      <ul class="listCard"></ul>
+      <div class="checkout"></div>
+            <div class="total">0</div>
+     </div>
+     <div>
+     <button type="button"><a href="{{ url('/payment') }}" class="proses">Proses Transaksi</a></button>
+     </div>
+     
+    <script src="ini.js">
+        // JavaScript untuk menghitung total, mengelola diskon, dll. 
+    </script>
+    <script>
+      $(document).ready(function(){
+        $(".tmbl").click(function(){
+          console.log($(this).attr("data-id"))
+          console.log($(this).attr("data-nama"))
+          console.log($(this).attr("data-harga"))
+          console.log($(this).attr("data-image"))
+          var storageproduk = localStorage.getItem(produks);
+          if(storageproduk.length>0){ 
+            storageproduk.push({
+              
+            })
+          }else{
+            let produks = [
+              
+            ]
+            localStorage.setItem(keranjang,produks);
+          }
+
+        })
+      })
+    </script>
+</aside>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -126,5 +207,84 @@
         </div>
         </div>
     </div>
-    </div>
+    </div> -->
+    <!-- <script src="ini.js"></script> 
+    <script>
+    let produks = [
+    {
+        id: 1,
+        name: "Mie Aceh",
+        gambar: "miaceh.JPEG",
+        price: 15000
+    },
+    {
+        id: 2,
+        name: "Es Dawet",
+        images: "esdawet.JPEG",
+        price: 8000
+    },
+    {
+        id: 3,
+        name: "Rendang",
+        images: "rendang.JPEG",
+        price: 25000
+    },
+    {
+        id: 4,
+        name: "Rujak Cingur",
+        images: "rujakcingur.JPEG",
+        price: 12000
+    },
+    {
+        id: 5,
+        name: "Papeda",
+        images: "papeda.JPEG",
+        price: 25000
+    },
+    {
+        id: 6,
+        name: "Lumpia",
+        images: "lumpia.JPEG",
+        price: 10000
+    },
+    {
+        id: 7,
+        name: "Ayam Betutu",
+        images: "ayambetutu.JPEG",
+        price: 20000
+    },
+    {
+        id: 8,
+        name: "Wedang Uwuh",
+        images: "wedanguwuh.JPEG",
+        price: 10000
+    },
+    ]      
+
+    function loadProduks(){
+      produk.foreach(d => {
+        $('#tambahkeranjang').append(`
+          <div class="container text-center">
+              <div class="row"> 
+              @foreach ($produks as $data)
+                <div class="col-3"> 
+                  <div class="card" style="width: 100%;"> 
+                    <img src="{{ asset('/storage/app/public/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
+                    <div class="card-body"> 
+                      <h5 class="card-title">{{$data->nama}}</h5>
+                      <p class="card-text">{{$data->deskripsi}}</p>
+                      <h5 class="card-title">Rp{{$data->harga}}</h5>
+                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
+                    </div>
+                  </div> 
+                </div> 
+                @endforeach
+              </div> 
+            </div> 
+            
+        `)
+      })
+    }
+      
+    </script> -->
 @endsection

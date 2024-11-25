@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('/ini.css') }}">
+<link rel="stylesheet" href="{{ asset('/ini.js') }}">
 <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/4.7.0/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
