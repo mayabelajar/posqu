@@ -64,7 +64,7 @@
       </span>
      </div>
      <div>
-     <button type="button" class="proses"><a href="{{ url('/payment') }}">Proses Transaksi</a></button>
+     <button type="button"><a href="{{ url('/payment') }}" class="proses">Proses Transaksi</a></button>
      </div>
     
     <script>

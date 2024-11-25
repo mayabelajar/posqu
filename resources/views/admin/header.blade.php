@@ -4,11 +4,14 @@
     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
 </li>
   
-
+<head>
+<script src="jquery-3.7.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
     <!-- SEARCH FORM -->
     <form class="form-inline mx-auto">
       <div class="input-group w-500">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="seacrh form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
           <button class="btn btn-navbar" type="submit">
             <i class="fa fa-search"></i>
