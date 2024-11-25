@@ -14,5 +14,13 @@ class ListPesanan extends Model
         'qty',
         'total',
     ];
+
+    public function produk() {
+        return $this->belongsTo(Produk::class);
+    }
+
+    public function pemesanan() {
+        return $this->belongsTo(Pemesanan::class);
+    }
     
 }

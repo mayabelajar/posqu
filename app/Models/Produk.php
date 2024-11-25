@@ -18,4 +18,8 @@ class Produk extends Model
         'harga',
         'deskripsi',
     ];
+
+    public function list_pesanan() {
+        return $this->hasMany(ListPesanan::class);
+    }
 }

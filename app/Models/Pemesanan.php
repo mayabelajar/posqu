@@ -21,4 +21,12 @@ class Pemesanan extends Model
         'bayar',
         'kembalian',
     ];
+
+    public function list_pesanan() {
+        return $this->hasMany(ListPesanan::class);
+    }
+    
+    public function  user() {
+        return $this->belongsTo(User::class);
+    }
 }
