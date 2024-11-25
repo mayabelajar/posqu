@@ -30,7 +30,7 @@
             </div>
             </div>
             <div class="table-container">
-                <table class="table table-striped table-default mt-4">
+                <table id="data_table" class="table table-striped table-default mt-4">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -103,6 +103,8 @@
                 $(this).css('color', 'white');
                 // console.log($(this).attr("data-mj"))
             });
+
+            $("#data_table").DataTable();
         });
     </script>
 @endsection
