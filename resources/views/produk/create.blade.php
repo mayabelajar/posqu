@@ -12,29 +12,16 @@
                 <label for="product-image">Gambar Produk</label>
                 <input type="file" class="form-control" name="image" required>
                 <div class="invalid-feedback">
-                  Please provide a valid image.
+                  Tolong masukkan gambar yang sesuai!
                 </div>
               </div>
-              <!-- <label for="validationCustom01">Nama Produk</label>
-              <input type="text" class="form-control" id="validationCustom01" value="Masukkan nama produk" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div> -->
               <div class="col-md-6 mb-3">
                 <label for="validationCustom01">Nama Produk</label>
                 <input type="text" class="form-control" name="nama" placeholder="Masukkan nama produk" required>
                 <div class="valid-feedback">
-                  Looks good!
+                  Kerja bagus!
                 </div>
               </div>
-              <!-- <label for="validationCustom01">Harga</label>
-              <label class="sr-only" for="inlineFormInputGroup">Username</label>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">Rp</div>
-                </div>
-                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-              </div> -->
             </div>
             <div class="form-row mt-2">
               <div class="col-md-6 mb-3">
@@ -45,27 +32,17 @@
                     <div class="input-group-text">Rp</div>
                   </div>
                   <input type="text" class="form-control" name="harga" placeholder="Masukkan harga produk">
+                  <div class="valid-feedback">
+                    Kerja bagus!
+                  </div>
                 </div>
               </div>
-              <!-- <label for="product-image">Product Image</label>
-              <input type="file" class="form-control" id="product-image" required>
-              <div class="invalid-feedback">
-                Please provide a valid city.
-              </div> -->
     <div class="col-md-3 mb-3">
     <label for="validationCustom05">Stok</label>
       <input type="text" class="form-control" name="stok" placeholder="Masukkan jumlah stok" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
+      <div class="valid-feedback">
+        Kerja bagus!
       </div>
-      <!-- <label for="validationCustom04">State</label>
-      <select class="custom-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
-      </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
-      </div> -->
     </div>
     <div class="col-md-3 mb-3">
     <label for="inputState">Kategori</label>
@@ -75,19 +52,17 @@
         <option>Minuman</option>
         <option>Camilan</option>
       </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
+      <div class="valid-feedback">
+        Kerja bagus!
       </div>
-      <!-- <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div> -->
     </div>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Deskripsi Produk</label>
     <textarea class="form-control" name="deskripsi" rows="3"></textarea>
+    <div class="valid-feedback">
+      Kerja bagus!
+    </div>
   </div>
   <button class="btn btn-simpan mt-3" type="submit">Tambahkan</button>
 </form>

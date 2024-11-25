@@ -62,7 +62,7 @@
               @foreach ($produks as $data)
                 <div class="col-3"> <!-- col -->
                   <div class="card" style="width: 100%;"> <!-- card -->
-                    <img src="{{ asset('/storage/app/public/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
+                    <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
                     <div class="card-body"> <!-- card body -->
                       <h5 class="card-title">{{$data->nama}}</h5>
                       <p class="card-text">{{$data->deskripsi}}</p>
