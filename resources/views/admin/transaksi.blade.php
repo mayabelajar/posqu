@@ -18,11 +18,13 @@
             <button class="dropbtn">
               <i class="bx bxs-filter-alt"></i>
             </button>
+            <input type="text" id="filterInput">
             <div class="dropdown-content"> <!-- 5 -->
-              <a href=""><i class="bx bx-wallet-alt"></i>   SEMUA METODE</a>
-              <a href=""><i class="bx bx-money-withdraw"></i>   CASH</a>
-              <a href=""><i class="bx bx-qr-scan"></i>   QRIS</a>
+              <a href="" onclick="filterData()"><i class="bx bx-wallet-alt" name="semuametode"></i>   SEMUA METODE</a>
+              <a href="" onclick="filterData()"><i class="bx bx-money-withdraw" name="cash"></i>   CASH</a>
+              <a href="" onclick="filterData()"><i class="bx bx-qr-scan" name="qris"></i>   QRIS</a>
             </div> <!-- tutup 5 -->
+            <ul id="dataList"></ul>
           </div> <!-- tutup 4 -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -233,4 +235,30 @@
       </div> <!-- col -->  
     </div> <!-- row -->
 </div> <!-- container -->
+
+<script>
+  const data = [
+    {id:01, metode:"semua metode"},
+    {id:02, metode:"cash"},
+    {id:03, metode:"qris"},
+  ];
+
+  const dataList = document.getElementById('dataList');
+  const filterInput = document.getElementById('filterInput');
+
+  function filterData() {
+    const searchTerm = filterInput.value.toLowerCase();
+    const filteredData = data.filter(person => person.name.toLowerCase().includes(searchTerm));
+
+    // Kosongkan daftar sebelum diisi ulang
+    dataList.innerHTML = '';
+
+    // Tambahkan data yang terfilter ke dalam daftar
+    filteredData.forEach(person => {
+      const li = document.createElement('li');
+      li.textContent = person.name;
+      dataList.appendChild(li);
+    });
+  }
+</script>
 @endsection
