@@ -131,6 +131,7 @@ body {
     color: white;
     border-radius: 5px;
     font-family: Arial, sans-serif !important;
+    float: right;
     /* height: 38px; */
     /* padding-bottom: 10px; */
 }

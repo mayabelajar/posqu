@@ -6,14 +6,12 @@
     <div class="container">
         <div class="card">
             <h2>List Product</h2>
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
               <div class="col-sm">
-              <div class="plus">
-                <a class="btn btn-plus btn-md py-2" href="{{ route('produks.create') }}"> <span class="iconplus bx bx-list-plus"></span> Tambahkan Produk</a>
+              
               </div>
-              </div>
-            </div>
-            <div class="row mt-3">
+            </div> -->
+            <div class="row mt-3 mb-3">
             <div class="col-sm-6">
             <div class="filter-buttons">
                 <button class="kategori btn-md">Semua</button>
@@ -23,10 +21,9 @@
             </div>
             </div>
             <div class="col-sm-6">
-            <div class="search-container">
-                <input type="text" placeholder="Cari disini">
-                <button><i class="bx bx-search"></i></button>
-            </div>
+            <div class="plus">
+                <a class="btn btn-plus btn-md py-2" href="{{ route('produks.create') }}"> <span class="iconplus bx bx-list-plus"></span> Tambahkan Produk</a>
+              </div>
             </div>
             </div>
             <div class="table-container">
