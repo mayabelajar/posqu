@@ -140,22 +140,21 @@
     <script>
       $(document).ready(function(){
         $(".tmbl").click(function(){
-            console.log($(this).attr("data-id"))
-            console.log($(this).attr("data-nama"))
-            console.log($(this).attr("data-harga"))
-            console.log($(this).attr("data-image"))
-          var storageproduk = localStorage.getItem(produks);
-          if(storageproduk.length>0){ 
-            storageproduk.push({
-              
-            })
+          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          var product = {
+            id: $(this).attr("data-id"),
+            nama: $(this).attr("data-nama"),
+            harga: $(this).attr("data-harga"),
+            image: $(this).attr("data-image")
+          };
+          var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
+          if (existingProductIndex === -1) { 
+            storageproduk.push(product);
           }else{
-            let produks = [
-              
-            ]
-            localStorage.setItem(keranjang,produks);
+            console.log("Product already in cart:", product);;
           }
-
+          localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+          console.log("Product added to cart:", product);
         })
       })
     </script>
