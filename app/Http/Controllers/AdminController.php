@@ -12,7 +12,7 @@ class AdminController extends Controller
     }
 
     public function admin() {
-        $produks = Produk::all();
+        $produks = Produk::with('list_pesanan')->get();
         return view('admin.template', compact('produks'));
     }
     
