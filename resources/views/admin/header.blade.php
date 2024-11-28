@@ -40,6 +40,16 @@
       }
     ];
 
+    $(".tmbl").click(function() {
+    const item = {
+        id: $(this).attr("data-id"),
+        nama: $(this).attr("data-nama"),
+        harga: $(this).attr("data-harga"),
+        image: $(this).attr("data-image")
+      };
+      data.push(item); // Menambahkan item ke array data
+    });
+
     const searchInput = document.getElementById('searchInput');
     const searchResult = document.getElementById('searchResult');
 
