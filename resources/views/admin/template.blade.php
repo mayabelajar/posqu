@@ -15,7 +15,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img class="icon" src="{{ asset('/lte/dist/img/makanan.png') }}">
+                  <img src="{{ asset('/lte/dist/img/makanan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
                     <span class="amount--value">25</span>
@@ -26,7 +26,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img class="icon" src="{{ asset('/lte/dist/img/minuman.png') }}">
+                  <img src="{{ asset('/lte/dist/img/minuman.png') }}">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Minuman</span>
                     <span class="amount--value">24</span>
@@ -37,7 +37,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img class="icon" src="{{ asset('/lte/dist/img/camilan.png') }}">
+                  <img src="{{ asset('/lte/dist/img/camilan.png') }}">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Camilan</span>
                     <span class="amount--value">6</span>
@@ -187,10 +187,10 @@
       });
 
       $(document).ready(function(){
-              $(".categories .icon").click(function(){
+              $(".categories").click(function(){
                 $(".categories").css('background-color', 'white');
-                $(".icon").css('background-color', 'white');
                 $(this).css('background-color', '#F6C029');
+                $(".ikon").css('background-color', 'white');
                 $(this).css('background-color', '#F6C029');
                 // console.log($(this).attr("data-ktgr"))
             });

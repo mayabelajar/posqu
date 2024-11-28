@@ -476,7 +476,7 @@ body {
     font-size: 15px; 
   }
   .categories{
-    background: rgb(229, 223, 223);
+    background: 'white';
     border-radius: 10px;
     padding: 1.2rem;
     width: 290px;
@@ -485,6 +485,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.5s ease-in-out;
+    box-shadow: 0 0 16px rgba(0.3, 0.3, 0.3, 0.3);
   }
   .categories:hover{
     transform: translateY(-5px);
