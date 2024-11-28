@@ -108,6 +108,7 @@ class ProdukController extends Controller
                 'kategori'      => $request->kategori,
                 'stok'          => $request->stok,
                 'harga'         => $request->harga,
+                'deskripsi'     => $request->deskripsi,
             ]);
         }
 

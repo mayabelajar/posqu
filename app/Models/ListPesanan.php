@@ -9,7 +9,7 @@ class ListPesanan extends Model
 {
     use HasFactory;
 
-    protected $table = "pemesanans";
+    protected $table = "list_pesanans";
     protected $fillable = [
         'qty',
         'total',
