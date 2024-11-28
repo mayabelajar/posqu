@@ -14,7 +14,7 @@
         <input class="seacrh form-control form-control-navbar" id="searchInput" type="search" placeholder="Search" aria-label="Search">
         <div id="searchResult"></div>
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
+          <button class="btn btn-navbar" type="submit" id="addItemButton" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
             <i class="fa fa-search"></i>
           </button>
         </div> 
@@ -31,43 +31,37 @@
   </nav>
 
   <script>
-    const data = [
-      {
-        id: $(this).attr("data-id"),
-        nama: $(this).attr("data-nama"),
-        harga: $(this).attr("data-harga"),
-        image: $(this).attr("data-image")
-      }
-    ];
+    var data = []
 
-    $(".tmbl").click(function() {
+    $(document).on('click', '#addItemButton', function() {
     const item = {
         id: $(this).attr("data-id"),
         nama: $(this).attr("data-nama"),
         harga: $(this).attr("data-harga"),
         image: $(this).attr("data-image")
       };
-      data.push(item); // Menambahkan item ke array data
+      data.push(item); 
+      console.log(data)// Menambahkan item ke array data
     });
 
-    const searchInput = document.getElementById('searchInput');
-    const searchResult = document.getElementById('searchResult');
+    var searchInput = document.getElementById('searchInput');
+    var searchResult = document.getElementById('searchResult');
 
     searchInput.addEventListener('input', function() {
-      const query = this.value.toLowerCase();
-      searchResult.innerHTML = '';
+            var query = this.value.toLowerCase();
+            searchResult.innerHTML = ''; // Clear previous results
 
-      $(".tmbl").click(function(){
-      if (query) {
-        const filteredData = data.filter(item => item.nama.toLowerCase().includes(query));
-        filteredData.forEach(item => {
-          const resultDiv = document.createElemen('div');
-          resultDiv.classList.add('result');
-          resultDiv.textContent = `${item.nama} - Harga: ${item.harga}`;
-          searchResult.appendChild(resultDiv);
+            if (query) {
+                var filteredData = data.filter(function(item) {
+                    return item.nama.toLowerCase().includes(query);
+                });
+                filteredData.forEach(function(item) {
+                    var resultDiv = document.createElement('div'); // Create a new div for each result
+                    resultDiv.classList.add('result');
+                    resultDiv.textContent = item.nama + ' - Harga: ' + item.harga;
+                    searchResult.appendChild(resultDiv);
+                });
+            }
         });
-      }
-    });
-    });
   </script>
   <!-- /.navbar -->
