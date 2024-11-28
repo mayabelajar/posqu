@@ -238,7 +238,7 @@
 
 <script>
   const data = [
-    {id:01, metode:"semua metode"},
+    {id:01, metode:"semuametode"},
     {id:02, metode:"cash"},
     {id:03, metode:"qris"},
   ];

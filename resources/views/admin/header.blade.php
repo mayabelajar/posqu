@@ -11,12 +11,13 @@
     <!-- SEARCH FORM -->
     <form class="form-inline mx-auto">
       <div class="input-group w-500">
-        <input class="seacrh form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="seacrh form-control form-control-navbar" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+        <div id="searchResult"></div>
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
+          <button class="btn btn-navbar" type="submit" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
             <i class="fa fa-search"></i>
           </button>
-        </div>
+        </div> 
       </div>
     </form>
 
@@ -28,4 +29,35 @@
       </li>
     </ul>
   </nav>
+
+  <script>
+    const data = [
+      {
+        id: $(this).attr("data-id"),
+        nama: $(this).attr("data-nama"),
+        harga: $(this).attr("data-harga"),
+        image: $(this).attr("data-image")
+      }
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const searchResult = document.getElementById('searchResult');
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      searchResult.innerHTML = '';
+
+      $(".tmbl").click(function(){
+      if (query) {
+        const filteredData = data.filter(item => item.nama.toLowerCase().includes(query));
+        filteredData.forEach(item => {
+          const resultDiv = document.createElemen('div');
+          resultDiv.classList.add('result');
+          resultDiv.textContent = `${item.nama} - Harga: ${item.harga}`;
+          searchResult.appendChild(resultDiv);
+        });
+      }
+    });
+    });
+  </script>
   <!-- /.navbar -->

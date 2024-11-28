@@ -12,10 +12,10 @@
       <div class="card--wrapper"> <!-- card wrapper -->
         <div class="container text-center"> <!-- container -->
           <div class="row"> <!-- row -->
-            <div class="col-4"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/makanan.png') }}">
+                  <img class="icon" src="{{  ? asset('/lte/dist/img/makanan.png') : asset('/lte/dist/img/makanan1.png') }}">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
                     <span class="amount--value">25</span>
@@ -23,7 +23,7 @@
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
             </div> <!-- tutup  col -->
-            <div class="col-4"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/minuman.png') }}">
@@ -34,7 +34,7 @@
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
             </div> <!-- tutup col -->
-            <div class="col-4"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/camilan.png') }}">
@@ -183,6 +183,16 @@
         }
         displayCart();
       });
+
+      $(document).ready(function(){
+              $(".categories").click(function(){
+                $(".categories").css('background-color', 'white');
+                $(".icon").css('background-color', 'white');
+                $(this).css('background-color', '#F6C029');
+                $(this).css('background-color', '#F6C029');
+                // console.log($(this).attr("data-ktgr"))
+            });
+        });
     </script>
 
     <!-- <script>
