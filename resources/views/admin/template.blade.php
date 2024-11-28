@@ -15,7 +15,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img class="icon" src="{{  ? asset('/lte/dist/img/makanan.png') : asset('/lte/dist/img/makanan1.png') }}">
+                  <img class="icon" src="{{ asset('/lte/dist/img/makanan.png') }}">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
                     <span class="amount--value">25</span>

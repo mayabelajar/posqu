@@ -17,6 +17,7 @@ class Produk extends Model
         'stok',
         'harga',
         'deskripsi',
+        'list_pesanans_id',
     ];
 
     public function list_pesanan() {
