@@ -112,15 +112,13 @@
     </div>
     <div class="border-t border-gray-250 mb-3"></div>
     <div class="flex justify-between mb-3">
-      <ul class="listCard"></ul>
-      <div class="checkout"></div>
         <div class="total">0</div>
     </div>
     <div>
         <button type="button"><a href="{{ url('/payment') }}" class="proses">Proses Transaksi</a></button>
     </div>
   </aside>
-
+  
 
      
     <script src="ini.js">
@@ -156,11 +154,25 @@
               cartDiv.append(`
               <div class="pemesanan mb-4">
               <div class="flex justify-between items-center mb-2">
-              <img class="gambar1" src="${item.image}">
-              <span>${item.nama}</span>
-              <button class="krj"><i class="fa fa-plus-circle"></i></button>
-              <button class="krj"><i class="fa fa-minus-circle"></i></button>
-              <span>${item.harga}</span>
+              <div class="col-3">
+                <img class="gambar1" src="${item.image}">
+              </div>
+              <div class="col-9">
+                <div class="row">
+                  <div class="col">
+                    <span>${item.nama}</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <button class="krj"><i class="fa fa-plus-circle"></i></button>
+                    <button class="krj"><i class="fa fa-minus-circle"></i></button>
+                  </div>
+                  <div class="col">
+                    <span>${item.harga}</span>
+                  </div>
+                </div>
+              </div>
               </div>
               </div>
               `);
@@ -172,6 +184,25 @@
         displayCart();
       });
     </script>
+
+    <!-- <script>
+      $(document).ready(function(){
+        $(".tmbl").click(function(){
+          console.log($(this).attr("data-id"))
+          var storageproduk = localStorage.getItem(produks);
+          if(storageproduk.length>0){
+            storageproduk.push({
+
+            })
+          }else{
+            let produks = [
+
+            ]
+            localStorage.setItem(keranjang,produks);
+          }
+        })
+      })
+    </script> -->
 
 
 
