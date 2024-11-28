@@ -15,7 +15,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/makanan.png') }}" class="ikon">
+                  <img src="{{ asset('/lte/dist/img/makanan1.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
                     <span class="amount--value">25</span>
@@ -26,7 +26,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/minuman.png') }}" class="ikon">
+                  <img src="{{ asset('/lte/dist/img/minuman1.png') }}">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Minuman</span>
                     <span class="amount--value">24</span>
@@ -37,7 +37,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/camilan.png') }}" class="ikon">
+                  <img src="{{ asset('/lte/dist/img/camilan1.png') }}">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Camilan</span>
                     <span class="amount--value">6</span>
@@ -68,7 +68,7 @@
                       <p class="card-text">{{$data->deskripsi}}</p>
                       <h5 class="card-title">Rp{{$data->harga}}</h5>
                       <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
-                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}" data-qty="{{ ($data->list_pesanans != null) ? $data->list_pesanans->qty : '' }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
+                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
                     </div> <!-- card body -->
                   </div> <!-- card -->
                 </div> <!-- col -->
@@ -125,6 +125,22 @@
         // JavaScript untuk menghitung total, mengelola diskon, dll. 
     </script>
     <script>
+      // $(document).ready(function(){
+      //   $(".tmbl").click(function(){
+      //     console.log($(this).attr("data-id"))
+      //     var storageproduk = localStorage.getItem(produks);
+      //     if(storageproduk.length>0){
+      //       storageproduk.push({
+
+      //       })
+      //     }else{
+      //       let produks = [
+
+      //       ]
+      //       localStorage.setItem(keranjang,produks);
+      //     }
+      //   })
+      // })
       $(document).ready(function(){
         $(".tmbl").click(function(){
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
@@ -132,17 +148,16 @@
             id: $(this).attr("data-id"),
             nama: $(this).attr("data-nama"),
             harga: $(this).attr("data-harga"),
-            image: $(this).attr("data-image"),
-            qty: $(this).attr("data-qty")
+            image: $(this).attr("data-image")
           };
           var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
           if (existingProductIndex === -1) { 
             storageproduk.push(product);
           }else{
-            console.log("Product already in cart:", product);;
+            console.log("Produk sudah berada di keranjang:", product);;
           }
           localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-          console.log("Product added to cart:", product);
+          console.log("Produk ditambahkan ke keranjang:", product);
           displayCart();
         });
 
@@ -167,7 +182,6 @@
                 <div class="row">
                   <div class="col">
                     <button class="krj"><i class="fa fa-plus-circle"></i></button>
-                    <span>${item.qty}</span>
                     <button class="krj"><i class="fa fa-minus-circle"></i></button>
                   </div>
                   <div class="col">
@@ -190,31 +204,12 @@
               $(".categories").click(function(){
                 $(".categories").css('background-color', 'white');
                 $(this).css('background-color', '#F6C029');
-                $(".ikon").css('background-color', 'white');
+                $(".ikon").css('background-color', '#F6C029');
                 $(this).css('background-color', '#F6C029');
                 // console.log($(this).attr("data-ktgr"))
             });
         });
     </script>
-
-    <!-- <script>
-      $(document).ready(function(){
-        $(".tmbl").click(function(){
-          console.log($(this).attr("data-id"))
-          var storageproduk = localStorage.getItem(produks);
-          if(storageproduk.length>0){
-            storageproduk.push({
-
-            })
-          }else{
-            let produks = [
-
-            ]
-            localStorage.setItem(keranjang,produks);
-          }
-        })
-      })
-    </script> -->
 
 
 

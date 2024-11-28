@@ -20,7 +20,7 @@ class Produk extends Model
         'list_pesanans_id',
     ];
 
-    public function list_pesanan() {
+    public function list_pesanans() {
         return $this->hasMany(ListPesanan::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produk;
+use App\Models\ListPesanan;
 
 class AdminController extends Controller
 {
@@ -13,7 +14,8 @@ class AdminController extends Controller
 
     public function admin() {
         $produks = Produk::all();
-        return view('admin.template', compact('produks'));
+        $list_pesanans = ListPesanan::all();
+        return view('admin.template', compact('produks', 'list_pesanans'));
     }
     
     public function transaksi() {
