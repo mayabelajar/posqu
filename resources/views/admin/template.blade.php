@@ -68,7 +68,7 @@
                       <p class="card-text">{{$data->deskripsi}}</p>
                       <h5 class="card-title">Rp{{$data->harga}}</h5>
                       <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
-                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
+                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}" data-qty="{{ ($data->list_pesanans != null) ? $data->list_pesanans->qty : '' }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
                     </div> <!-- card body -->
                   </div> <!-- card -->
                 </div> <!-- col -->
@@ -132,7 +132,8 @@
             id: $(this).attr("data-id"),
             nama: $(this).attr("data-nama"),
             harga: $(this).attr("data-harga"),
-            image: $(this).attr("data-image")
+            image: $(this).attr("data-image"),
+            qty: $(this).attr("data-qty")
           };
           var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
           if (existingProductIndex === -1) { 
@@ -166,6 +167,7 @@
                 <div class="row">
                   <div class="col">
                     <button class="krj"><i class="fa fa-plus-circle"></i></button>
+                    <span>${item.qty}</span>
                     <button class="krj"><i class="fa fa-minus-circle"></i></button>
                   </div>
                   <div class="col">
