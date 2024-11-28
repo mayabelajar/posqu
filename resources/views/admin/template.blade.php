@@ -106,7 +106,20 @@
             }
         </style>
 
-
+    <div class="notes">
+      <label for="notes">Catatan :</label>
+      <textarea class="form-control mb-4" name="notes" rows="4"></textarea>
+    </div>
+    <div class="border-t border-gray-250 mb-3"></div>
+    <div class="flex justify-between mb-3">
+      <ul class="listCard"></ul>
+      <div class="checkout"></div>
+        <div class="total">0</div>
+    </div>
+    <div>
+        <button type="button"><a href="{{ url('/payment') }}" class="proses">Proses Transaksi</a></button>
+    </div>
+  </aside>
 
 
      
@@ -138,41 +151,28 @@
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
           var cartDiv = $('.keranjang');
           cartDiv.empty();
-          if (storageproduk.length === 0) {
-                    cartDiv.append('<p>Keranjang Anda kosong.</p>');
-          } else {
+          if (storageproduk.length>0) {
             storageproduk.forEach(function(item) {
               cartDiv.append(`
-                <div class="pemesanan mb-4">
-                <div class="flex justify-between items-center mb-2">
-                  <img class="gambar1" src="${item.image}">
-                  <span>${item.nama}</span>
-                  <button class="krj"><i class="fa fa-plus-circle"></i></button>
-                  <button class="krj"><i class="fa fa-minus-circle"></i></button>
-                  <span>${item.harga}</span>
-                </div>
-                </div>
-                <div class="notes">
-                  <label for="notes">Catatan :</label>
-                  <textarea class="form-control mb-4" name="notes" rows="4"></textarea>
-                </div>
-                <div class="border-t border-gray-250 mb-3"></div>
-                <div class="flex justify-between mb-3">
-                  <ul class="listCard"></ul>
-                  <div class="checkout"></div>
-                    <div class="total">0</div>
-                </div>
-                <div>
-                    <button type="button"><a href="{{ url('/payment') }}" class="proses">Proses Transaksi</a></button>
-                </div>
+              <div class="pemesanan mb-4">
+              <div class="flex justify-between items-center mb-2">
+              <img class="gambar1" src="${item.image}">
+              <span>${item.nama}</span>
+              <button class="krj"><i class="fa fa-plus-circle"></i></button>
+              <button class="krj"><i class="fa fa-minus-circle"></i></button>
+              <span>${item.harga}</span>
+              </div>
+              </div>
               `);
             });
+          } else {
+            cartDiv.append('<p>Keranjang Anda kosong.</p>');
           }
         }
         displayCart();
       });
     </script>
-</aside>
+
 
 
     <!-- Modal -->
