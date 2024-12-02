@@ -190,9 +190,7 @@
                 </div>
               </div>
               <div class="col-3">
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-danger btn-sm"><span class="bx bx-trash"></span></button>
+                <button type="submit" id="delete" class="btn btn-danger btn-sm" data-id="${item.id}" ><span class="bx bx-trash"></span></button>
               <div>
               </div>
               </div>
@@ -217,6 +215,55 @@
               });
                 // console.log($(this).attr("data-ktgr"))
             });
+        });
+
+        // untuk button hapus
+        $('keranjang').on('click', '#delete', function () {
+
+        let post_id = $(this).data('id');
+        let token   = $("meta[name='csrf-token']").attr("content");
+
+        Swal.fire({
+            title: 'Apakah Kamu Yakin?',
+            text: "ingin menghapus data ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'TIDAK',
+            confirmButtonText: 'YA, HAPUS!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                console.log('test');
+
+                //fetch to delete data
+                $.ajax({
+
+                    url: `/produks/${produks_id}`,
+                    type: "DELETE",
+                    cache: false,
+                    data: {
+                        "_token": token
+                    },
+                    success:function(response){ 
+
+                        //show success message
+                        Swal.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: `${response.message}`,
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+
+                        //remove post on table
+                        $(`#index_${produks_id}`).remove();
+                    }
+                });
+
+                
+            }
+        })
+
         });
     </script>
 
