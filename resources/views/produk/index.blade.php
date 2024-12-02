@@ -14,10 +14,18 @@
             <div class="row mt-3 mb-3">
             <div class="col-sm-6">
             <div class="filter-buttons">
-                <button class="kategori btn-md">Semua</button>
-                <button class="kategori btn-md">Makanan</button>
-                <button class="kategori btn-md">Minuman</button>
-                <button class="kategori btn-md">Camilan</button>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button type="submit" name="kategori" class="kategori">Semua</button>
+              </form>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button type="submit" name="kategori" value="Makanan" class="kategori">Makanan</button>
+              </form>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button type="submit" name="kategori" value="Minuman" class="kategori">Minuman</button>
+              </form>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button type="submit" name="kategori" value="Camilan" class="kategori">Camilan</button>
+              </form>
             </div>
             </div>
             <div class="col-sm-6">
@@ -61,7 +69,6 @@
                       @endforeach
                     </tbody>
                 </table>
-                {{ $produks->links() }}
                 <!-- <div class="flex justify-between items-center mt-4">
                   <span>
                     1 - 10 dari 68 data

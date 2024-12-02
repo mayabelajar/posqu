@@ -14,11 +14,18 @@ class ProdukController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() : view
+    public function index(Request $request) : view
    {
-        $produks = Produk::latest()->paginate(10);
+        // $produks = Produk::all();
+        $kategori = $request->input('kategori');
 
-        return view('produk.index', compact('produks'));
+        if ($kategori) {
+            $produks = Produk::where('kategori', $kategori)->get();
+        } else {
+            $produks = Produk::all();
+        }
+
+        return view('produk.index', compact('produks', 'kategori'));
         
    }
 
