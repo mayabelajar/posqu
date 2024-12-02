@@ -173,7 +173,7 @@
               <div class="col-3">
                 <img class="gambar1" src="${item.image}">
               </div>
-              <div class="col-9">
+              <div class="col-6">
                 <div class="row">
                   <div class="col">
                     <span>${item.nama}</span>
@@ -189,6 +189,11 @@
                   </div>
                 </div>
               </div>
+              <div class="col-3">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger btn-sm"><span class="bx bx-trash"></span></button>
+              <div>
               </div>
               </div>
               `);
