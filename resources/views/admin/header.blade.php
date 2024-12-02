@@ -14,7 +14,7 @@
         <input class="seacrh form-control form-control-navbar" id="searchInput" type="search" placeholder="Search" aria-label="Search">
         <div id="searchResult"></div>
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit" id="addItemButton" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
+          <button class="btn btn-navbar" type="submit" id="addItemButton">
             <i class="fa fa-search"></i>
           </button>
         </div> 

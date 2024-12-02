@@ -15,7 +15,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/makanan1.png') }}" class="ikon">
+                  <img src="{{ asset('/lte/dist/img/makanan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
                     <span class="amount--value">25</span>
@@ -26,7 +26,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/minuman1.png') }}">
+                  <img src="{{ asset('/lte/dist/img/minuman.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Minuman</span>
                     <span class="amount--value">24</span>
@@ -37,7 +37,7 @@
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/camilan1.png') }}">
+                  <img src="{{ asset('/lte/dist/img/camilan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Camilan</span>
                     <span class="amount--value">6</span>
@@ -204,8 +204,12 @@
               $(".categories").click(function(){
                 $(".categories").css('background-color', 'white');
                 $(this).css('background-color', '#F6C029');
-                $(".ikon").css('background-color', '#F6C029');
-                $(this).css('background-color', '#F6C029');
+                $(function() {
+              $('.ikon').click(function(){
+                $("#bg").attr('src',"{{ asset('/lte/dist/img/makanan.png') }}");
+                return false;
+              });
+              });
                 // console.log($(this).attr("data-ktgr"))
             });
         });
