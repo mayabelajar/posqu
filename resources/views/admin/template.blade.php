@@ -11,9 +11,12 @@
       <h3 class="main--title">Kategori</h3>
       <div class="card--wrapper"> <!-- card wrapper -->
         <div class="container text-center"> <!-- container -->
-          <div class="row"> <!-- row -->
+          <div class="row"><!-- row -->
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
+                <form method="GET" action="{{ route('admin.index') }}" style="display:inline;">
+                  <button type="submit" name="kategori" class="kategori"></button>
+                </form>
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/makanan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
@@ -25,6 +28,9 @@
             </div> <!-- tutup  col -->
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
+                <form method="GET" action="{{ route('admin.index') }}" style="display:inline;">
+                  <button type="submit" name="kategori" class="kategori"></button>
+                </form>
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/minuman.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
@@ -36,6 +42,9 @@
             </div> <!-- tutup col -->
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
+                <form method="GET" action="{{ route('admin.index') }}" style="display:inline;">
+                  <button type="submit" name="kategori" class="kategori"></button>
+                </form>
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/camilan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
@@ -61,7 +70,7 @@
               <div class="row"> <!--row -->
               @foreach ($produks as $data)
                 <div class="col-3"> <!-- col -->
-                  <div class="card" style="width: 100%;"> <!-- card -->
+                  <div class="card" style="width: 100%;"  > <!-- card -->
                     <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
                     <div class="card-body"> <!-- card body -->
                       <h5 class="card-title">{{$data->nama}}</h5>

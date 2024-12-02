@@ -9,14 +9,23 @@ use App\Models\ListPesanan;
 
 class AdminController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('admin.index');
+        // $produks = Produk::all();
     }
 
-    public function admin() {
+    public function admin(Request $request) {
         $produks = Produk::all();
         $list_pesanans = ListPesanan::all();
-        return view('admin.template', compact('produks', 'list_pesanans'));
+
+        $kategori = $request->input('kategori');
+
+        if ($kategori) {
+            $produks = Produk::where('kategori', $kategori)->get();
+        }
+
+        return view('admin.template', compact('produks', 'kategori', 'list_pesanans'));
     }
     
     public function transaksi() {
@@ -37,4 +46,5 @@ class AdminController extends Controller
             'message' => 'Data Berhasil Dihapus!.',
         ]); 
     }
+
 }

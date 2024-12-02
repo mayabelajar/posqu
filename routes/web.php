@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2,3']], function() {
 
 // untuk admin
 Route::group(['middleware' => ['auth', 'checkrole:1']], function() {
-    Route::get('/admin', [AdminController::class, 'admin']);
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin.index');
 });
 
 // untuk kasir

@@ -9,15 +9,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
     <!-- SEARCH FORM -->
-    <form class="form-inline mx-auto">
+    <form class="form-inline mx-auto" id="searchForm">
       <div class="input-group w-500">
         <input class="seacrh form-control form-control-navbar" id="searchInput" type="search" placeholder="Search" aria-label="Search">
         <div id="searchResult"></div>
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit" id="addItemButton">
+          <button class="btn btn-navbar" id="addItemButton" type="submit" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
             <i class="fa fa-search"></i>
           </button>
-        </div> 
+        </div>
       </div>
     </form>
 
@@ -29,12 +29,12 @@
       </li>
     </ul>
   </nav>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     var data = []
 
     $(document).on('click', '#addItemButton', function() {
-    const item = {
+      var item = {
         id: $(this).attr("data-id"),
         nama: $(this).attr("data-nama"),
         harga: $(this).attr("data-harga"),
