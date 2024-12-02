@@ -15,16 +15,16 @@
             <div class="col-sm-6">
             <div class="filter-buttons">
               <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button type="submit" name="kategori" class="kategori">Semua</button>
+                <button class="kategori" type="submit">Semua</button>
               </form>
               <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button type="submit" name="kategori" value="Makanan" class="kategori">Makanan</button>
+                <button class="kategori" type="submit" name="kategori" value="Makanan">Makanan</button>
               </form>
               <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button type="submit" name="kategori" value="Minuman" class="kategori">Minuman</button>
+                <button class="kategori" type="submit" name="kategori" value="Minuman">Minuman</button>
               </form>
               <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button type="submit" name="kategori" value="Camilan" class="kategori">Camilan</button>
+                <button class="kategori" type="submit" name="kategori" value="Camilan">Camilan</button>
               </form>
             </div>
             </div>

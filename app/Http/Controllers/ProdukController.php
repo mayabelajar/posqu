@@ -16,7 +16,6 @@ class ProdukController extends Controller
      */
     public function index(Request $request) : view
    {
-        // $produks = Produk::all();
         $kategori = $request->input('kategori');
 
         if ($kategori) {
