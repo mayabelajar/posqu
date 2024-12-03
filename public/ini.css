@@ -749,3 +749,6 @@ body{
 .card-text {
     height: 130px;
 }
+.card-title {
+    font-weight: bold;
+}

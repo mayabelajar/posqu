@@ -14,9 +14,6 @@
           <div class="row"><!-- row -->
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
-                <form method="GET" action="{{ route('admin.index') }}" style="display:inline;">
-                  <button type="submit" name="kategori" class="kategori"></button>
-                </form>
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/makanan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
@@ -28,9 +25,6 @@
             </div> <!-- tutup  col -->
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
-                <form method="GET" action="{{ route('admin.index') }}" style="display:inline;">
-                  <button type="submit" name="kategori" class="kategori"></button>
-                </form>
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/minuman.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
@@ -42,9 +36,6 @@
             </div> <!-- tutup col -->
             <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
               <div class="categories"> <!-- categories -->
-                <form method="GET" action="{{ route('admin.index') }}" style="display:inline;">
-                  <button type="submit" name="kategori" class="kategori"></button>
-                </form>
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/camilan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
@@ -74,7 +65,6 @@
                     <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
                     <div class="card-body"> <!-- card body -->
                       <h5 class="card-title">{{$data->nama}}</h5>
-                      <p class="card-text">{{$data->deskripsi}}</p>
                       <h5 class="card-title">Rp{{$data->harga}}</h5>
                       <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
                       <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
