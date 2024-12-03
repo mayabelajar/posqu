@@ -140,67 +140,85 @@
       //     }
       //   })
       // })
-      $(document).ready(function(){
-        $(".tmbl").click(function(){
-          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-          var product = {
+      $(document).ready(function() {
+    $(".tmbl").click(function() {
+        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+        var product = {
             id: $(this).attr("data-id"),
             nama: $(this).attr("data-nama"),
             harga: $(this).attr("data-harga"),
             image: $(this).attr("data-image")
-          };
-          var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
-          if (existingProductIndex === -1) { 
+        };
+        var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
+        if (existingProductIndex === -1) {
             storageproduk.push(product);
-          }else{
-            console.log("Produk sudah berada di keranjang:", product);;
-          }
-          localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-          console.log("Produk ditambahkan ke keranjang:", product);
-          displayCart();
-        });
-
-        function displayCart() {
-          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-          var cartDiv = $('.keranjang');
-          cartDiv.empty();
-          if (storageproduk.length>0) {
-            storageproduk.forEach(function(item) {
-              cartDiv.append(`
-              <div class="pemesanan mb-4">
-              <div class="flex justify-between items-center mb-2">
-              <div class="col-3">
-                <img class="gambar1" src="${item.image}">
-              </div>
-              <div class="col-6">
-                <div class="row">
-                  <div class="col">
-                    <span>${item.nama}</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <button class="krj"><i class="fa fa-plus-circle"></i></button>
-                    <button class="krj"><i class="fa fa-minus-circle"></i></button>
-                  </div>
-                  <div class="col">
-                    <span>${item.harga}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <button type="submit" id="delete" class="btn btn-danger btn-sm" data-id="${item.id}" ><span class="bx bx-trash"></span></button>
-              <div>
-              </div>
-              </div>
-              `);
-            });
-          } else {
-            cartDiv.append('<p>Keranjang Anda kosong.</p>');
-          }
+        } else {
+            console.log("Produk sudah berada di keranjang:", product);
         }
+        localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+        console.log("Produk ditambahkan ke keranjang:", product);
         displayCart();
-      });
+    });
+
+    function displayCart() {
+        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+        var cartDiv = $('.keranjang');
+        cartDiv.empty();
+        if (storageproduk.length > 0) {
+            storageproduk.forEach(function(item) {
+                cartDiv.append(`
+                <div class="pemesanan mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="col-3">
+                            <img class="gambar1" src="${item.image}">
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col">
+                                    <span>${item.nama}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="krj"><i class="fa fa-plus-circle"></i></button>
+                                    <button class="krj"><i class="fa fa-minus-circle"></i></button>
+                                </div>
+                                <div class="col">
+                                    <span>${item.harga}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="btn btn-danger btn-sm delete-item" data-id="${item.id}"><span class="bx bx-trash"></span></button>
+                        </div>
+                    </div>
+                </div>
+                `);
+            });
+        } else {
+            cartDiv.append('<p>Keranjang Anda kosong.</p>');
+        }
+    }
+
+    // Event listener for delete button
+    $(document).on('click', '.delete-item', function() {
+        var itemId = $(this).data('id');
+        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+        
+        // Filter out the item to be deleted
+        storageproduk = storageproduk.filter(item => item.id !== itemId);
+        
+        // Update localStorage
+        localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+        
+        // Update the cart display
+        displayCart();
+        console.log("Produk dihapus dari keranjang:", itemId);
+    });
+
+    // Initial display of the cart
+    displayCart();
+});
 
       $(document).ready(function(){
               $(".categories").click(function(){
