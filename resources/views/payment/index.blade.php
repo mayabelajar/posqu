@@ -4,7 +4,7 @@
   <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
-  <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
@@ -61,39 +61,20 @@
      <h2 class="text-xl font-bold mb-4">
       Ringkasan Pesanan
      </h2>
+     @if(count($dataKeranjang) > 0)
      <div class="border-b border-yellow-500 mb-4">
      <div class="flex justify-between mb-2">
+     @foreach($dataKeranjang as $item)
        <span>
-        Rujak Cingur
+        {{ $item['nama'] }}
        </span>
        <span>
         2 x
        </span>
        <span>
-        Rp 12.000
+        {{ number_format($item['harga'], 2, ',', '.') }}
        </span>
-      </div>
-      <div class="flex justify-between mb-2">
-       <span>
-        Es Dawet
-       </span>
-       <span>
-        1 x
-       </span>
-       <span>
-        Rp 16.000
-       </span>
-      </div>
-      <div class="flex justify-between mb-2">
-       <span>
-        Cenil
-       </span>
-       <span>
-        2 x
-       </span>
-       <span>
-        Rp 10.000
-       </span>
+       @endforeach
       </div>
       </div>
      <div class="mb-4">
@@ -132,6 +113,10 @@
        Rp 19.000
       </span>
      </div>
+     @else
+     <p>Keranjang anda kosong.</p>
+     @endif
+     
    <!-- Button trigger modal -->
 <div class="flex justify-between">
 <button type="button" class="kembali" ><a href="{{ url('/admin') }}">Kembali</a> </button>
@@ -243,3 +228,24 @@
         </div>
     </div>
     </div>
+
+    
+    <script>
+      $("#btnTransaksi").click(function() {
+        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+        $.ajax({
+          type: 'POST',
+          url: '{{ route('payment.show') }}',
+          data: { 
+            dataKeranjang: storageproduk, 
+            _token: '{{ csrf_token() }}' 
+          },
+          success: function(response) {
+            window.location.href = '{{ route('payment') }}';
+          },
+          error: function(xhr) {
+            alert('Terjadi kesalahan: ' + xhr.responseText);
+          }
+        });
+      })
+    </script>

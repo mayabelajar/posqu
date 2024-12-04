@@ -56,6 +56,18 @@
       <div class="card--container shadow mt-4"> <!-- card container -->
         <h3 class="main--title">Hidangan Populer</h3>
           <div class="card--wrapper"> <!-- card wrapper -->
+            <!-- SEARCH FORM -->
+          <form class="form-inline mx-auto" id="searchForm">
+            <div class="input-group w-500">
+              <input class="seacrh form-control form-control-navbar" id="searchQuery" type="text" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" id="addItemButton" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <div id="searchResult"></div>
           
             <div class="container text-center"> <!-- container -->
               <div class="row"> <!--row -->
@@ -113,14 +125,11 @@
     <div class="flex justify-between mb-3">
         <div class="total">0</div>
     </div>
-    <div>
-        <button type="button"><a href="{{ url('/payment') }}" class="proses">Proses Transaksi</a></button>
-    </div>
   </aside>
   
 
      
-    <script src="ini.js">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         // JavaScript untuk menghitung total, mengelola diskon, dll. 
     </script>
     <script>
@@ -140,85 +149,141 @@
       //     }
       //   })
       // })
-      $(document).ready(function() {
-    $(".tmbl").click(function() {
-        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-        var product = {
+      $(document).ready(function(){
+        $(".tmbl").click(function(){
+          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          var product = {
             id: $(this).attr("data-id"),
             nama: $(this).attr("data-nama"),
-            harga: $(this).attr("data-harga"),
-            image: $(this).attr("data-image")
-        };
-        var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
-        if (existingProductIndex === -1) {
+            harga: parseFloat($(this).attr("data-harga")),
+            image: $(this).attr("data-image"),
+            quantity: 1
+          };
+          var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
+          if (existingProductIndex === -1) { 
             storageproduk.push(product);
-        } else {
-            console.log("Produk sudah berada di keranjang:", product);
-        }
-        localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-        console.log("Produk ditambahkan ke keranjang:", product);
-        displayCart();
-    });
+          }else{
+            storageproduk[existingProductIndex].quantity += 1;
+            console.log("Kuantitas produk ditambahkan :", product);
+          }
+          localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+          console.log("Produk ditambahkan ke keranjang:", product);
+          displayCart();
+        });
 
-    function displayCart() {
-        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-        var cartDiv = $('.keranjang');
-        cartDiv.empty();
-        if (storageproduk.length > 0) {
+        function displayCart() {
+          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          var cartDiv = $('.keranjang');
+          cartDiv.empty();
+          if (storageproduk.length > 0) {
             storageproduk.forEach(function(item) {
-                cartDiv.append(`
-                <div class="pemesanan mb-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="col-3">
-                            <img class="gambar1" src="${item.image}">
-                        </div>
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col">
-                                    <span>${item.nama}</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button class="krj"><i class="fa fa-plus-circle"></i></button>
-                                    <button class="krj"><i class="fa fa-minus-circle"></i></button>
-                                </div>
-                                <div class="col">
-                                    <span>${item.harga}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <button type="button" class="btn btn-danger btn-sm delete-item" data-id="${item.id}"><span class="bx bx-trash"></span></button>
-                        </div>
-                    </div>
+              cartDiv.append(`
+              <div class="pemesanan mb-4">
+              <div class="flex justify-between items-center mb-2">
+              <div class="col-3">
+                <img class="gambar1" src="${item.image}">
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col">
+                    <span>${item.nama}</span>
+                  </div>
                 </div>
-                `);
+                <div class="row">
+                  <div class="col">
+                    <button class="krj increase" data-id="${item.id}"><i class="fa fa-plus-circle"></i></button>
+                    <span class="quantity" data-id="${item.id}">${item.quantity}</span>
+                    <button class="krj decrease" data-id="${item.id}><i class="fa fa-minus-circle"></i></button>
+                  </div>
+                  <div class="col">
+                    <span>${(item.harga * item.quantity).toFixed(2)}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <button type="submit" id="delete" class="btn btn-danger btn-sm" data-id="${item.id}"><span class="bx bx-trash"></span></button>
+              </div>
+              </div>
+              </div>
+              `);
             });
-        } else {
+            cartDiv.append(`
+              <button id="btnTransaksi" class="proses">Proses Transaksi</button>
+            `);
+
+            $("#btnTransaksi").click(function() {
+              handleTransaksi();
+            });
+
+            $(".increase").click(function() {
+              var id = $(this).data("id");
+              updateQuantity(id, 1);
+            });
+
+            $(".decrease").click(function() {
+              var id = $(this).data("id");
+              updateQuantity(id, -1);
+            });
+
+            $("#delete").click(function() {
+              var id = $(this).data("id");
+              removeFromCart(id);
+            });
+
+          } else {
             cartDiv.append('<p>Keranjang Anda kosong.</p>');
+          }
+        }
+
+        function updateQuantity(id, change) {
+        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+        var productIndex = storageproduk.findIndex(item => item.id === id);
+        if (productIndex !== -1) {
+            storageproduk[productIndex].quantity += change;
+            if (storageproduk[productIndex].quantity <= 0) {
+                storageproduk.splice(productIndex, 1); // Hapus produk jika kuantitas <= 0
+            }
+            localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+            displayCart();
         }
     }
 
-    // Event listener for delete button
-    $(document).on('click', '.delete-item', function() {
-        var itemId = $(this).data('id');
+    function removeFromCart(id) {
         var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-        
-        // Filter out the item to be deleted
-        storageproduk = storageproduk.filter(item => item.id !== itemId);
-        
-        // Update localStorage
+        storageproduk = storageproduk.filter(item => item.id !== id);
         localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-        
-        // Update the cart display
         displayCart();
-        console.log("Produk dihapus dari keranjang:", itemId);
-    });
+    }
 
-    // Initial display of the cart
-    displayCart();
-});
+        function handleTransaksi() {
+          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          if (storageproduk.length > 0) {
+            sessionStorage.setItem('dataKeranjang', JSON.stringify(storageproduk));
+            
+            $.ajax({
+              type: "POST",
+              url: "set_session_category",
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              data: { //pass the CSRF_TOKEN()
+                "data" :JSON.stringify(storageproduk)
+              },
+              // JSON.stringify({ key1:JSON.stringify(storageproduk)  }),
+              contentType: "application/json",
+              success: function(response) {
+                console.log("Success:", response);
+              },
+              error: function(xhr, status, error) {
+                  console.error("Error:", status, error);
+              }
+          });
+// window.location.href = '/payment';
+          } else {
+            alert('Keranjang anda kosong!');
+          }
+        }
+
+        displayCart();
+      });
 
       $(document).ready(function(){
               $(".categories").click(function(){
@@ -234,54 +299,22 @@
             });
         });
 
-        // untuk button hapus
-        $('keranjang').on('click', '#delete', function () {
+        $(document).ready(function() {
+        $('#searchForm').on('submit', function(e) {
+            e.preventDefault(); // Mencegah form dari pengiriman biasa
 
-        let post_id = $(this).data('id');
-        let token   = $("meta[name='csrf-token']").attr("content");
+            var query = $('#searchQuery').val();
 
-        Swal.fire({
-            title: 'Apakah Kamu Yakin?',
-            text: "ingin menghapus data ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonText: 'TIDAK',
-            confirmButtonText: 'YA, HAPUS!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                console.log('test');
-
-                //fetch to delete data
-                $.ajax({
-
-                    url: `/produks/${produks_id}`,
-                    type: "DELETE",
-                    cache: false,
-                    data: {
-                        "_token": token
-                    },
-                    success:function(response){ 
-
-                        //show success message
-                        Swal.fire({
-                            type: 'success',
-                            icon: 'success',
-                            title: `${response.message}`,
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-
-                        //remove post on table
-                        $(`#index_${produks_id}`).remove();
-                    }
-                });
-
-                
-            }
-        })
-
+            $.ajax({
+                url: '{{ route("admin.admin") }}',
+                method: 'GET',
+                data: { query: query },
+                success: function(data) {
+                    $('#searchResults').html(data);
+                }
+            });
         });
+    });
     </script>
 
 

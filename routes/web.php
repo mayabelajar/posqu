@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2,3']], function() {
 
 // untuk admin
 Route::group(['middleware' => ['auth', 'checkrole:1']], function() {
-    Route::get('/admin', [AdminController::class, 'admin'])->name('admin.index');
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin.admin');
 });
 
 // untuk kasir
@@ -34,13 +34,16 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
 
 });
 
-Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
+Route::post('/set_session_category', [PaymentController::class, 'session_category']);
 
 // Route::get('/template', [AdminController::class, 'index']);
 
 Route::get('/transaksi', [AdminController::class, 'transaksi']);
 
 Route::get('/meja', [AdminController::class, 'meja']);
+Route::get('/search', [AdminController::class, 'search'])->name('admin.search');
 Route::get('/diskon', [ModalController::class, 'diskon']);
 Route::get('/nota', [ModalController::class, 'nota']);
 Route::get('/harian', [LaporanController::class, 'harian']);

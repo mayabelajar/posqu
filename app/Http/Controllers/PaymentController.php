@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produk;
+use App\Models\ListPesanan;
 
 class PaymentController extends Controller
 {
@@ -11,9 +13,10 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('payment.index');
+        $dataKeranjang = $request->session()->get('dataKeranjang', []);
+        return view('payment.index', compact('dataKeranjang'));
     }
 
     /**
@@ -55,5 +58,22 @@ class PaymentController extends Controller
     public function success()
     {
         return view('payment.success');
+    }
+
+    public function show(Request $request)
+    {
+        
+        $this->validate($request, [
+            'dataKeranjang' => 'required|array',
+        ]);
+
+        $request->session()->put('dataKeranjang', $request->dataKeranjang);
+
+        return redirect()->route('transaksi');
+    }
+
+    public function session_category(Request $request)
+    {
+        dd($request->all()); die;
     }
 }
