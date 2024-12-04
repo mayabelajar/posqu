@@ -127,7 +127,7 @@ body {
     background-color: #f1f1f1;
 } */
 .btn-plus{
-    background-color: dodgerblue;
+    background-color: #F6C029;
     color: white;
     border-radius: 5px;
     font-family: Arial, sans-serif !important;
@@ -181,9 +181,10 @@ body {
 }
 
 .btn-simpan {
-    float: right !important;
+    width: 150;
     background-color: #F6C029 !important;
     color: #ffffff !important;
+    margin-left: auto;
 }
 
 body {

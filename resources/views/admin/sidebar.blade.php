@@ -1,6 +1,8 @@
+<head>
 <link rel="stylesheet" href="{{ asset('/ini.css') }}">
 <link rel="stylesheet" href="{{ asset('/ini.js') }}">
 <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.css') }}">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
@@ -13,6 +15,7 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Ini komen beranda bisa -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>  -->
 
 <!-- Main Sidebar Container -->
@@ -26,7 +29,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex item-center">
         <div class="image">
           <img src="{{ asset('/lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
@@ -74,7 +77,7 @@
           </li>
           <li class="nav-item">
           <a href="{{ url('/logout') }}" class="nav-link">
-              <i class="nav-icon bx bx-log-out"></i>
+              <i class="nav-icon fa fa-sign-out"></i>
               <!-- <i class="nav-icon fa fa-sign-out"></i> -->
               <p>
                 Keluar

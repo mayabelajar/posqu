@@ -46,8 +46,7 @@ class ProdukController extends Controller
             'nama'          => 'required',
             'kategori'      => 'required',
             'stok'          => 'required',
-            'harga'         => 'required',
-            'deskripsi'     => 'required'
+            'harga'         => 'required'
         ]);
 
  
@@ -59,8 +58,7 @@ class ProdukController extends Controller
             'nama'          => $request->nama,
             'kategori'      => $request->kategori,
             'stok'          => $request->stok,
-            'harga'         => $request->harga,
-            'deskripsi'     => $request->deskripsi
+            'harga'         => $request->harga
         ]);
 
         return redirect()->route('produks.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -103,8 +101,7 @@ class ProdukController extends Controller
                 'nama'          => $request->nama,
                 'kategori'      => $request->kategori,
                 'stok'          => $request->stok,
-                'harga'         => $request->harga,
-                'deskripsi'     => $request->deskripsi
+                'harga'         => $request->harga
             ]);
 
         } else {
@@ -113,8 +110,7 @@ class ProdukController extends Controller
                 'nama'          => $request->nama,
                 'kategori'      => $request->kategori,
                 'stok'          => $request->stok,
-                'harga'         => $request->harga,
-                'deskripsi'     => $request->deskripsi,
+                'harga'         => $request->harga
             ]);
         }
 

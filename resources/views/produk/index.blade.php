@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-6">
             <div class="plus">
-                <a class="btn btn-plus btn-md py-2" href="{{ route('produks.create') }}"> <span class="iconplus bx bx-list-plus"></span> Tambahkan Produk</a>
+                <a class="btn btn-plus btn-md py-2 iconplus bx bx-list-plus" href="{{ route('produks.create') }}"> <span>Tambahkan Produk</span></a>
               </div>
             </div>
             </div>
