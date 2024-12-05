@@ -3,6 +3,7 @@
 @section('content')
 <form action="{{ route('produks.store') }}" method="POST" enctype="multipart/form-data">
     <title>Daftar Produk</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="container">
         <div class="card">
             <h2>List Product</h2>
@@ -14,17 +15,25 @@
             <div class="row mt-3 mb-3">
             <div class="col-sm-6">
             <div class="filter-buttons">
-              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button class="kategori" type="submit">Semua</button>
+                <form method="GET" action="{{ route('produks.index') }}" id="Semua" style="display:inline;">
+                    <button class="kategori" type="submit">
+                        Semua
+                    </button>
+                </form>
+              <form method="GET" action="{{ route('produks.index') }}" id="Makanan" style="display:inline;">
+                <button class="kategori" type="submit" name="kategori" value="Makanan">
+                  <span class="tulis">Makanan</span>
+                </button>
               </form>
-              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button class="kategori" type="submit" name="kategori" value="Makanan">Makanan</button>
+              <form method="GET" action="{{ route('produks.index') }}" id="Minuman" style="display:inline;">
+                <button class="kategori" type="submit" name="kategori" value="Minuman">
+                  <span class="tulis">Minuman</span>
+                </button>
               </form>
-              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button class="kategori" type="submit" name="kategori" value="Minuman">Minuman</button>
-              </form>
-              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
-                <button class="kategori" type="submit" name="kategori" value="Camilan">Camilan</button>
+              <form method="GET" action="{{ route('produks.index') }}" id="Camilan" style="display:inline;">
+                <button class="kategori" type="submit" name="kategori" value="Camilan">
+                  <span class="tulis">Camilan</span>
+                </button>
               </form>
             </div>
             </div>
@@ -97,18 +106,65 @@
         </div>
     </div>
 
-    <script src="ini.js"></script> 
     <script>
-        $(document).ready(function(){
-            $(".kategori").click(function(){
-                $(".kategori").css('background-color', 'white');
-                $(".kategori").css('color', '#F6C029');
-                $(this).css('background-color', '#F6C029');
-                $(this).css('color', 'white');
-                // console.log($(this).attr("data-mj"))
-            });
+  $(document).ready(function() {
+    // Ambil parameter 'kategori' dari URL
+    let params = new URLSearchParams(window.location.search);
+    let kategori = params.get("kategori");
 
-            $("#data_table").DataTable();
-        });
-    </script>
+    // Setel ulang semua tombol ke status default
+    $(".kategori").css('background-color', 'white');
+    $(".kategori").find(".tulis").css('color', '#F6C029');
+
+    // Jika ada parameter kategori di URL, tandai tombol yang sesuai
+    if (kategori) {
+      $("#" + kategori).css('background-color', '#F6C029');
+      $("#" + kategori).find(".tulis").css('color', 'white');
+    }
+
+    // Event klik pada tombol kategori
+    $(".kategori").click(function () {
+      let buttonId = $(this).attr('id');
+
+      // Reset semua tombol kategori
+      $(".kategori").css('background-color', 'white');
+      $(".kategori").find(".tulis").css('color', '#F6C029');
+
+      // Tandai tombol yang diklik
+      $(this).css('background-color', '#F6C029');
+      $(this).find(".tulis").css('color', 'white');
+
+      // Perbarui URL dengan parameter kategori yang diklik
+      window.location.href = "?kategori=" + buttonId;
+    });
+  });
+</script>
+
+
+  <!-- <script>
+  $(document).ready(function () {
+    // Ambil parameter 'kategori' dari URL
+    let params = new URLSearchParams(window.location.search);
+    let kategori = params.get("kategori");
+
+    // Reset semua tombol ke keadaan default
+    $(".kategori").removeClass("active");
+
+    // Tambahkan kelas 'active' ke tombol yang sesuai
+    if (kategori) {
+      $("#" + kategori).addClass("active");
+    }
+
+    // Event klik pada tombol
+    $(".kategori").click(function () {
+      // Ambil ID tombol yang diklik
+      let buttonId = $(this).attr("id");
+
+      // Ubah URL dengan kategori yang diklik
+      window.location.href = "?kategori=" + buttonId;
+      });
+    });
+  </script> -->
+
+
 @endsection
