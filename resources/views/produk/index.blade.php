@@ -1,9 +1,8 @@
 @extends('admin.sidebar')
 
 @section('content')
-<form action="{{ route('produks.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('produks.store') }}" method="GET" enctype="multipart/form-data">
     <title>Daftar Produk</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="container">
         <div class="card">
             <h2>List Product</h2>
@@ -107,45 +106,74 @@
     </div>
 
     <script>
-  $(document).ready(function() {
-    // Ambil parameter 'kategori' dari URL
-    let params = new URLSearchParams(window.location.search);
-    let kategori = params.get("kategori");
+      $(document).ready(function() {
+        console.log("Document ready, initializing Database...");
+        $('#data_table').DataTable({
+          "paging": true,
+          "searching": true,
+          "lengthChange": true,
+          "pageLength": 10,
+          "language": {
+            "lengthMenu": "_MENU_ items per page", // Custom text
+            "zeroRecords": "No records found", // Custom not found message
+            "info": "Showing _START_ to _END_ of _TOTAL_ entries", // Custom info text
+            "infoEmpty": "Showing 0 to 0 of 0 entries",
+            "infoFiltered": "(filtered from _MAX_ total entries)"
+          }
+        });
+        // Ambil parameter 'kategori' dari URL
+        let params = new URLSearchParams(window.location.search);
+        let kategori = params.get("kategori");
+        console.log(kategori);
 
-    // Setel ulang semua tombol ke status default
-    $(".kategori").css('background-color', 'white');
-    $(".kategori").find(".tulis").css('color', '#F6C029');
+        // Setel ulang semua tombol ke status default
+        $(".kategori").css('background-color', 'white');
+        $(".kategori").find(".tulis").css('color', '#F6C029');
 
-    // Jika ada parameter kategori di URL, tandai tombol yang sesuai
-    if (kategori) {
-      $("#" + kategori).css('background-color', '#F6C029');
-      $("#" + kategori).find(".tulis").css('color', 'white');
-    }
+        // Jika ada parameter kategori di URL, tandai tombol yang sesuai
+        if (kategori) {
+          $("#" + kategori).css('background-color', '#F6C029');
+          $("#" + kategori).find(".tulis").css('color', 'white');
+        }
 
-    // Event klik pada tombol kategori
-    $(".kategori").click(function () {
-      let buttonId = $(this).attr('id');
+        // Event klik pada tombol kategori
+        $(".kategori").click(function () {
+          let buttonId = $(this).attr('id');
 
-      // Reset semua tombol kategori
-      $(".kategori").css('background-color', 'white');
-      $(".kategori").find(".tulis").css('color', '#F6C029');
+          // Reset semua tombol kategori
+          $(".kategori").css('background-color', 'white');
+          $(".kategori").find(".tulis").css('color', '#F6C029');
 
-      // Tandai tombol yang diklik
-      $(this).css('background-color', '#F6C029');
-      $(this).find(".tulis").css('color', 'white');
+          // Tandai tombol yang diklik
+          $(this).css('background-color', '#F6C029');
+          $(this).find(".tulis").css('color', 'white');
 
-      // Perbarui URL dengan parameter kategori yang diklik
-      window.location.href = "?kategori=" + buttonId;
-    });
-  });
-</script>
+          // Perbarui URL dengan parameter kategori yang diklik
+          window.location.href = "?kategori=" + buttonId;
+
+        });
+      });
+    </script>
 
 
   <!-- <script>
   $(document).ready(function () {
     // Ambil parameter 'kategori' dari URL
-    let params = new URLSearchParams(window.location.search);
-    let kategori = params.get("kategori");
+    $('#data_table').DataTable({
+          "paging": true,
+          "searching": true,
+          "lengthChange": true,
+          "pageLength": 10,
+          "language": {
+            "lengthMenu": "_MENU_ items per page", // Custom text
+            "zeroRecords": "No records found", // Custom not found message
+            "info": "Showing _START_ to _END_ of _TOTAL_ entries", // Custom info text
+            "infoEmpty": "Showing 0 to 0 of 0 entries",
+            "infoFiltered": "(filtered from _MAX_ total entries)"
+          }
+      }); 
+    const params = new URLSearchParams(window.location.search);
+    const kategori = params.get("kategori");
 
     // Reset semua tombol ke keadaan default
     $(".kategori").removeClass("active");
@@ -153,12 +181,14 @@
     // Tambahkan kelas 'active' ke tombol yang sesuai
     if (kategori) {
       $("#" + kategori).addClass("active");
+    } else {
+      $("#Semua").addClass("active");
     }
 
     // Event klik pada tombol
     $(".kategori").click(function () {
       // Ambil ID tombol yang diklik
-      let buttonId = $(this).attr("id");
+      const buttonId = $(this).attr("id");
 
       // Ubah URL dengan kategori yang diklik
       window.location.href = "?kategori=" + buttonId;

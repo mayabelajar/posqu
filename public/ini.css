@@ -753,3 +753,44 @@ body{
 .card-title {
     font-weight: bold;
 }
+
+
+/* Menstyling Pagination */
+.dataTables_paginate {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dataTables_paginate .paginate_button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-color: white;
+    color: white;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background-color: #F6C029;
+    color: #F6C029;
+    cursor: pointer;
+}
+
+/* Menstyling Search Box */
+.dataTables_filter {
+    margin-top: 10px;
+}
+
+.dataTables_filter input {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Menstyling Data Entries Dropdown */
+.dataTables_length select {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
