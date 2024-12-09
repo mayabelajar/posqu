@@ -45,7 +45,7 @@
                      <h2>Hello Again,</h2>
                      <p>We are happy to have you back.</p>
                 </div>
-                <form method="post" action="/">
+                <form method="post" action="{{ url('/proses') }}">
                 @csrf
                 <div class="input-group mb-3">
                     <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email address">

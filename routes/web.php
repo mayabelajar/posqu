@@ -13,7 +13,7 @@ use App\Http\Controllers\ProdukController;
 //  jika user belum login
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/', [AuthController::class, 'login'])->name('login');
-    Route::post('/', [AuthController::class, 'dologin']);
+    Route::post('/proses', [AuthController::class, 'dologin']);
 
 });
 
