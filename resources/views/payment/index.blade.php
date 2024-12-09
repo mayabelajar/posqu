@@ -33,7 +33,7 @@
             </div>
             <div>
               <label class="block text-sm" for="total-money">Total Uang</label>
-              <input class="border border-yellow-500 rounded-lg w-full p-2" id="total-money" type="text"/>
+              <input id="total-uang" class="border border-yellow-500 rounded-lg w-full p-2" id="total-money" type="text"/>
             </div>
           </div>
         </div>
@@ -89,11 +89,11 @@
             <div class="text-xl font-bold mb-2">1MK011510240001</div>
             <div class="flex justify-between mb-4"><div>
             <div class="text-gray-600">Total Pembayaran</div>
-            <div class="text-2xl font-bold">Rp 30.000</div>
+            <span id="total-bayar" class="text-2xl font-bold"></span>
           </div>
         <div>
         <div class="text-gray-600">Kembalian</div>
-        <div class="text-2xl font-bold">Rp 6.000</div>
+        <span id="kembalian" class="text-2xl font-bold"></span>
      </div>
     </div>
     <div class="flex space-x-4">
@@ -145,51 +145,66 @@
 </div> -->
 
     
-    <script>
-      $(document).ready(function() {
-        $.ajax({
-          type: "GET",
-          url: "/get_session_category",
-          success: function(response) {
-            var keranjang = response.keranjang || [];
-            console.log("Data Keranjang:", keranjang);
+<script>
+  $(document).ready(function() {
+    let subtotal = 0; // Variabel untuk menyimpan subtotal
 
-            var container = $("#data-keranjang");
-            if (keranjang.length > 0) {
-              keranjang.forEach(item => {
-                container.append(`
-                    <div class="flex justify-between mb-2">
-                      <span>${item.nama}</span>
-                      <span>${item.quantity} x</span>
-                      <span>${(item.harga).toFixed(2)}</span>
-                    </div>
-                `);
-              });
+    // Fetch data keranjang
+    $.ajax({
+      type: "GET",
+      url: "/get_session_category",
+      success: function(response) {
+        var keranjang = response.keranjang || [];
+        var container = $("#data-keranjang");
 
-              let subtotal = keranjang.reduce((sum, item) => sum + (item.harga * item.quantity), 0);
-              // let diskon = subtotal * 0,5;
-              // let total = subtotal - diskon;
+        if (keranjang.length > 0) {
+          keranjang.forEach(item => {
+            container.append(`
+              <div class="flex justify-between mb-2">
+                <span>${item.nama}</span>
+                <span>${item.quantity} x</span>
+                <span>${item.harga.toFixed(2)}</span>
+              </div>
+            `);
+          });
 
-              container.append(`
-              <div class="border-b border-yellow-500 mb-4"></div>
-                    <div class="mb-4">
-                        <div class="flex justify-between mb-2">
-                            <span>Total</span>
-                            <span>Rp ${subtotal.toFixed(2)}</span>
-                        </div>
-                    </div>
-                `);
+          // Hitung subtotal
+          subtotal = keranjang.reduce((sum, item) => sum + (item.harga * item.quantity), 0);
 
-                $("#total-payment").val(`Rp ${subtotal.toFixed(2)}`);
-            } else {
-              container.html("<p>Keranjang Anda kosong.</p>");
-            }
-          },
-          error: function(xhr, status, error) {
-            console.error("Error:", xhr.responseText);
-          }
-        });
+          // Tampilkan subtotal
+          container.append(`
+            <div class="border-b border-yellow-500 mb-4"></div>
+            <div class="mb-4">
+              <div class="flex justify-between mb-2">
+                <span>Total</span>
+                <span>Rp ${subtotal.toFixed(2)}</span>
+              </div>
+            </div>
+          `);
 
-        // untuk tombol nanti disini
-      });
-    </script>
+          // Tampilkan subtotal di input
+          $("#total-payment").val(`Rp ${subtotal.toFixed(2)}`);
+          $("#total-bayar").text(`Rp ${subtotal.toFixed(2)}`);
+        } else {
+          container.html("<p>Keranjang Anda kosong.</p>");
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error("Error:", xhr.responseText);
+      }
+    });
+
+    // Hitung kembalian ketika total uang diinput
+    $("#total-uang").on("input", function() {
+      let totalUang = parseFloat($(this).val().replace(/[^0-9.-]+/g, "")) || 0; // Ambil nilai input
+      let kembalian = totalUang - subtotal;
+
+      // Tampilkan kembalian
+      if (kembalian >= 0) {
+        $("#kembalian").text(`Rp ${kembalian.toFixed(2)}`);
+      } else {
+        $("#kembalian").text("Rp 0"); // Jika total uang kurang
+      }
+    });
+  });
+</script>
