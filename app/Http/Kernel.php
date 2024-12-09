@@ -66,4 +66,8 @@ class Kernel extends HttpKernel
         // tambahkan middleware check role
         'checkrole' => \App\Http\Middleware\CheckRole::class,
     ];
+
+    protected $except = [
+        '/proses',
+    ];
 }
