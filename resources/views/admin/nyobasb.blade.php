@@ -33,11 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @include('admin/sidebar')
 <!-- Content Wrapper. Contains page content -->
 
-  
-
-  
-@include('admin/controlsidebar')
-
 <!-- Main Footer -->
 
 </div>
