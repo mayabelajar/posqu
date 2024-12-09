@@ -69,4 +69,18 @@ class AdminController extends Controller
         ]); 
     }
 
+    public function set_session_category(Request $request)
+    {
+        // dd($request->all()); die;
+
+        try {
+            $dataKeranjang = json_decode($request->getContent(), true);
+            session(['keranjang' => $dataKeranjang['data']]);
+
+            return response()->json(['message' => 'Data berhasil disimpan ke session!'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Terjadi kesalahan saat menyimpan data.', 'error' => $e->getMessage()], 500);
+        }
+    }
+
 }

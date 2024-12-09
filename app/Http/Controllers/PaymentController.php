@@ -72,8 +72,14 @@ class PaymentController extends Controller
         return redirect()->route('transaksi');
     }
 
-    public function session_category(Request $request)
+    public function get_session_category()
     {
-        dd($request->all()); die;
+        try {
+            $dataKeranjang = session('keranjang', []);
+
+            return response()->json(['keranjang' => $dataKeranjang], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Terjadi kesalahan saat mengambil data.', 'error' => $e->getMessage()], 500); 
+        }
     }
 }

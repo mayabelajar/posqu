@@ -94,7 +94,7 @@
 <aside class="control-sidebar control-sidebar-light">
   <div class="p-3">
     <div class="keranjang">
-      <h4><b>Keranjang</b><h4>
+      <h4><b>Keranjang</b></h4>
     </div>
     <title>Keranjang Belanja</title>
 
@@ -125,13 +125,13 @@
     <div class="flex justify-between mb-3">
         <div class="total">0</div>
     </div>
+    <button id="btnTransaksi" class="proses">Proses Transaksi</button>
   </aside>
   
 
      
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        // JavaScript untuk menghitung total, mengelola diskon, dll. 
-    </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
       // $(document).ready(function(){
       //   $(".tmbl").click(function(){
@@ -153,7 +153,7 @@
         $(".tmbl").click(function(){
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
           var product = {
-            id: $(this).attr("data-id"),
+            id: parseInt($(this).attr("data-id")),
             nama: $(this).attr("data-nama"),
             harga: parseFloat($(this).attr("data-harga")),
             image: $(this).attr("data-image"),
@@ -176,7 +176,9 @@
           var cartDiv = $('.keranjang');
           cartDiv.empty();
           if (storageproduk.length > 0) {
+            console.log("Display keranjang:", storageproduk);
             storageproduk.forEach(function(item) {
+              item.quantity = parseInt(item.quantity) || 1;
               cartDiv.append(`
               <div class="pemesanan mb-4">
               <div class="flex justify-between items-center mb-2">
@@ -193,7 +195,7 @@
                   <div class="col">
                     <button class="krj increase" data-id="${item.id}"><i class="fa fa-plus-circle"></i></button>
                     <span class="quantity" data-id="${item.id}">${item.quantity}</span>
-                    <button class="krj decrease" data-id="${item.id}><i class="fa fa-minus-circle"></i></button>
+                    <button class="krj decrease" data-id="${item.id}"><i class="fa fa-minus-circle"></i></button>
                   </div>
                   <div class="col">
                     <span>${(item.harga * item.quantity).toFixed(2)}</span>
@@ -201,86 +203,103 @@
                 </div>
               </div>
               <div class="col-3">
-                <button type="submit" id="delete" class="btn btn-danger btn-sm" data-id="${item.id}"><span class="bx bx-trash"></span></button>
+                <button type="submit" class="delete btn btn-danger btn-sm" data-id="${item.id}"><span class="bx bx-trash"></span></button>
               </div>
               </div>
               </div>
               `);
             });
-            cartDiv.append(`
-              <button id="btnTransaksi" class="proses">Proses Transaksi</button>
-            `);
-
-            $("#btnTransaksi").click(function() {
-              handleTransaksi();
-            });
-
-            $(".increase").click(function() {
-              var id = $(this).data("id");
-              updateQuantity(id, 1);
-            });
-
-            $(".decrease").click(function() {
-              var id = $(this).data("id");
-              updateQuantity(id, -1);
-            });
-
-            $("#delete").click(function() {
-              var id = $(this).data("id");
-              removeFromCart(id);
-            });
-
           } else {
             cartDiv.append('<p>Keranjang Anda kosong.</p>');
           }
         }
 
         function updateQuantity(id, change) {
-        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-        var productIndex = storageproduk.findIndex(item => item.id === id);
-        if (productIndex !== -1) {
-            storageproduk[productIndex].quantity += change;
-            if (storageproduk[productIndex].quantity <= 0) {
-                storageproduk.splice(productIndex, 1); // Hapus produk jika kuantitas <= 0
-            }
-            localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-            displayCart();
-        }
-    }
+            console.log("Update quantity untuk ID:", id, "Change:", change);
+            var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+            console.log("Isi keranjang di localStorage:", storageproduk);
 
-    function removeFromCart(id) {
-        var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-        storageproduk = storageproduk.filter(item => item.id !== id);
-        localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-        displayCart();
-    }
+            var product = storageproduk.find(item => {
+                console.log("Memeriksa item ID:", item.id, "dengan ID:", id);
+                return parseInt(item.id) === parseInt(id);
+            });
+            
+            if (product) {
+                console.log("Produk ditemukan:", product);
+                product.quantity = parseInt(product.quantity) || 0;
+                product.quantity += change;
+
+                if (product.quantity <= 0) {
+                    console.log("Menghapus produk ID:", id);
+                    storageproduk = storageproduk.filter(item => parseInt(item.id) !== parseInt(id));
+                } else {
+                    console.log("Kuantitas baru produk ID:", id, "=", product.quantity);
+                }
+
+                localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+                displayCart();
+            } else {
+                console.log("Produk tidak ditemukan! Pastikan ID sesuai.");
+            }
+        }
+
+        function removeFromCart(id) {
+          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          storageproduk = storageproduk.filter(item => item.id !== id);
+          localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+          displayCart();
+        }
 
         function handleTransaksi() {
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          console.log("Data keranjang di localStorage:", storageproduk);
           if (storageproduk.length > 0) {
             sessionStorage.setItem('dataKeranjang', JSON.stringify(storageproduk));
             
             $.ajax({
               type: "POST",
-              url: "set_session_category",
+              url: "/set_session_category",
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              data: { //pass the CSRF_TOKEN()
-                "data" :JSON.stringify(storageproduk)
-              },
+              data: JSON.stringify({ data: storageproduk }),
               // JSON.stringify({ key1:JSON.stringify(storageproduk)  }),
               contentType: "application/json",
               success: function(response) {
                 console.log("Success:", response);
+                window.location.href = '/payment';
               },
               error: function(xhr, status, error) {
                   console.error("Error:", status, error);
+                  alert("Gagal memproses transaksi");
               }
           });
-// window.location.href = '/payment';
+        // window.location.href = '/payment';
           } else {
             alert('Keranjang anda kosong!');
           }
         }
+
+        $("#btnTransaksi").click(function() {
+              handleTransaksi();
+        });
+
+        $(".keranjang").on("click", ".increase", function() {
+            console.log("Tombol increase diklik!");  
+            var id = $(this).data("id");
+            console.log("ID produk:", id);
+            updateQuantity(id, 1);
+        });
+
+        $(".keranjang").on("click", ".decrease", function() {
+            console.log("Tombol decrease diklik!"); // Debugging log
+            var id = $(this).data("id");
+            console.log("ID produk:", id);
+            updateQuantity(id, -1);
+        });
+
+        $(".keranjang").on("click", ".delete", function() {
+            var id = $(this).data("id");
+            removeFromCart(id);
+        });
 
         displayCart();
       });
