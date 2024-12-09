@@ -14,26 +14,18 @@
             <div class="row mt-3 mb-3">
             <div class="col-sm-6">
             <div class="filter-buttons">
-              <div id="product-categories">
-              <form method="GET" action="{{ route('produks.index') }}" id="Semua" style="display:inline;">
-                  <button class="kategori" type="submit">
-                      <span class="tulis">Semua</span>
-                  </button>
+            <div id="product-categories">
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                  <button id="Sm" class="kategori" type="submit">Semua</button>
               </form>
-              <form method="GET" action="{{ route('produks.index') }}" id="Makanan" style="display:inline;">
-                <button class="kategori" type="submit" name="kategori" value="Makanan">
-                  <span class="tulis">Makanan</span>
-                </button>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button id="Mk" class="kategori" type="submit" name="kategori" value="Makanan">Makanan</button>
               </form>
-              <form method="GET" action="{{ route('produks.index') }}" id="Minuman" style="display:inline;">
-                <button class="kategori" type="submit" name="kategori" value="Minuman">
-                  <span class="tulis">Minuman</span>
-                </button>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button id="Mn" class="kategori" type="submit" name="kategori" value="Minuman">Minuman</button>
               </form>
-              <form method="GET" action="{{ route('produks.index') }}" id="Camilan" style="display:inline;">
-                <button class="kategori" type="submit" name="kategori" value="Camilan">
-                  <span class="tulis">Camilan</span>
-                </button>
+              <form method="GET" action="{{ route('produks.index') }}" style="display:inline;">
+                <button id="Cm" class="kategori" type="submit" name="kategori" value="Camilan">Camilan</button>
               </form>
               </div>
             </div>
@@ -108,7 +100,7 @@
     </div>
 
     <script>
-      $(document).ready(function() {
+      document.addEventListener("DOMContentLoaded", function (){
         console.log("Document ready, initializing Database...");
 
         $('#data_table').DataTable({
@@ -125,22 +117,24 @@
           }
         });
         let kategoriAktif = localStorage.getItem("kategori");
+        console.log("Kategori aktif dari localStorage:", kategoriAktif);
         
         if (kategoriAktif) {
-          $("#" + kategoriAktif).addClass('active');
+          document.getElementById(kategoriAktif)?.classList.add("active");
+        } else {
+          console.log("Tidak ada kategori aktif. Default ke 'Semua'.");
+          document.getElementById("Semua")?.classList.add("active");
         }
 
+        const kategoriButtons = document.querySelectorAll(".kategori");
+        kategoriButtons.forEach((button) => {
+          button.addEventListener("click", function (event) {
+            const buttonId = this.id;
+            console.log("Tombol diklik:", buttonId);
 
-        $(".kategori").click(function () {
-          let buttonId = $(this).attr('id');
-
-          
-          $(".kategori").removeClass('active');
-          // Tandai tombol yang diklik
-          $(this).addClass('active');
-          // Perbarui URL dengan parameter kategori yang diklik
-          localStorage.setItem("kategori", buttonId);
-
+            localStorage.setItem("kategori", buttonId);
+            console.log("Kategori disimpan ke localStorage:", buttonId);
+          });
         });
       });
     </script>

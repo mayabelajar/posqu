@@ -815,16 +815,11 @@ body{
   }
   
   .kategori.active {
-    background-color: #F6C029;
-    color: white;
-    border-color: #F6C029;
+    background-color: #F6C029!important;
+    color: white!important;
+    border-color: #F6C029!important;
   }
-  
-  /* Efek pada teks di dalam tombol */
-  .kategori .tulis {
-    color: inherit;
-  }
-  
+    
   /* Styling untuk DataTable */
   #data_table {
     width: 100%;
