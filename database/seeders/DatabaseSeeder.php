@@ -17,21 +17,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-            $adminRole = Role::where('role_name', 'admin')->first();
-            $kasirRole = Role::where('role_name', 'kasir')->first();
+        $adminRole = Role::where('role_name', 'admin')->first();
+        $kasirRole = Role::where('role_name', 'kasir')->first();
 
-            $user1 = User::create([
-                'name' => 'Kakak Admin',
-                'email' => 'admin@gmail.com',
-                'password' => bcrypt('pastibisa23'),
-                'role_id' => $adminRole->id,
-            ]);
+        $user1 = User::create([
+            'name' => 'Kakak Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('pastibisa23'),
+            'role_id' => $adminRole->id,
+        ]);
 
-            $user2 = User::create([
-                'name' => 'Kakak Kasir',
-                'email' => 'kasir@gmail.com',
-                'password' => bcrypt('semogabisa'),
-                'role_id' => $kasirRole->id,
-            ]);
+        $user2 = User::create([
+            'name' => 'Kakak Kasir',
+            'email' => 'kasir@gmail.com',
+            'password' => bcrypt('semogabisa'),
+            'role_id' => $kasirRole->id,
+        ]);
     }
 }

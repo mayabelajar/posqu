@@ -16,7 +16,7 @@
             <div class="filter-buttons">
                 <form method="GET" action="{{ route('produks.index') }}" id="Semua" style="display:inline;">
                     <button class="kategori" type="submit">
-                        Semua
+                        <span class="tulis">Semua</span>
                     </button>
                 </form>
               <form method="GET" action="{{ route('produks.index') }}" id="Makanan" style="display:inline;">
@@ -122,18 +122,14 @@
           }
         });
         // Ambil parameter 'kategori' dari URL
-        let params = new URLSearchParams(window.location.search);
-        let kategori = params.get("kategori");
+        let kategori = new URLSearchParams(window.location.search).get("kategori") || localStorage.getItem("kategori");
         console.log(kategori);
 
         // Setel ulang semua tombol ke status default
-        $(".kategori").css('background-color', 'white');
-        $(".kategori").find(".tulis").css('color', '#F6C029');
-
+        $(".kategori").removeClass('active');
         // Jika ada parameter kategori di URL, tandai tombol yang sesuai
         if (kategori) {
-          $("#" + kategori).css('background-color', '#F6C029');
-          $("#" + kategori).find(".tulis").css('color', 'white');
+          $("#" + kategori).active('active');        
         }
 
         // Event klik pada tombol kategori
@@ -141,19 +137,50 @@
           let buttonId = $(this).attr('id');
 
           // Reset semua tombol kategori
-          $(".kategori").css('background-color', 'white');
-          $(".kategori").find(".tulis").css('color', '#F6C029');
-
+          $(".kategori").removeClass('active');
           // Tandai tombol yang diklik
-          $(this).css('background-color', '#F6C029');
-          $(this).find(".tulis").css('color', 'white');
-
+          $(this).addClass('active');
           // Perbarui URL dengan parameter kategori yang diklik
+          localStorage.setItem("kategori", buttonId);
           window.location.href = "?kategori=" + buttonId;
 
         });
       });
     </script>
+
+<!-- <script>
+  // Function to update active button
+function updateActiveButton(category) {
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach((btn) => {
+    if (btn.dataset.category === category) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+// Event listener for button clicks
+document.querySelectorAll('.btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const selectedCategory = btn.dataset.category;
+
+    // Save selected category to localStorage
+    localStorage.setItem('selectedCategory', selectedCategory);
+
+    // Update button styles
+    updateActiveButton(selectedCategory);
+  });
+});
+
+// Load the active button when the page is loaded
+window.addEventListener('DOMContentLoaded', () => {
+  const savedCategory = localStorage.getItem('selectedCategory') || 'semua';
+  updateActiveButton(savedCategory);
+});
+
+</script> -->
 
 
   <!-- <script>

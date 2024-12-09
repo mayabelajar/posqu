@@ -794,3 +794,39 @@ body{
     border: 1px solid #ccc;
     font-size: 14px;
 }
+
+/* Tombol kategori */
+.kategori {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #F6C029;
+    background-color: white;
+    color: #F6C029;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .kategori:hover {
+    background-color: #F6C029;
+    color: white;
+    border-color: #F6C029;
+  }
+  
+  .kategori.active {
+    background-color: #F6C029;
+    color: white;
+    border-color: #F6C029;
+  }
+  
+  /* Efek pada teks di dalam tombol */
+  .kategori .tulis {
+    color: inherit;
+  }
+  
+  /* Styling untuk DataTable */
+  #data_table {
+    width: 100%;
+    margin-top: 20px;
+  }
