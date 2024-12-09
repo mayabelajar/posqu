@@ -830,3 +830,29 @@ body{
     width: 100%;
     margin-top: 20px;
   }
+  /* Mengubah background pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #F6C029; /* Warna latar belakang tombol pagination */
+    color: white; /* Warna teks */
+    border-radius: 5px; /* Membulatkan sudut */
+    padding: 5px 10px;
+    margin: 0 5px; /* Memberikan jarak antar tombol */
+    border: 1px solid #F6C029;
+    font-weight: bold;
+  }
+  
+  /* Mengubah background tombol pagination saat dihover */
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+  .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
+    background-color: #F9D36B; /* Warna latar belakang saat hover */
+    color: black; /* Warna teks saat hover */
+    border-color: #F9D36B; /* Border saat hover */
+  }
+  
+  /* Menandai tombol aktif dengan background yang berbeda */
+  .dataTables_wrapper .dataTables_paginate .paginate_button.active {
+    background-color: #F6C029;
+    color: white;
+    border-color: #F6C029;
+  }
+  

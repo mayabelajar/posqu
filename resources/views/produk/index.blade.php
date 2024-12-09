@@ -14,11 +14,12 @@
             <div class="row mt-3 mb-3">
             <div class="col-sm-6">
             <div class="filter-buttons">
-                <form method="GET" action="{{ route('produks.index') }}" id="Semua" style="display:inline;">
-                    <button class="kategori" type="submit">
-                        <span class="tulis">Semua</span>
-                    </button>
-                </form>
+              <div id="product-categories">
+              <form method="GET" action="{{ route('produks.index') }}" id="Semua" style="display:inline;">
+                  <button class="kategori" type="submit">
+                      <span class="tulis">Semua</span>
+                  </button>
+              </form>
               <form method="GET" action="{{ route('produks.index') }}" id="Makanan" style="display:inline;">
                 <button class="kategori" type="submit" name="kategori" value="Makanan">
                   <span class="tulis">Makanan</span>
@@ -34,6 +35,7 @@
                   <span class="tulis">Camilan</span>
                 </button>
               </form>
+              </div>
             </div>
             </div>
             <div class="col-sm-6">
@@ -108,6 +110,7 @@
     <script>
       $(document).ready(function() {
         console.log("Document ready, initializing Database...");
+
         $('#data_table').DataTable({
           "paging": true,
           "searching": true,
@@ -121,28 +124,22 @@
             "infoFiltered": "(filtered from _MAX_ total entries)"
           }
         });
-        // Ambil parameter 'kategori' dari URL
-        let kategori = new URLSearchParams(window.location.search).get("kategori") || localStorage.getItem("kategori");
-        console.log(kategori);
-
-        // Setel ulang semua tombol ke status default
-        $(".kategori").removeClass('active');
-        // Jika ada parameter kategori di URL, tandai tombol yang sesuai
-        if (kategori) {
-          $("#" + kategori).active('active');        
+        let kategoriAktif = localStorage.getItem("kategori");
+        
+        if (kategoriAktif) {
+          $("#" + kategoriAktif).addClass('active');
         }
 
-        // Event klik pada tombol kategori
+
         $(".kategori").click(function () {
           let buttonId = $(this).attr('id');
 
-          // Reset semua tombol kategori
+          
           $(".kategori").removeClass('active');
           // Tandai tombol yang diklik
           $(this).addClass('active');
           // Perbarui URL dengan parameter kategori yang diklik
           localStorage.setItem("kategori", buttonId);
-          window.location.href = "?kategori=" + buttonId;
 
         });
       });

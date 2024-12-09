@@ -50,10 +50,6 @@
               <option>Camilan</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Deskripsi Produk</label>
-            <textarea class="form-control" name="deskripsi" rows="3" value="{{ old('deskripsi', $produks->deskripsi) }}"></textarea>
-          </div>
         </div>
         <button class="btn btn-simpan mt-3" type="submit">Tambahkan</button>
     </form>
