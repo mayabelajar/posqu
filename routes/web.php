@@ -54,8 +54,7 @@ Route::get('/bulanan', [LaporanController::class, 'bulanan']);
 Route::get('/tahunan', [LaporanController::class, 'tahunan']);
 Route::resource('produks', App\Http\Controllers\ProdukController::class);
 Route::get('/produks', [ProdukController::class, 'index'])->name('produks.index');
-Route::get('payment/index', [App\Http\Controllers\PemesananController::class, 'viewData']);
-Route::post('payment/index', [App\Http\Controllers\PemesananController::class, 'prosesData']);
+Route::post('/pemesanan/proses', [PemesananController::class, 'prosesData'])->name('pemesanan.prosesData');
 
 
 // Route::get('/', function () {

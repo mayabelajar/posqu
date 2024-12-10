@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->integer('harga');
             $table->string('catatan')->nullable();
-            $table->string('metode_pembayaran');
+            $table->string('metode_pembayaran')->default('cash');
             $table->integer('diskon')->nullable();
             $table->integer('pajak')->nullable();
             $table->integer('total');

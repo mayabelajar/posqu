@@ -16,64 +16,65 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
+<form action="{{ route('pemesanan.prosesData') }}" method="POST">
+  @csrf
 <body class="bg-[#e8e3c9] flex justify-center items-center h-screen">
-  <div class="bg-white p-8 rounded-lg shadow-lg w-[800px]">
-    <div class="grid grid-cols-2 gap-8">
-    <form action="{{ url('payment/index') }}" method="POST">
-    <div>
-        <h2 class="text-xl font-bold mb-4">Pilih Metode Pembayaran</h2>
-        <div class="border border-yellow-500 p-4 rounded-lg mb-2">
-          <!-- <div class="flex items-center mb-4">
-            <input class="mr-2" id="cash" name="payment" type="radio"/>
-            <label class="flex items-center" for="cash">Tunai</label>
-          </div> -->
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm" for="total-payment">Total Pembayaran</label>
-              <input class="form-control border border-yellow-500 rounded-lg w-full p-2" id="total-payment" type="hidden" name="total" value="{{ csrf_token() }}" disabled/>
-            </div>
-            <div>
-              <label class="block text-sm" for="total-money">Total Uang</label>
-              <input id="total-uang" class="border border-yellow-500 rounded-lg w-full p-2" id="total-money" type="hidden" name="bayar"/>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="border border-yellow-500 p-4 rounded-lg mb-2">
-          <div class="radio-group">
-            <div class="flex items-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-[800px]">
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-xl font-bold mb-4">Detail Pembayaran</h2>
+          <div class="border border-yellow-500 p-4 rounded-lg mb-2">
+            <!-- <div class="flex items-center mb-4">
               <input class="mr-2" id="cash" name="payment" type="radio"/>
-              <label for="cash">
-              <img src="{{ asset('/lte/dist/img/qris.PNG') }}" height="80" width="80"/>
+              <label class="flex items-center" for="cash">Tunai</label>
+            </div> -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm" for="total-payment">Total Pembayaran</label>
+                <input name="total" class="form-control border border-yellow-500 rounded-lg w-full p-2" id="total-payment" type="text" readonly/>
+              </div>
+              <div>
+                <label class="block text-sm" for="total-money">Total Uang</label>
+                <input name="bayar" id="total-uang" class="border border-yellow-500 rounded-lg w-full p-2" id="total-money" type="text"/>
+              </div>
             </div>
           </div>
-        </div> -->
-        <!-- <div class="border border-yellow-500 p-4 rounded-lg mb-2">
-          <button type="button" class="diskon mb-2" data-toggle="modal" data-target="#Modal"><i class="fa fa-plus mr-4"></i>Tambahkan Diskon</button>
-        </div> -->
-      </div>
-      <div>
-        <h2 class="text-xl font-bold mb-4">Ringkasan Pesanan</h2>
-        <div id="data-keranjang"></div>
-
-        <!-- Apabila nantinya menggunakan diskon
-        <div class="flex justify-between mb-2">
-          <span>Diskon</span>
-          <span>50%</span>
+          <input type="hidden" name="kembalian" id="kembalian-hidden"/>
+          <!-- <div class="border border-yellow-500 p-4 rounded-lg mb-2">
+            <div class="radio-group">
+              <div class="flex items-center">
+                <input class="mr-2" id="cash" name="payment" type="radio"/>
+                <label for="cash">
+                <img src="{{ asset('/lte/dist/img/qris.PNG') }}" height="80" width="80"/>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="border border-yellow-500 p-4 rounded-lg mb-2">
+            <button type="button" class="diskon mb-2" data-toggle="modal" data-target="#Modal"><i class="fa fa-plus mr-4"></i>Tambahkan Diskon</button>
+          </div> -->
         </div>
-        <div class="flex justify-between mb-2">
-          <span>Total</span>
-          <span>Rp ${subtotal.toFixed(2)}</span>
-        </div> -->
-   
-        <div class="flex justify-between">
-          <button type="button" class="kembali" ><a href="{{ url('/admin') }}">Kembali</a> </button>
-          <!-- <button type="button" class="plh" ><a href="{{ url('/meja') }}">Pilih Meja</a> </button> -->
-          <button type="button" class="bayar" data-bs-toggle="modal" data-bs-target="#exampleModal">Proses</button> 
-        </div>    
-      </div>   
-    </form>
+        <div>
+          <h2 class="text-xl font-bold mb-4">Ringkasan Pesanan</h2>
+          <div id="data-keranjang"></div>
+  
+          <!-- Apabila nantinya menggunakan diskon
+          <div class="flex justify-between mb-2">
+            <span>Diskon</span>
+            <span>50%</span>
+          </div>
+          <div class="flex justify-between mb-2">
+            <span>Total</span>
+            <span>Rp ${subtotal.toFixed(2)}</span>
+          </div> -->
+     
+          <div class="flex justify-between">
+            <button type="button" class="kembali" ><a href="{{ url('/admin') }}">Kembali</a> </button>
+            <!-- <button type="button" class="plh" ><a href="{{ url('/meja') }}">Pilih Meja</a> </button> -->
+            <button type="button" class="bayar" data-bs-toggle="modal" data-bs-target="#exampleModal">Proses</button> 
+          </div>    
+        </div>
+      </div>
     </div>
-  </div>
 </body>
 
 <!-- Modal -->
@@ -91,17 +92,17 @@
             <div class="text-xl font-bold mb-2">1MK011510240001</div>
             <div class="flex justify-between mb-4"><div>
             <div class="text-gray-600">Total Pembayaran</div>
-            <span id="total-bayar" class="text-2xl font-bold" name="harga"></span>
+            <span id="total-bayar" class="text-2xl font-bold"></span>
           </div>
         <div>
         <div class="text-gray-600">Kembalian</div>
-        <span id="kembalian" class="text-2xl font-bold" name="kembalian"></span>
+        <span id="kembalian" class="text-2xl font-bold"></span>
      </div>
     </div>
     <div class="flex space-x-4">
       <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
       <button class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
-      <button class="baru py-2 px-4"><i class="fa fa-plus"> </i><a href="{{ url('/admin') }}">Baru</a></button>
+      <button type="submit" class="baru py-2 px-4"><i class="fa fa-plus"> </i><a href="{{ url('/admin') }}">Baru</a></button>
     </div>
   </div>
 </div>
@@ -109,6 +110,7 @@
   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
   <button type="button" class="btn btn-primary">Save changes</button>
 </div>
+</form>
 
 <!-- Modal -->
 <!-- <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -203,16 +205,12 @@
     });
 
     // Hitung kembalian ketika total uang diinput
-    $("#total-uang").on("input", function() {
-      let totalUang = parseFloat($(this).val().replace(/[^0-9.-]+/g, "")) || 0; // Ambil nilai input
-      let kembalian = totalUang - subtotal;
+    $(".bayar").on("click", function () {
+        let totalUang = parseFloat($("#total-uang").val().replace(/[^0-9.-]+/g, "")) || 0;
+        let kembalian = totalUang - subtotal;
 
-      // Tampilkan kembalian
-      if (kembalian >= 0) {
-        $("#kembalian").text(`Rp${formatNumber(kembalian)}`);
-      } else {
-        $("#kembalian").text("Rp 0"); // Jika total uang kurang
-      }
+        $("#kembalian-hidden").val(kembalian); // Masukkan nilai ke input hidden
+        $("#kembalian").text(`Rp ${formatNumber(kembalian)}`); // Tampilkan di modal
     });
   });
 </script>

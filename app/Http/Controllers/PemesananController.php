@@ -7,22 +7,27 @@ use App\Models\Pemesanan;
 
 class PemesananController extends Controller
 {
-    public function viewData()
-    {
-        return view('payment.index');
-    }
-
     public function prosesData(Request $request)
     {
-        Pemesanan::create([
-        'jumlah'          => $request->jumlah,
-        'harga'           => $request->harga,
-        'catatan'         => $request->catatan,
-        'total'           => $request->total,
-        'bayar'           => $request->bayar,
-        'kembalian'       => $request->kembalian,
+        $request->validate([
+            'jumlah' => 'required|numeric',
+            'harga' => 'required|numeric',
+            'catatan' => 'nullable|string',
+            'total' => 'required|numeric',
+            'bayar' => 'required|numeric',
+            'kembalian' => 'required|numeric',
         ]);
 
-        return redirect()->route('payment.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        Pemesanan::create([
+            'jumlah' => $request->jumlah,
+            'harga' => $request->harga,
+            'catatan' => $request->catatan,
+            'metode_pembayaran' => 'cash', // Default
+            'total' => $request->total,
+            'bayar' => $request->bayar,
+            'kembalian' => $request->kembalian,
+        ]);
+
+        return redirect()->route('payment.index')->with('success', 'Data berhasil disimpan!');
     }
 }
