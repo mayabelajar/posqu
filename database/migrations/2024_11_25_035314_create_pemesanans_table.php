@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('jumlah');
             $table->integer('harga');
-            $table->string('catatan');
+            $table->string('catatan')->nullable();
             $table->string('metode_pembayaran');
-            $table->integer('diskon');
-            $table->integer('pajak');
+            $table->integer('diskon')->nullable();
+            $table->integer('pajak')->nullable();
             $table->integer('total');
             $table->integer('bayar');
             $table->integer('kembalian');

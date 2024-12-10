@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ModalController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PemesananController;
 
 //  jika user belum login
 Route::group(['middleware' => 'guest'], function() {
@@ -53,6 +54,8 @@ Route::get('/bulanan', [LaporanController::class, 'bulanan']);
 Route::get('/tahunan', [LaporanController::class, 'tahunan']);
 Route::resource('produks', App\Http\Controllers\ProdukController::class);
 Route::get('/produks', [ProdukController::class, 'index'])->name('produks.index');
+Route::get('payment/index', [App\Http\Controllers\PemesananController::class, 'viewData']);
+Route::post('payment/index', [App\Http\Controllers\PemesananController::class, 'prosesData']);
 
 
 // Route::get('/', function () {

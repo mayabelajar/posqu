@@ -19,7 +19,8 @@
 <body class="bg-[#e8e3c9] flex justify-center items-center h-screen">
   <div class="bg-white p-8 rounded-lg shadow-lg w-[800px]">
     <div class="grid grid-cols-2 gap-8">
-      <div>
+    <form action="{{ url('payment/index') }}" method="POST">
+    <div>
         <h2 class="text-xl font-bold mb-4">Pilih Metode Pembayaran</h2>
         <div class="border border-yellow-500 p-4 rounded-lg mb-2">
           <!-- <div class="flex items-center mb-4">
@@ -29,11 +30,11 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block text-sm" for="total-payment">Total Pembayaran</label>
-              <input class="form-control border border-yellow-500 rounded-lg w-full p-2" id="total-payment" type="text" disabled/>
+              <input class="form-control border border-yellow-500 rounded-lg w-full p-2" id="total-payment" type="hidden" name="total" value="{{ csrf_token() }}" disabled/>
             </div>
             <div>
               <label class="block text-sm" for="total-money">Total Uang</label>
-              <input id="total-uang" class="border border-yellow-500 rounded-lg w-full p-2" id="total-money" type="text"/>
+              <input id="total-uang" class="border border-yellow-500 rounded-lg w-full p-2" id="total-money" type="hidden" name="bayar"/>
             </div>
           </div>
         </div>
@@ -69,7 +70,8 @@
           <!-- <button type="button" class="plh" ><a href="{{ url('/meja') }}">Pilih Meja</a> </button> -->
           <button type="button" class="bayar" data-bs-toggle="modal" data-bs-target="#exampleModal">Proses</button> 
         </div>    
-      </div>
+      </div>   
+    </form>
     </div>
   </div>
 </body>
@@ -89,11 +91,11 @@
             <div class="text-xl font-bold mb-2">1MK011510240001</div>
             <div class="flex justify-between mb-4"><div>
             <div class="text-gray-600">Total Pembayaran</div>
-            <span id="total-bayar" class="text-2xl font-bold"></span>
+            <span id="total-bayar" class="text-2xl font-bold" name="harga"></span>
           </div>
         <div>
         <div class="text-gray-600">Kembalian</div>
-        <span id="kembalian" class="text-2xl font-bold"></span>
+        <span id="kembalian" class="text-2xl font-bold" name="kembalian"></span>
      </div>
     </div>
     <div class="flex space-x-4">
@@ -147,6 +149,12 @@
     
 <script>
   $(document).ready(function() {
+    function formatNumber(number) {
+        let parts = number.toFixed(2).split("."); // Pastikan angka memiliki 2 desimal
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Tambahkan koma sebagai pemisah ribuan
+        return parts.join("."); // Gabungkan kembali bagian integer dan desimal
+    }
+
     let subtotal = 0; // Variabel untuk menyimpan subtotal
 
     // Fetch data keranjang
@@ -163,7 +171,7 @@
               <div class="flex justify-between mb-2">
                 <span>${item.nama}</span>
                 <span>${item.quantity} x</span>
-                <span>${item.harga.toFixed(2)}</span>
+                <span>${formatNumber(item.harga)}</span>
               </div>
             `);
           });
@@ -177,14 +185,14 @@
             <div class="mb-4">
               <div class="flex justify-between mb-2">
                 <span>Total</span>
-                <span>Rp ${subtotal.toFixed(2)}</span>
+                <span>Rp ${formatNumber(subtotal)}</span>
               </div>
             </div>
           `);
 
           // Tampilkan subtotal di input
-          $("#total-payment").val(`Rp ${subtotal.toFixed(2)}`);
-          $("#total-bayar").text(`Rp ${subtotal.toFixed(2)}`);
+          $("#total-payment").val(`Rp${formatNumber(subtotal)}`);
+          $("#total-bayar").text(`Rp${formatNumber(subtotal)}`);
         } else {
           container.html("<p>Keranjang Anda kosong.</p>");
         }
@@ -201,7 +209,7 @@
 
       // Tampilkan kembalian
       if (kembalian >= 0) {
-        $("#kembalian").text(`Rp ${kembalian.toFixed(2)}`);
+        $("#kembalian").text(`Rp${formatNumber(kembalian)}`);
       } else {
         $("#kembalian").text("Rp 0"); // Jika total uang kurang
       }

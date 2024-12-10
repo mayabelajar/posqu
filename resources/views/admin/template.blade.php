@@ -150,6 +150,12 @@
       //   })
       // })
       $(document).ready(function(){
+        function formatNumber(number) {
+            let parts = number.toFixed(2).split("."); // Pastikan angka memiliki 2 desimal
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Tambahkan koma sebagai pemisah ribuan
+            return parts.join("."); // Gabungkan kembali bagian integer dan desimal
+        }
+
         $(".tmbl").click(function(){
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
           var product = {
@@ -198,7 +204,7 @@
                     <button class="krj decrease" data-id="${item.id}"><i class="fa fa-minus-circle"></i></button>
                   </div>
                   <div class="col">
-                    <span>${(item.harga * item.quantity).toFixed(2)}</span>
+                    <span>${formatNumber(item.harga * item.quantity)}</span>
                   </div>
                 </div>
               </div>
