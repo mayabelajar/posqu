@@ -11,11 +11,11 @@
       <h3 class="main--title">Kategori</h3>
       <div class="card--wrapper"> <!-- card wrapper -->
         <div class="container text-center"> <!-- container -->
-          <div class="row"><!-- row -->
-            <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
+          <div class="row" id="kategori-container"><!-- row -->
+            <div data-kt="kategori" class="ktgr col-4" data-kategori="Makanan"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img src="{{ asset('/lte/dist/img/makanan.png') }}" class="ikon">
+                  <img class="ikon" src="{{ asset('/lte/dist/img/makanan.png') }}" alt="Icon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
                     <span class="amount--value">25</span>
@@ -23,7 +23,7 @@
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
             </div> <!-- tutup  col -->
-            <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4" data-kategori="Minuman"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/minuman.png') }}" class="ikon">
@@ -34,7 +34,7 @@
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
             </div> <!-- tutup col -->
-            <div data-kt="kategori" class="ktgr col-4"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4" data-kategori="Camilan"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/camilan.png') }}" class="ikon">
@@ -59,8 +59,8 @@
             <!-- SEARCH FORM -->
           <form class="form-inline mx-auto" id="searchForm">
             <div class="input-group w-500">
-              <input class="seacrh form-control form-control-navbar" id="searchQuery" type="text" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
+              <input type="text" id="admin-search-input" class="form-control" placeholder="Search" aria-label="Search">
+              <div id="admin-search-result" class="mt-3">
                 <button class="btn btn-navbar" id="addItemButton" type="submit">
                   <i class="fa fa-search"></i>
                 </button>
@@ -68,6 +68,10 @@
             </div>
           </form>
           <div id="searchResult"></div>
+
+          <div id="produk-list" class="row mt-4">
+            <!-- Produk akan dimuat di sini setelah kategori diklik -->
+          </div>
           
             <div class="container text-center"> <!-- container -->
               <div class="row"> <!--row -->
@@ -310,19 +314,72 @@
         displayCart();
       });
 
-      $(document).ready(function(){
-              $(".categories").click(function(){
-                $(".categories").css('background-color', 'white');
-                $(this).css('background-color', '#F6C029');
-                $(function() {
-              $('.ikon').click(function(){
-                $("#bg").attr('src',"{{ asset('/lte/dist/img/makanan.png') }}");
-                return false;
-              });
-              });
-                // console.log($(this).attr("data-ktgr"))
+
+      $(document).ready(function() {
+      const defaultIcons = {
+        makanan: "{{ asset('/lte/dist/img/makanan.png') }}",
+        minuman: "{{ asset('/lte/dist/img/minuman.png') }}",
+        camilan: "{{ asset('/lte/dist/img/camilan.png') }}"
+      };
+
+      const activeIcons = {
+        makanan: "{{ asset('/lte/dist/img/makanan1.png') }}",
+        minuman: "{{ asset('/lte/dist/img/minuman1.png') }}",
+        camilan: "{{ asset('/lte/dist/img/camilan1.png') }}"
+      };
+
+      $(".categories").click(function() {
+          // Reset semua elemen
+          $(".categories").removeClass("active").css('background-color', 'white');
+          $(".categories .ikon").each(function() {
+              const title = $(this).closest(".categories").find(".title").text().trim().toLowerCase();
+              if (defaultIcons[title]){
+                $(this).attr('src', defaultIcons[title]);
+              }
+          });
+
+          $(this).addClass("active").css('background-color', '#F6C029');
+
+          // Ganti ikon kategori aktif
+          const title = $(this).find(".title").text().trim().toLowerCase();
+          if (activeIcons[title]) {
+              $(this).find(".ikon").attr('src', activeIcons[title]);
+          }
+
+      });
+      });
+
+      document.querySelectorAll('[data-kt="kategori"]').forEach(element => {
+        element.addEventListener('click', () => {
+          const kategori = element.getAttribute('data-kategori'); // Ambil kategori
+          const produkList = document.getElementById('produk-list'); // Tempat menampilkan produk
+
+          // Tampilkan loading
+          produkList.innerHTML = '<p>Loading...</p>';
+
+          // Lakukan permintaan ke server
+          fetch(`/admin/get-produk?kategori=${kategori}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log('Data:', data);
+              if (Array.isArray(data)) {
+                // Render data
+              } else {
+                document.getElementById('produk-list').innerHTML = '<p>Tidak ada data.</p>';
+              }
+            })
+            .catch(error => {
+              console.error('Kesalahan:', error);
+              document.getElementById('produk-list').innerHTML = '<p>Terjadi kesalahan saat mengambil data.</p>';
             });
-        });
+          });
+      });
+
 
         $(document).ready(function() {
         $('#searchForm').on('submit', function(e) {

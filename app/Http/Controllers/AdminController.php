@@ -11,8 +11,16 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
-        // $produks = Produk::all();
+        $produks = Produk::all();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $produks
+            ]);
+        }
+
+        return view('admin.produks.index', compact('produks'));
     }
 
     public function admin(Request $request) {
@@ -83,4 +91,40 @@ class AdminController extends Controller
         }
     }
 
+    public function searchProduk(Request $request)
+    {
+        $keyword = $request->get('query'); // Ambil kata kunci dari request
+
+        // Ambil data dari model Produk
+        $produks = Produk::where('nama', 'LIKE', "%{$keyword}%") // Filter nama produk
+                          ->orWhere('deskripsi', 'LIKE', "%{$keyword}%") // Filter deskripsi
+                          ->get();
+
+        // Kembalikan data sebagai JSON
+        return response()->json($produks);
+    }
+
+    public function getProdukByKategori(Request $request)
+    {
+        $kategori = $request->input('kategori');
+    
+        if (!$kategori) {
+            return response()->json(['error' => 'Kategori tidak ditemukan'], 400);
+        }
+    
+        try {
+            // Ambil data dari API
+            $response = Http::get(route('produks.index'), ['kategori' => $kategori]);
+    
+            if ($response->successful()) {
+                return response()->json($response->json());
+            }
+    
+            return response()->json(['error' => 'Gagal mengambil data dari API'], $response->status());
+        } catch (\Exception $e) {
+            \Log::error('Error: ' . $e->getMessage());
+            return response()->json(['error' => 'Terjadi kesalahan internal'], 500);
+        }
+    }
+    
 }

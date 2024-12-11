@@ -491,6 +491,12 @@ body {
   .categories:hover{
     transform: translateY(-5px);
   }
+  .categories.active{
+    background-color: #f0ad4e;
+  }
+  .ikon.active{
+    border: 2px solid #F6C029;
+  }
   .card--header{
     display: flex;
     justify-content: space-between;
@@ -502,12 +508,11 @@ body {
     flex-direction: column;
   }
   .title{
-    font-size: 12px;
-    font-weight: 200;
+    font-size: 20px;
+    font-weight: 600;
   }
   .amount--value{
-    font-size: 24px;
-    font-family: "Courier New", Courier, monospace;
+    font-size: 20px;
     font-weight: 600;
   }
   .icon{
@@ -734,7 +739,7 @@ body{
     display: flex;
     width: 15px;
     height: 15px;
-    background-color: #ec971f;
+    background-color: #F6C029;
     justify-content: center;
     align-items: center;
     color: #ffffff;
@@ -809,9 +814,9 @@ body{
   }
   
   .kategori:hover {
-    background-color: #F6C029;
-    color: white;
-    border-color: #F6C029;
+    background-color: #F6C029!important;
+    color: white!important;
+    border-color: #F6C029!important;
   }
   
   .kategori.active {
@@ -821,33 +826,52 @@ body{
   }
     
   /* Styling untuk DataTable */
-  #data_table {
+  .data_table {
     width: 100%;
     margin-top: 20px;
   }
   /* Mengubah background pagination */
+/* Gaya default tombol pagination */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-    background-color: #F6C029; /* Warna latar belakang tombol pagination */
-    color: white; /* Warna teks */
-    border-radius: 5px; /* Membulatkan sudut */
-    padding: 5px 10px;
-    margin: 0 5px; /* Memberikan jarak antar tombol */
-    border: 1px solid #F6C029;
-    font-weight: bold;
-  }
-  
-  /* Mengubah background tombol pagination saat dihover */
-  .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
-  .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
-    background-color: #F9D36B; /* Warna latar belakang saat hover */
-    color: black; /* Warna teks saat hover */
-    border-color: #F9D36B; /* Border saat hover */
-  }
-  
-  /* Menandai tombol aktif dengan background yang berbeda */
-  .dataTables_wrapper .dataTables_paginate .paginate_button.active {
-    background-color: #F6C029;
-    color: white;
-    border-color: #F6C029;
-  }
-  
+    background-color: #F6C029 !important;
+    color: white !important;
+    border-radius: 5px !important;
+    padding: 5px 10px !important;
+    margin: 0 5px !important;
+    border: 1px solid #F6C029 !important;
+    font-weight: bold !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Hover tombol pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #F9D36B !important;
+    color: white !important;
+    border-color: #F9D36B !important;
+}
+
+/* Tombol aktif */
+.dataTables_wrapper .dataTables_paginate .paginate_button.active {
+    background-color: #F6C029 !important;
+    color: white !important;
+    border-color: #F6C029 !important;
+}
+
+/* Hover tombol aktif */
+.dataTables_wrapper .dataTables_paginate .paginate_button.active:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.active:focus {
+    background-color: #F9D36B !important;
+    color: white !important;
+    border-color: #F9D36B !important;
+}
+.brand-link{
+    align-items: center;
+    justify-content: center;
+    padding: center;
+}  
+.categories.active .title,
+.categories.active .amount--value {
+  color: white !important; /* Ubah warna teks menjadi putih */
+  font-size: 20px !important;
+  font-weight: bold !important;
+}

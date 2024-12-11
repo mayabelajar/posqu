@@ -1,6 +1,7 @@
 <head>
 <link rel="stylesheet" href="{{ asset('/ini.css') }}">
 <link rel="stylesheet" href="{{ asset('/ini.js') }}">
+<link rel="stylesheet" href="styles.css?v=1.0">
 <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/4.7.0/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
@@ -23,7 +24,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link text-center">
+    <a href="index3.html" class="brand-link px-center">
       <img src="{{ asset('/lte/dist/img/logoPOS.png') }}" alt="POSq Logo" class="img-circle elevation-3"
            style="opacity: .8">
     </a>
@@ -36,7 +37,7 @@
           <img src="{{ asset('/lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Jaya</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
       </div>
 
