@@ -875,3 +875,17 @@ body{
   font-size: 20px !important;
   font-weight: bold !important;
 }
+/* Flexbox pada .brand-link untuk menyejajarkan konten */
+.brand-link {
+    display: flex;
+    justify-content: center!important;  /* Posisikan elemen secara horizontal di tengah */
+    align-items: center!important;  /* Posisikan elemen secara vertikal di tengah */
+    text-align: center!important;  /* Untuk memastikan teks berada di tengah */
+  }
+  
+  /* Menjaga rasio gambar agar tidak terdistorsi */
+  .brand-link img {
+    max-width: 100%!important;  /* Pastikan gambar tidak melebar dari kontainer */
+    height: auto!important;  /* Menjaga rasio aspek gambar */
+  }
+  
