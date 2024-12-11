@@ -11,16 +11,18 @@ class ListPesanan extends Model
 
     protected $table = "list_pesanans";
     protected $fillable = [
+        'pemesanans_id',
+        'produks_id',
         'qty',
         'total',
     ];
 
-    public function produk() {
-        return $this->belongsTo(Produk::class);
-    }
-
     public function pemesanan() {
         return $this->belongsTo(Pemesanan::class);
+    }
+    
+    public function produk() {
+        return $this->belongsTo(Produk::class);
     }
     
 }

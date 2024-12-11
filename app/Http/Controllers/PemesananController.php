@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemesanan;
+use App\Models\ListPesanan;
 
 class PemesananController extends Controller
 {
@@ -17,7 +18,7 @@ class PemesananController extends Controller
             'kembalian' => 'required|numeric',
         ]);
 
-        Pemesanan::create([
+        $pemesanan = Pemesanan::create([
             'jumlah' => $request->jumlah,
             'catatan' => $request->catatan,
             'metode_pembayaran' => 'cash',
@@ -25,6 +26,17 @@ class PemesananController extends Controller
             'bayar' => $request->bayar,
             'kembalian' => $request->kembalian,
         ]);
+
+        $keranjang = session('keranjang', []);
+
+        foreach ($keranjang as $item) {
+            ListPesanan::create([
+                'pemesanans_id' => $pemesanan->id,
+                'produks_id' => $item['id'],
+                'jumlah' => $item['quantity'],
+                'harga' => $item['harga'],
+            ]);
+        }
 
         return redirect()->route('admin.admin')->with('success', 'Data berhasil disimpan!');
     }

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('list_pesanans', function (Blueprint $table) {
             $table->id();
-            $table->integer('qty');
-            $table->integer('total');
+            $table->foreignId('pemesanans_id')->constrained()->onDelete('cascade');
+            $table->foreignId('produks_id')->constrained()->onDelete('cascade');
+            $table->integer('qty')->nullable();
+            $table->float('total')->nullable();
             $table->timestamps();
         });
     }
