@@ -24,23 +24,23 @@
     <div class="col-8">
       <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
         <div class="overflow-auto">
-        @if(isset($pemesanans) && count($pemesanans) > 0)
-          @for ($i = 0; $i < count($pemesanans); $i++)
+        @if(isset ($pemesanans) && count($pemesanans) > 0)
+          @foreach($pemesanans as $pemesanan)
             <div class="flex items-center mb-4">
               <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
               <div class="ml-4">
-                <div>{{ $pemesanans[$i]->id}}</div>
-                <div>{{ $pemesanans[$i]->jumlah }}x {{ $pemesanans[$i]->catatan }}</div>
-                <div>{{ $pemesanans[$i]->metode_pembayaran }} - Rp {{ $pemesanans[$i]->total }}</div>
+                <div>{{ $pemesanan->produks_id}}</div>
+                <div>{{ $pemesanan->jumlah }}x {{ $pemesanan->catatan }}</div>
+                <div>{{ $pemesanan->metode_pembayaran }} - Rp {{ $pemesanan->total }}</div>
               </div>
-              <div class="ml-auto">{{ $pemesanans[$i]->created_at }}</div>
+              <div class="ml-auto">{{ $pemesanan->created_at }}</div>
             </div>
-          @endfor
+          @endforeach
         @else
             <p>Tidak ada data pemesanan.</p>
         @endif
           <div class="flex justify-between items-center mt-4">
-            <span>1 - 10 dari {{ count($pemesanans)}} data</span>
+            <span>1 - {{ count($pemesanans) }} dari {{ count($pemesanans) }} data</span>
             <nav aria-label="...">
               <ul class="pagination">
                 <li class="page-item disabled">
@@ -75,20 +75,26 @@
         </thead>
         <tbody>
         @if(isset($listPesanan) && count($listPesanan) > 0)
-          @for($i = 0; $i < count($listPesanan); $i++)
+          @foreach($listPesanan as $pesanan)
           <tr>
-            <td class="p-2">{{ $listPesanan[$i]->produks_id}}</td>
-            <td class="p-2">{{ $listPesanan[$i]->qty }}x</td>
-            <td class="p-2">Rp {{ $listPesanan[$i]->total }}</td>
+            <td class="p-2">{{ $pesanan->produks_id}}</td>
+            <td class="p-2">{{ $pesanan->qty }}x</td>
+            <td class="p-2">Rp {{ $pesanan->total }}</td>
           </tr>
-          @endfor
+          @endforeach
         @else
           <p>Tidak ada data</p>
         @endif
         </tbody>
       </table>
       <div class="total flex justify-end items-center mt-4">
-        <span>Rp {{ $pemesanans[0]->total }}</span>
+        @php
+          $total = 0;
+          foreach($pemesanans as $pemesanan) {
+            $total += $pemesanan->total;
+          }
+        @endphp
+        <span>Rp {{ $total }}</span>
       </div>
     </div>
   </div>
