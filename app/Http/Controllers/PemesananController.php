@@ -3,24 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\ListPesanan;
 use App\Models\Pemesanan;
-use App\Models\ListPesanann;
+use App\Models\ListPesanan;
+use App\Models\Produk;
 
 class PemesananController extends Controller
 {
     public function prosesData(Request $request)
     {
         $request->validate([
-            'jumlah' => 'nullable|numeric',
             'catatan' => 'nullable|string',
             'total' => 'required|numeric',
             'bayar' => 'required|numeric',
             'kembalian' => 'required|numeric',
         ]);
 
+        $keranjang = session('keranjang', []);
+
+        $jumlah = 0;
+        $harga = 0;
+
+        foreach ($keranjang as $item) {
+            $jumlah += $item['quantity'];
+            $harga += $item['harga'];
+        }
+
         $pemesanan = Pemesanan::create([
-            'jumlah' => $request->jumlah,
+            'jumlah' => $jumlah,
+            'harga' => $harga,
             'catatan' => $request->catatan,
             'metode_pembayaran' => 'cash',
             'total' => $request->total,
@@ -28,14 +38,14 @@ class PemesananController extends Controller
             'kembalian' => $request->kembalian,
         ]);
 
-        $keranjang = session('keranjang', []);
-
         foreach ($keranjang as $item) {
+            $produk = Produk::find($item['id']);
+            $totalHarga = $produk->harga * $item['quantity'];
             ListPesanan::create([
                 'pemesanans_id' => $pemesanan->id,
                 'produks_id' => $item['id'],
-                'jumlah' => $item['quantity'],
-                'harga' => $item['harga'],
+                'qty' => $item['quantity'],
+                'total' => $totalHarga,
             ]);
         }
 
