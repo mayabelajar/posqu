@@ -36,17 +36,26 @@
     <div class="col-8">
       <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
         <div class="overflow-auto">
-          <div class="flex items-center mb-4">
-            <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
-            <div class="ml-4">
-              <div>1MK011510240001</div>
-              <div>2x Rujak Cingur, 1x Es Dawet, 2x Cenil</div>
-              <div>19.000 - QRIS</div>
+          @forelse ($pemesanans as $pemesanan)
+            <div class="flex items-center mb-4">
+              <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
+              <div class="ml-4">
+                <div>{{ $pemesanan->kode_transaksi }}</div>
+                <div>
+                  @foreach ($pemesanan->listPesanan as $item)
+                    {{ $item->qty }}x {{ $item->nama_item }},
+                  @endforeach
+                </div>
+                <div>{{ number_format($pemesanan->total, 0, ',', '.') }} - {{ strtoupper($pemesanan->metode) }}</div>
+              </div>
+              <div class="ml-auto">{{ $pemesanan->created_at->format('d M Y - H:i') }}</div>
             </div>
-            <div class="ml-auto">16 Okt 2024 - 10.36</div>
-          </div>
+          @empty
+            <p>Tidak ada data pemesanan.</p>
+          @endforelse
           <div class="flex justify-between items-center mt-4">
-            <span>1 - 10 dari 68 data</span>
+            <span>{{ $pemesanans->firstItem() }} - {{ $pemesanans->lastItem() }} dari {{ $pemesanans->total() }} data</span>
+            {{ $pemesanans->links() }}
             <nav aria-label="...">
               <ul class="pagination">
                 <li class="page-item disabled">
@@ -71,6 +80,7 @@
       </div>
     </div>
     <div class="kecil col-4 bg-white shadow rounded-lg p-4">
+    @if ($listPesanan->isNotEmpty())
       <table class="w-full">
         <thead>
           <tr class="bg-gray-200">
@@ -80,26 +90,21 @@
           </tr>
         </thead>
         <tbody>
+        @foreach ($listPesanan as $item)
           <tr>
-            <td class="p-2">Rujak Cingur</td>
-            <td class="p-2">2x</td>
-            <td class="p-2">12.000</td>
+            <td class="p-2">{{ $item->nama_item }}</td>
+            <td class="p-2">{{ $item->qty }}x</td>
+            <td class="p-2">{{ number_format($item->total_harga, 0, ',', '.') }}</td>
           </tr>
-          <tr>
-            <td class="p-2">Es Dawet</td>
-            <td class="p-2">1x</td>
-            <td class="p-2">16.000</td>
-          </tr>
-          <tr>
-            <td class="p-2">Cenil</td>
-            <td class="p-2">2x</td>
-            <td class="p-2">10.000</td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
       <div class="total flex justify-end items-center mt-4">
-        <span>Rp 38.000</span>
+        <span>Rp {{ number_format($listPesanan->sum('total_harga'), 0, ',', '.') }}</span>
       </div>
+    @else
+      <p>Tidak ada data item.</p>
+    @endif
     </div>
   </div>
 </div>

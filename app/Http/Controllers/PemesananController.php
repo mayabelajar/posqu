@@ -51,4 +51,12 @@ class PemesananController extends Controller
 
         return redirect()->route('admin.admin')->with('success', 'Data berhasil disimpan!');
     }
+
+    public function index()
+    {
+        $pemesanans = Pemesanan::with('listPesanan')->paginate(10);
+        $listPesanan = ListPesanan::all();
+
+        return view('admin.admin', compact('pemesanans', 'listPesanan'));
+    }
 }

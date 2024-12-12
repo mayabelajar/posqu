@@ -18,7 +18,7 @@ class ListPesanan extends Model
     ];
 
     public function pemesanan() {
-        return $this->belongsTo(Pemesanan::class);
+        return $this->belongsTo(Pemesanan::class, 'pemesanan_id');
     }
     
     public function produk() {

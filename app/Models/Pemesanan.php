@@ -29,4 +29,8 @@ class Pemesanan extends Model
     public function  user() {
         return $this->belongsTo(User::class);
     }
+
+    public function listPesanan(){
+        return $this->hasMany(ListPesanan::class, 'pemesanan_id');
+    }
 }

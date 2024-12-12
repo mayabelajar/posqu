@@ -25,7 +25,7 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <div style="text=align: center;">
-      <a href="#" class="brand-link">
+      <a href="#" class="brand-link border:none">
         <img src="{{ asset('/lte/dist/img/logoPOS.png') }}" alt="POSq Logo" style="opacity: .8; display: block; margin: 0 auto;">
       </a>
     </div>
@@ -34,11 +34,11 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex item-center">
-        <div class="image">
+        <div class="image border:none">
           <img src="{{ asset('/lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Admin</a>
+        <div class="info border:none">
+          <a href="#" class="d-block border:none">Admin</a>
         </div>
       </div>
 

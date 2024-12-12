@@ -865,9 +865,10 @@ body{
     border-color: #F9D36B !important;
 }
 .brand-link{
-    align-items: center;
-    justify-content: center;
-    padding: center;
+    align-items: center!important;
+    justify-content: center!important;
+    padding: center!important;
+    border: none!important;
 }  
 .categories.active .title,
 .categories.active .amount--value {
@@ -887,5 +888,21 @@ body{
   .brand-link img {
     max-width: 100%!important;  /* Pastikan gambar tidak melebar dari kontainer */
     height: auto!important;  /* Menjaga rasio aspek gambar */
+    border: none!important;
+  }
+  .d-block {
+    display: flex;
+    justify-content: center!important;  /* Posisikan elemen secara horizontal di tengah */
+    align-items: center!important;  /* Posisikan elemen secara vertikal di tengah */
+    text-align: center!important;  /* Untuk memastikan teks berada di tengah */
+  }
+  .info {
+    display: flex;
+    justify-content: center!important;  /* Posisikan elemen secara horizontal di tengah */
+    align-items: center!important;  /* Posisikan elemen secara vertikal di tengah */
+    text-align: center!important;  /* Untuk memastikan teks berada di tengah */
   }
   
+  .user-panel{
+    border-bottom: none !important;
+  }
