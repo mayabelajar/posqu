@@ -121,9 +121,9 @@
             }
         </style>
 
-    <div class="notes">
-      <label for="notes">Catatan :</label>
-      <textarea class="form-control mb-4" name="notes" rows="4"></textarea>
+    <div class="catatan">
+      <label for="catatan">Catatan :</label>
+      <textarea class="form-control mb-4" name="catatan" rows="4"></textarea>
     </div>
     <div class="border-t border-gray-250 mb-3"></div>
     <div class="flex justify-between mb-3">
@@ -160,6 +160,14 @@
             return parts.join("."); // Gabungkan kembali bagian integer dan desimal
         }
 
+        function hitungTotal() {
+          var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          var total = storageproduk.reduce(function (sum, item) {
+              return sum + (item.harga * item.quantity);
+          }, 0);
+          $('.total').text('Rp ' + formatNumber(total));
+        }
+
         $(".tmbl").click(function(){
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
           var product = {
@@ -179,6 +187,7 @@
           localStorage.setItem('keranjang', JSON.stringify(storageproduk));
           console.log("Produk ditambahkan ke keranjang:", product);
           displayCart();
+          hitungTotal();
         });
 
         function displayCart() {
@@ -248,6 +257,7 @@
 
                 localStorage.setItem('keranjang', JSON.stringify(storageproduk));
                 displayCart();
+                hitungTotal();
             } else {
                 console.log("Produk tidak ditemukan! Pastikan ID sesuai.");
             }
@@ -258,10 +268,12 @@
           storageproduk = storageproduk.filter(item => item.id !== id);
           localStorage.setItem('keranjang', JSON.stringify(storageproduk));
           displayCart();
+          hitungTotal();
         }
 
         function handleTransaksi() {
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
+          var catatan = 
           console.log("Data keranjang di localStorage:", storageproduk);
           if (storageproduk.length > 0) {
             sessionStorage.setItem('dataKeranjang', JSON.stringify(storageproduk));
@@ -312,6 +324,7 @@
         });
 
         displayCart();
+        hitungTotal();
       });
 
 

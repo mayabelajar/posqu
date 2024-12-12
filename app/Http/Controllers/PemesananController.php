@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\ListPesanan;
 use App\Models\Pemesanan;
-use App\Models\ListPesanan;
+use App\Models\ListPesanann;
 
 class PemesananController extends Controller
 {
