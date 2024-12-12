@@ -9,18 +9,6 @@
           <i class="fa fa-search text-gray-500"></i>
           <input class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text">
         </div>
-        <div class="flex items-center">
-          <span>SEMUA METODE</span>
-          <div class="dropdown mr-4">
-            <button class="dropbtn"><i class="bx bxs-filter-alt"></i></button>
-            <input type="text" id="filterInput">
-            <div class="dropdown-content">
-              <a href="" onclick="filterData()"><i class="bx bx-wallet-alt" name="semuametode"></i>   SEMUA METODE</a>
-              <a href="" onclick="filterData()"><i class="bx bx-money-withdraw" name="cash"></i>   CASH</a>
-              <a href="" onclick="filterData()"><i class="bx bx-qr-scan" name="qris"></i>   QRIS</a>
-            </div>
-            <ul id="dataList"></ul>
-          </div>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Sen, 04 November 2024</a>
             <div class="dropdown-menu">
@@ -36,26 +24,23 @@
     <div class="col-8">
       <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
         <div class="overflow-auto">
-          @forelse ($pemesanans as $pemesanan)
+        @if(isset($pemesanans) && count($pemesanans) > 0)
+          @for ($i = 0; $i < count($pemesanans); $i++)
             <div class="flex items-center mb-4">
               <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
               <div class="ml-4">
-                <div>{{ $pemesanan->kode_transaksi }}</div>
-                <div>
-                  @foreach ($pemesanan->listPesanan as $item)
-                    {{ $item->qty }}x {{ $item->nama_item }},
-                  @endforeach
-                </div>
-                <div>{{ number_format($pemesanan->total, 0, ',', '.') }} - {{ strtoupper($pemesanan->metode) }}</div>
+                <div>{{ $pemesanans[$i]->id}}</div>
+                <div>{{ $pemesanans[$i]->jumlah }}x {{ $pemesanans[$i]->catatan }}</div>
+                <div>{{ $pemesanans[$i]->metode_pembayaran }} - Rp {{ $pemesanans[$i]->total }}</div>
               </div>
-              <div class="ml-auto">{{ $pemesanan->created_at->format('d M Y - H:i') }}</div>
+              <div class="ml-auto">{{ $pemesanans[$i]->created_at }}</div>
             </div>
-          @empty
+          @endfor
+        @else
             <p>Tidak ada data pemesanan.</p>
-          @endforelse
+        @endif
           <div class="flex justify-between items-center mt-4">
-            <span>{{ $pemesanans->firstItem() }} - {{ $pemesanans->lastItem() }} dari {{ $pemesanans->total() }} data</span>
-            {{ $pemesanans->links() }}
+            <span>1 - 10 dari {{ count($pemesanans)}} data</span>
             <nav aria-label="...">
               <ul class="pagination">
                 <li class="page-item disabled">
@@ -80,7 +65,6 @@
       </div>
     </div>
     <div class="kecil col-4 bg-white shadow rounded-lg p-4">
-    @if ($listPesanan->isNotEmpty())
       <table class="w-full">
         <thead>
           <tr class="bg-gray-200">
@@ -90,21 +74,22 @@
           </tr>
         </thead>
         <tbody>
-        @foreach ($listPesanan as $item)
+        @if(isset($listPesanan) && count($listPesanan) > 0)
+          @for($i = 0; $i < count($listPesanan); $i++)
           <tr>
-            <td class="p-2">{{ $item->nama_item }}</td>
-            <td class="p-2">{{ $item->qty }}x</td>
-            <td class="p-2">{{ number_format($item->total_harga, 0, ',', '.') }}</td>
+            <td class="p-2">{{ $listPesanan[$i]->produks_id}}</td>
+            <td class="p-2">{{ $listPesanan[$i]->qty }}x</td>
+            <td class="p-2">Rp {{ $listPesanan[$i]->total }}</td>
           </tr>
-        @endforeach
+          @endfor
+        @else
+          <p>Tidak ada data</p>
+        @endif
         </tbody>
       </table>
       <div class="total flex justify-end items-center mt-4">
-        <span>Rp {{ number_format($listPesanan->sum('total_harga'), 0, ',', '.') }}</span>
+        <span>Rp {{ $pemesanans[0]->total }}</span>
       </div>
-    @else
-      <p>Tidak ada data item.</p>
-    @endif
     </div>
   </div>
 </div>

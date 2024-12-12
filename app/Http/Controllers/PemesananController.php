@@ -54,9 +54,9 @@ class PemesananController extends Controller
 
     public function index()
     {
-        $pemesanans = Pemesanan::with('listPesanan')->paginate(10);
+        $pemesanans = Pemesanan::all();
         $listPesanan = ListPesanan::all();
 
-        return view('admin.admin', compact('pemesanans', 'listPesanan'));
+        return view('admin.transaksi', compact('pemesanans', 'listPesanan'));
     }
 }

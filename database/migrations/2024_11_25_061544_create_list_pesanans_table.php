@@ -19,6 +19,9 @@ return new class extends Migration
             $table->float('total')->nullable();
             $table->timestamps();
         });
+        Schema::table('list_pesanans', function (Blueprint $table) {
+            $table->foreignId('pemesanans_id')->constrained('pemesanans');
+        });
     }
 
     /**
