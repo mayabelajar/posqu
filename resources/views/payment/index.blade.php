@@ -16,7 +16,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<form action="{{ route('pemesanan.prosesData') }}" method="POST">
+<form action="{{ route('pemesanan.prosesData') }}" method="POST" class="form-pesanan">
   @csrf
   <body class="bg-[#e8e3c9] flex justify-center items-center h-screen">
       <div class="bg-white p-8 rounded-lg shadow-lg w-[800px]">
@@ -74,7 +74,7 @@
               <div class="flex space-x-4">
                 <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
                 <button class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
-                <button type="submit" class="baru py-2 px-4"><i class="fa fa-plus"> </i>Baru</button>
+                <button type="button" class="baru py-2 px-4"><i class="fa fa-plus"> </i>Baru</button>
               </div>
             </div>
           </div>
@@ -87,6 +87,7 @@
   </div>
 </form>
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script>
   $(document).ready(function() {
     function formatNumber(number) {
@@ -143,6 +144,30 @@
 
       $("#kembalian-hidden").val(kembalian);
       $("#kembalian").text(formatNumber(kembalian));
+    });
+
+    $(".baru").on("click", function() {
+      // $(".form-pesanan")
+      $.ajax({
+              type: "POST",
+              url: "/prosesData",
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              data: {
+                total: $("#total-payment").val(subtotal);,
+                bayar: $("#total-uang").val();,
+                kembalian: $("#kembalian").text(formatNumber(kembalian));,
+              }
+              // JSON.stringify({ key1:JSON.stringify(storageproduk)  }),
+              contentType: "application/json",
+              success: function(response) {
+                console.log("Success:", response);
+                // window.location.href = '/payment';
+              },
+              error: function(xhr, status, error) {
+                  console.error("Error:", status, error);
+                  alert("Gagal memproses transaksi");
+              }
+          });
     });
   });
 </script>
