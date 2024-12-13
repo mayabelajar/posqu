@@ -11,6 +11,7 @@ class PemesananController extends Controller
 {
     public function prosesData(Request $request)
     {
+        dd($requesut->input()); die;
         $request->validate([
             'catatan' => 'nullable|string',
             'total' => 'required|numeric',
@@ -49,7 +50,8 @@ class PemesananController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.admin')->with('success', 'Data berhasil disimpan!');
+        return("success");
+        // return redirect()->route('admin.admin')->with('success', 'Data berhasil disimpan!');
     }
 
     public function index()
