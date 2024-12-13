@@ -58,7 +58,10 @@ Route::get('/produks', [ProdukController::class, 'index'])->name('produks.index'
 Route::post('/pemesanan/proses', [PemesananController::class, 'prosesData'])->name('pemesanan.prosesData');
 Route::get('/admin/search', [AdminController::class, 'searchProduk'])->name('admin.searchProduk');
 Route::get('/admin/get-produk', [AdminController::class, 'getProdukByKategori'])->name('admin.get-produk');
+Route::post('/index', [PemesananController::class, 'index'])->name('pemesanan.index');
+Route::get('/pemesanan', [PemesananController::class, 'index']);
 // Route::get('/admin', [PemesananController::class, 'index']);
+
 
 // Route::get('/', function () {
 //     return view('welcome');

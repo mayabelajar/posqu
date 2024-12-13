@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Produk;
 use App\Models\ListPesanan;
+use App\Models\Pemesanan;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $produks = Produk::all();
-
         if ($request->ajax()) {
             return response()->json([
                 'status' => 'success',
@@ -59,7 +58,9 @@ class AdminController extends Controller
     }
     
     public function transaksi() {
-        return view('admin.transaksi');
+        $pemesanans = Pemesanan::all();
+        $listPesanan = ListPesanan::all();
+        return view('admin.transaksi', compact('pemesanans', 'listPesanan'));
     }
     public function meja() {
         return view('admin.meja');
@@ -126,5 +127,4 @@ class AdminController extends Controller
             return response()->json(['error' => 'Terjadi kesalahan internal'], 500);
         }
     }
-    
 }
