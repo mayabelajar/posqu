@@ -19,7 +19,10 @@ class PemesananController extends Controller
             'kembalian' => 'required|numeric',
         ]);
 
-        $keranjang = session('keranjang', []);
+        $keranjang = $request->input('keranjang', []);
+        if(empty($keranjang)) {
+            return response()->json(['message' => 'Keranjang kosong. Tidak ada data untuk diproses.'], 400);
+        }
 
         $jumlah = 0;
         $harga = 0;
@@ -50,7 +53,9 @@ class PemesananController extends Controller
             ]);
         }
 
-        return("success");
+        session()->forget('keranjang');
+
+        return response()->json(['message' => 'Data berhasil disimpan!', 'redirect_url' => route('admin.admin')]);
         // return redirect()->route('admin.admin')->with('success', 'Data berhasil disimpan!');
     }
 
