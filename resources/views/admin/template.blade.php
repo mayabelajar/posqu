@@ -273,7 +273,6 @@
 
         function handleTransaksi() {
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
-          var catatan = 
           console.log("Data keranjang di localStorage:", storageproduk);
           if (storageproduk.length > 0) {
             sessionStorage.setItem('dataKeranjang', JSON.stringify(storageproduk));

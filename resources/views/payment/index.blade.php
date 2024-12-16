@@ -16,7 +16,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<form action="{{ route('pemesanan.prosesData') }}" method="POST">
+<form action="{{ route('pemesanan.prosesData') }}" method="POST" class="form-pesanan">
   @csrf
   <body class="bg-[#e8e3c9] flex justify-center items-center h-screen">
       <div class="bg-white p-8 rounded-lg shadow-lg w-[800px]">
@@ -74,7 +74,7 @@
               <div class="flex space-x-4">
                 <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
                 <button class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
-                <button type="submit" class="baru py-2 px-4"><i class="fa fa-plus"> </i>Baru</button>
+                <button type="button" class="baru py-2 px-4"><i class="fa fa-plus"> </i>Baru</button>
               </div>
             </div>
           </div>
@@ -87,6 +87,7 @@
   </div>
 </form>
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script>
   $(document).ready(function() {
     function formatNumber(number) {
@@ -143,6 +144,50 @@
 
       $("#kembalian-hidden").val(kembalian);
       $("#kembalian").text(formatNumber(kembalian));
+    });
+
+    $(".baru").on("click", function() {
+      var keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+
+      if (keranjang.length === 0) {
+        alert("Keranjang kosong. Tidak ada data untuk diproses.");
+        return;
+      }
+
+      const total = $("#total-payment").val();
+      const bayar = $("#total-uang").val();
+      const kembalian = $("#kembalian-hidden").val();
+
+      $.ajax({
+        type: "POST",
+        url: "/prosesData",
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        data: {
+          keranjang: keranjang,
+          total: total,
+          bayar: bayar,
+          kembalian: kembalian,
+        },
+        success: function(response) {
+          console.log("Data berhasil disimpan:", response);
+          
+          // Bersihkan data keranjang dari localStorage
+          localStorage.removeItem("keranjang");
+
+          // displayCart();
+          // hitungTotal();
+
+          alert("Transaksi berhasil disimpan!");
+          window.location.href = response.redirect_url; 
+          console.log("Akan redirect ke:", response.redirect_url);
+        },
+        error: function(xhr, status, error) {
+          console.error("Gagal menyimpan data:", status, error);
+          alert("Terjadi kesalahan saat menyimpan data.");
+        }
+      });
     });
   });
 </script>

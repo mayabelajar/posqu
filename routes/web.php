@@ -40,6 +40,7 @@ Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
 Route::post('/set_session_category', [AdminController::class, 'set_session_category']);
 Route::get('/get_session_category', [PaymentController::class, 'get_session_category']);
+Route::post('/prosesData', [PemesananController::class, 'prosesData']);
 
 // Route::get('/template', [AdminController::class, 'index']);
 
