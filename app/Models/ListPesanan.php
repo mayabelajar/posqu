@@ -22,7 +22,7 @@ class ListPesanan extends Model
     }
     
     public function produk() {
-        return $this->belongsTo(Produk::class);
+        return $this->belongsTo(Produk::class, 'produks_id');
     }
     
 }
