@@ -77,7 +77,7 @@
         @if(isset($listPesanan) && count($listPesanan) > 0)
           @foreach($listPesanan as $pesanan)
           <tr>
-            <td class="p-2">{{ $pesanan->produks_id}}</td>
+            <td class="p-2">{{ $pesanan->nama}}</td>
             <td class="p-2">{{ $pesanan->qty }}x</td>
             <td class="p-2">Rp {{ $pesanan->total }}</td>
           </tr>
