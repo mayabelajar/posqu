@@ -78,10 +78,10 @@
               @foreach ($produks as $data)
                 <div class="col-3"> <!-- col -->
                   <div class="card" style="width: 100%;"  > <!-- card -->
-                    <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
+                    <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3 mb-2" width="100px" alt="">
                     <div class="card-body"> <!-- card body -->
-                      <h5 class="card-title">{{$data->nama}}</h5>
-                      <h5 class="card-title">Rp{{$data->harga}}</h5>
+                      <div class="card-title mb-1">{{$data->nama}}</div>
+                      <div class="card-harga mb-1">Rp{{$data->harga}}</div>
                       <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
                       <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
                     </div> <!-- card body -->

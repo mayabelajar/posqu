@@ -45,7 +45,6 @@ class ProdukController extends Controller
             'image'         => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'nama'          => 'required',
             'kategori'      => 'required',
-            'stok'          => 'required',
             'harga'         => 'required'
         ]);
 
@@ -57,7 +56,6 @@ class ProdukController extends Controller
             'image'         => $image->hashName(),
             'nama'          => $request->nama,
             'kategori'      => $request->kategori,
-            'stok'          => $request->stok,
             'harga'         => $request->harga
         ]);
 
@@ -100,7 +98,6 @@ class ProdukController extends Controller
                 'image'         => $image->hashName(),
                 'nama'          => $request->nama,
                 'kategori'      => $request->kategori,
-                'stok'          => $request->stok,
                 'harga'         => $request->harga
             ]);
 
@@ -109,7 +106,6 @@ class ProdukController extends Controller
             $produks->update([
                 'nama'          => $request->nama,
                 'kategori'      => $request->kategori,
-                'stok'          => $request->stok,
                 'harga'         => $request->harga
             ]);
         }

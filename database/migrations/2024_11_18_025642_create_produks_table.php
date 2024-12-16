@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('image');
             $table->string('nama');
             $table->string('kategori');
-            $table->integer('stok');
             $table->float('harga');
             $table->timestamps();
         });

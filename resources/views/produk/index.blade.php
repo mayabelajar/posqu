@@ -44,7 +44,6 @@
                             <th>Nama</th>
                             <th>Kategori</th>
                             <th>Harga</th>
-                            <th>Stok</th>
                             <th>Tanggal ditambahkan</th>
                             <th>Aksi</th>
                         </tr>
@@ -56,7 +55,6 @@
                         <td>{{$data->nama}}</td>
                         <td>{{$data->kategori}}</td>
                         <td>{{$data->harga}}</td>
-                        <td>{{$data->stok}}</td>
                         <td>{{$data->created_at}}</td>
                         <td>
                           <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('produks.destroy', $data->id) }}" method="POST">
