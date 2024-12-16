@@ -4,7 +4,7 @@
 <form action="{{ route('produks.store') }}" method="GET" enctype="multipart/form-data">
     <title>Daftar Produk</title>
     <div class="container">
-        <div class="card">
+        <div class="card-produk">
             <h2>List Product</h2>
             <!-- <div class="row mt-3">
               <div class="col-sm">

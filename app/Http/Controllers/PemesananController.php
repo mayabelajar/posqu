@@ -20,7 +20,7 @@ class PemesananController extends Controller
             'kembalian' => 'required|numeric',
         ]);
 
-        $keranjang = session('keranjang', []);
+        $keranjang = session('keranjang', []); // Ambil data keranjang dari request
 
         $jumlah = 0;
         $harga = 0;
