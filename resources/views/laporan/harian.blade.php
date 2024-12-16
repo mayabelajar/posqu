@@ -16,7 +16,8 @@
     </div>
     <div class="row">
         <div class="pendapatan mb-4 mr-4">
-            <strong class="ml-4">Pendapatan Hari Ini</strong>
+            <div><strong class="ml-4">Pendapatan Hari Ini</strong></div>
+            <div><strong>Rp {{ number_format($pendapatanHarian, 0, ',', '.') }}</strong></div>
         </div>
         <div class="menu col mb-4">
             <div style="width: 400px">
@@ -25,20 +26,13 @@
 
                 <script>
                     const data1= {
-                    labels: ['Rujak Cingur', 'Kerak Telor', 'Dawet Ayu', 'Lumpia', 'Papeda', 'Sekoteng'],
-                    datasets: [{
-                        label: 'Menu Paling Laku',
-                        backgroundColor: [
-                        '#8979FF',
-                        '#FF928A',
-                        '#3CC3DF',
-                        '#FFAE4C',
-                        '#537FF1',
-                        '#6FD195'
-                        ],
-                        data: [87, 20, 46, 39, 14, 13],
-                        hoverOffset: 4
-                    }]
+                        labels: {!! json_encode($menuPalingLaku->pluck('produk.nama')) !!},
+                        datasets: [{
+                            label: 'Menu Paling Laku',
+                            backgroundColor: ['#8979FF', '#FF928A', '#3CC3DF', '#FFAE4C', '#537FF1', '#6FD195'],
+                            data: {!! json_encode($menuPalingLaku->pluck('total_qty')) !!},
+                            hoverOffset: 4
+                        }]
                     };
                     const ctx1 = document.getElementById('myChart1').getContext('2d');
                     const myChart1 = new Chart(ctx1, {
@@ -59,20 +53,36 @@
                 <canvas id="myChart2"></canvas>
             </div>
             <script>
-                const data2= {
-                    labels: ['10.00', '11.00', '12.00', '13.00', '14.00', '15.00', '16.00', '17.00', '18.00', '19.00', '20.00', '21.00'],
+                const data2 = {
+                    labels: @json(array_map(fn($item) => sprintf('%02d:00', $item['jam']), $pelangganHarian)),
                     datasets: [{
                         label: 'Jumlah Pelanggan',
                         backgroundColor: '#F6C029',
-                        data: [2, 3, 10, 25, 5, 15, 16, 14, 20, 21, 24, 2],
-                }]
+                        data: @json(array_map(fn($item) => $item['jumlah'], $pelangganHarian)),
+                    }]
                 };
+
                 const ctx2 = document.getElementById('myChart2').getContext('2d');
                 const myChart2 = new Chart(ctx2, {
                     type: 'bar',
                     data: data2,
                     options: {
-                        // ... opsi konfigurasi
+                        plugins: {
+                            legend: { display: true },
+                        },
+                        scales: {
+                            x: {
+                                title: { display: true, text: 'Jam' },
+                            },
+                            y: {
+                                title: { display: true, text: 'Jumlah Pelanggan' },
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1,
+                                },
+                                grid: {display: false},
+                            },
+                        },
                     }
                 });
             </script>
