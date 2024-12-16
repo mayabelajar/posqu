@@ -147,27 +147,47 @@
     });
 
     $(".baru").on("click", function() {
-      // $(".form-pesanan")
+      var keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+
+      if (keranjang.length === 0) {
+        alert("Keranjang kosong. Tidak ada data untuk diproses.");
+        return;
+      }
+
+      const total = $("#total-payment").val();
+      const bayar = $("#total-uang").val();
+      const kembalian = $("#kembalian-hidden").val();
+
       $.ajax({
-              type: "POST",
-              url: "/prosesData",
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              data: {
-                total: $("#total-payment").val(subtotal);,
-                bayar: $("#total-uang").val();,
-                kembalian: $("#kembalian").text(formatNumber(kembalian));,
-              }
-              // JSON.stringify({ key1:JSON.stringify(storageproduk)  }),
-              contentType: "application/json",
-              success: function(response) {
-                console.log("Success:", response);
-                // window.location.href = '/payment';
-              },
-              error: function(xhr, status, error) {
-                  console.error("Error:", status, error);
-                  alert("Gagal memproses transaksi");
-              }
-          });
+        type: "POST",
+        url: "/prosesData",
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        data: {
+          keranjang: keranjang,
+          total: total,
+          bayar: bayar,
+          kembalian: kembalian,
+        },
+        success: function(response) {
+          console.log("Data berhasil disimpan:", response);
+          
+          // Bersihkan data keranjang dari localStorage
+          localStorage.removeItem("keranjang");
+
+          // displayCart();
+          // hitungTotal();
+
+          alert("Transaksi berhasil disimpan!");
+          window.location.href = response.redirect_url; 
+          console.log("Akan redirect ke:", response.redirect_url);
+        },
+        error: function(xhr, status, error) {
+          console.error("Gagal menyimpan data:", status, error);
+          alert("Terjadi kesalahan saat menyimpan data.");
+        }
+      });
     });
   });
 </script>
