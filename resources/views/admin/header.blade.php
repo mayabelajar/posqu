@@ -17,10 +17,11 @@
     </form>
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fa fa-cart-plus fa-2x"></i></a>
-            <span class="spn">0</span>
+      <li class="nav-item" id="cartButton">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" id="openCart">
+        <i class="fa fa-cart-plus fa-2x"></i>
+            <span id="cartItemCount" class="badge badge-pill badge-warning">0</span>
+        </a>
       </li>
     </ul>
   </nav>

@@ -50,7 +50,7 @@ body {
     width: 90%;
     margin: 20px auto;
 }
-.card {
+.card-produk {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -758,12 +758,12 @@ body{
 }
 .card-title {
     font-weight: bold!important;
-    font-size: 20px!important;
+    font-size: 15px!important;
 }
 
 .card-harga {
     font-weight: bold!important;
-    font-size: 17px!important;
+    font-size: 15px!important;
 }
 
 
@@ -934,3 +934,11 @@ body{
     color: #fff;
     font-size: 16px;
   }
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
