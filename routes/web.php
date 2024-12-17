@@ -10,6 +10,7 @@ use App\Http\Controllers\ModalController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\ListPesananController;
 
 //  jika user belum login
 Route::group(['middleware' => 'guest'], function() {
@@ -44,7 +45,7 @@ Route::post('/prosesData', [PemesananController::class, 'prosesData']);
 
 // Route::get('/template', [AdminController::class, 'index']);
 
-Route::get('/transaksi', [AdminController::class, 'transaksi']);
+Route::get('/transaksi', [ListPesananController::class, 'index'])->name('transaksi.index');
 
 Route::get('/meja', [AdminController::class, 'meja']);
 Route::get('/search', [AdminController::class, 'search'])->name('admin.search');

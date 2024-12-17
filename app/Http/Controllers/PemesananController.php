@@ -60,13 +60,13 @@ class PemesananController extends Controller
         // return redirect()->route('admin.admin')->with('success', 'Data berhasil disimpan!');
     }
 
-    public function index()
-    {
-        $pemesanans = Pemesanan::all();
-        $listPesanan = ListPesanan::all();
+    // public function index()
+    // {
+    //     $pemesanans = Pemesanan::with('produk')->get();
+    //     $listPesanan = ListPesanan::all();
 
-        return view('admin.transaksi', compact('pemesanans', 'listPesanan'));
-    }
+    //     return view('admin.transaksi', compact('pemesanans', 'listPesanan'));
+    // }
 
     public function harian()
     {
