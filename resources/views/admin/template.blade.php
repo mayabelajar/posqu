@@ -60,36 +60,42 @@
           <form class="form-inline mx-auto" id="searchForm">
             <div class="input-group w-500">
               <input type="text" id="admin-search-input" class="form-control" placeholder="Search" aria-label="Search">
-              <div id="admin-search-result" class="mt-3">
-                <button class="btn btn-navbar" id="addItemButton" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </div>
             </div>
           </form>
-          <div id="searchResult"></div>
 
           <div id="produk-list" class="row mt-4">
             <!-- Produk akan dimuat di sini setelah kategori diklik -->
-          </div>
-          
             <div class="container text-center"> <!-- container -->
               <div class="row"> <!--row -->
               @foreach ($produks as $data)
                 <div class="col-3"> <!-- col -->
                   <div class="card" style="width: 100%;"  > <!-- card -->
-                    <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
-                    <div class="card-body"> <!-- card body -->
-                      <h5 class="card-title">{{$data->nama}}</h5>
-                      <h5 class="card-title">Rp{{$data->harga}}</h5>
-                      <button type="button" class="btn-text btn btn-success">Beli Sekarang</button>
-                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
+                    <div class="row"> 
+                      <div class="col-5">
+                      <img src="{{ asset('/storage/produks/'.$data->image) }}" class="rounded-circle mb-2" width="80px" alt="">
+                      </div>
+                      <div class="col-7 mb-5 items-center">
+                      <div class="card-body"> <!-- card body -->
+                        <div class="card-title mb-1">{{$data->nama}}</div>
+                      </div>
+                      <div class="row">
+                      <div class="col-8 mb-1">
+                        <div class="card-harga mb-1">Rp{{$data->harga}}</div>
+                      </div>
+                      <div class="col-4">
+                        <button type="button" class="tmbl btn btn-icon tambahkeranjang" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
+                          <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                        </button> 
+                      </div>
+                      </div>
+                    </div>
                     </div> <!-- card body -->
                   </div> <!-- card -->
                 </div> <!-- col -->
                 @endforeach
               </div> <!-- row -->
             </div> <!-- container -->
+          </div>
             
           </div> <!-- card wrapper -->
         </div> <!-- card container -->
@@ -127,7 +133,7 @@
     </div>
     <div class="border-t border-gray-250 mb-3"></div>
     <div class="flex justify-between mb-3">
-        <div class="total">0</div>
+        <div class="total" id="totalItems">0</div>
     </div>
     <button id="btnTransaksi" class="proses">Proses Transaksi</button>
   </aside>
@@ -168,6 +174,8 @@
           $('.total').text('Rp ' + formatNumber(total));
         }
 
+        
+
         $(".tmbl").click(function(){
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
           var product = {
@@ -189,6 +197,177 @@
           displayCart();
           hitungTotal();
         });
+
+        $(document).ready(function () {
+  // Event listener untuk tombol tambah ke keranjang
+  $(".tambahkeranjang").click(function () {
+    const itemId = $(this).data("id");
+    const itemNama = $(this).data("nama");
+    const itemHarga = $(this).data("harga");
+    const itemImage = $(this).data("image");
+
+    // Ambil data keranjang dari LocalStorage atau buat array baru
+    let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+    // Cek apakah item sudah ada di keranjang
+    const existingItem = keranjang.find(item => item.id === itemId);
+
+    if (existingItem) {
+      // Jika sudah ada, tambahkan quantity
+      existingItem.quantity += 0;
+    } else {
+      // Jika belum ada, tambahkan item baru
+      keranjang.push({
+        id: itemId,
+        nama: itemNama,
+        harga: itemHarga,
+        image: itemImage,
+        quantity: 1
+      });
+    }
+
+    // Simpan kembali keranjang ke LocalStorage
+    localStorage.setItem("keranjang", JSON.stringify(keranjang));
+
+    // Perbarui badge jumlah item di header
+    updateCartBadge();
+
+  });
+
+  // Memanggil fungsi untuk menampilkan keranjang
+  showCart();
+});
+
+// Fungsi untuk memperbarui badge jumlah item di keranjang
+function updateCartBadge() {
+  const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+  const itemCount = keranjang.reduce((total, item) => total + item.quantity, 0);
+  $("#cartItemCount").text(itemCount); // Update jumlah item di badge
+}
+
+// Fungsi untuk menampilkan isi keranjang
+function showCart() {
+  const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+  let cartHTML = "";
+
+  if (keranjang.length === 0) {
+    cartHTML = "<p>Keranjang kosong!</p>";
+  } else {
+    cartHTML += '<ul class="list-group">';
+    keranjang.forEach((item, index) => {
+      cartHTML += `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <img src="${item.image}" alt="${item.nama}" width="50" height="50">
+          <div>
+            <strong>${item.nama}</strong><br>
+            Harga: Rp ${item.harga.toLocaleString()}<br>
+            Quantity: <button class="btn btn-sm btn-info decreaseQuantity" data-index="${index}">-</button> ${item.quantity} <button class="btn btn-sm btn-info increaseQuantity" data-index="${index}">+</button>
+          </div>
+          <button class="btn btn-danger btn-sm removeItem" data-index="${index}">Hapus</button>
+        </li>
+      `;
+    });
+    cartHTML += "</ul>";
+  }
+
+  // Tampilkan isi keranjang di modal atau sidebar
+  $("#cartContent").html(cartHTML);
+}
+
+// Event untuk mengurangi quantity item
+$(document).on("click", ".decreaseQuantity", function () {
+  const index = $(this).data("index");
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  if (keranjang[index].quantity > 1) {
+    keranjang[index].quantity -= 1;  // Kurangi quantity jika lebih dari 1
+  } else {
+    // Jika quantity sudah 1, bisa dihapus
+    keranjang.splice(index, 1);
+  }
+
+  // Update LocalStorage dan tampilan keranjang
+  localStorage.setItem("keranjang", JSON.stringify(keranjang));
+  showCart();
+  updateCartBadge(); // Perbarui badge jumlah item
+});
+
+// Event untuk menambah quantity item
+$(document).on("click", ".increaseQuantity", function () {
+  const index = $(this).data("index");
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  keranjang[index].quantity += 1;  // Tambah quantity
+
+  // Update LocalStorage dan tampilan keranjang
+  localStorage.setItem("keranjang", JSON.stringify(keranjang));
+  showCart();
+  updateCartBadge(); // Perbarui badge jumlah item
+});
+
+// Event untuk menghapus item dari keranjang
+$(document).on("click", ".removeItem", function () {
+  const index = $(this).data("index");
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  // Hapus item berdasarkan index
+  keranjang.splice(index, 1);
+
+  // Update LocalStorage dan tampilan keranjang
+  localStorage.setItem("keranjang", JSON.stringify(keranjang));
+  showCart();
+  updateCartBadge(); // Perbarui badge jumlah item
+});
+
+
+$(document).ready(function () {
+  // Event listener untuk tombol kurang quantity
+  $(document).on("click", ".decrease", function () {
+    const itemId = $(this).data("id");
+
+    // Ambil keranjang dari LocalStorage
+    let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+    // Cari item berdasarkan ID
+    const itemIndex = keranjang.findIndex(item => item.id === itemId);
+
+    if (itemIndex !== -1) {
+      if (keranjang[itemIndex].quantity > 1) {
+        keranjang[itemIndex].quantity -= 1;
+      } else {
+        keranjang.splice(itemIndex, 1);
+      }
+    }
+
+    // Simpan kembali keranjang ke LocalStorage
+    localStorage.setItem("keranjang", JSON.stringify(keranjang));
+
+    // Perbarui tampilan keranjang
+    updateCartDisplay();
+  });
+
+  // Fungsi untuk memperbarui tampilan keranjang
+  function updateCartDisplay() {
+    const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+    // Perbarui jumlah total di badge
+    const totalQuantity = keranjang.reduce((total, item) => total + item.quantity, 0);
+    $("#cartItemCount").text(totalQuantity);
+
+    // Perbarui tampilan keranjang
+    $(".quantity").each(function () {
+      const itemId = $(this).data("id");
+      const item = keranjang.find(item => item.id === itemId);
+
+      if (item) {
+        $(this).text(item.quantity);
+      }
+    });
+  }
+
+  // Panggil updateCartDisplay saat halaman dimuat untuk menampilkan jumlah yang benar
+  updateCartDisplay();
+});
 
         function displayCart() {
           var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
@@ -393,22 +572,68 @@
       });
 
 
-        $(document).ready(function() {
-        $('#searchForm').on('submit', function(e) {
-            e.preventDefault(); // Mencegah form dari pengiriman biasa
+      $(document).ready(function() {
+        // Ketika pengguna mengetik di input pencarian
+        $('#admin-search-input').on('input', function(e) {
+          var query = $(this).val(); // Ambil nilai input pencarian
 
-            var query = $('#searchQuery').val();
+          // Jika input kosong, kosongkan tampilan hasil pencarian
+          if (query.length < 1) {
+            $('#produk-list').html(''); // Kosongkan daftar produk
+            return;
+          }
 
-            $.ajax({
-                url: '{{ route("admin.admin") }}',
-                method: 'GET',
-                data: { query: query },
-                success: function(data) {
-                    $('#searchResults').html(data);
-                }
-            });
+          // Kirimkan permintaan AJAX ke server untuk pencarian
+          $.ajax({
+            url: "{{ route('admin.produks.search') }}", // Ganti dengan rute pencarian
+            type: 'GET',
+            data: { query: query }, // Kirimkan query pencarian
+            success: function(response) {
+              var html = '';
+              if (response.length > 0) {
+                // Loop dan tampilkan produk yang sesuai dengan pencarian
+                response.forEach(function(produk) {
+                  html += `
+                    <div class="col-3">
+                      <div class="card" style="width: 100%;">
+                      <div class="row">
+                        <div class="col-5">
+                        <img src="{{ asset('/storage/produks/${produk.image}') }}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px" alt="">
+                        </div>
+                        <div class="col-7 mb-5 items-center">
+                        <div class="card-body">
+                          <h5 class="card-title mb-1">${produk.nama}</h5>
+                        </div>
+                        <div class="row">
+                        <div class="col-8 mb-1">
+                          <p class="card-harga mb-1">Rp${produk.harga}</p>
+                        </div>
+                        <div class="col-4">
+                          <button type="button" class="tmbl btn btn-icon tambahkeranjang" data-id="${produk.id}" data-nama="${produk.nama}" data-harga="${produk.harga}" data-image="{{ asset('/storage/produks/${produk.image}') }}">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  `;
+                });
+              } else {
+                // Jika tidak ada hasil pencarian
+                html = '<p>Tidak ada produk yang ditemukan.</p>';
+              }
+
+              // Update tampilan dengan hasil pencarian
+              $('#produk-list').html(html);
+            },
+            error: function() {
+              alert('Terjadi kesalahan saat melakukan pencarian.');
+            }
+          });
         });
-    });
+      });
     </script>
 
 

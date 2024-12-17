@@ -35,13 +35,6 @@
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <label for="validationCustom05">Stok</label>
-            <input type="text" class="form-control" name="stok" value="{{ old('stok', $produks->stok) }}" placeholder="Masukkan jumlah stok" required>
-            <div class="invalid-feedback">
-              Please provide a valid stok.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
             <label for="inputState">Kategori</label>
             <select class="form-control" name="kategori" value="{{ old('kategori', $produks->kategori) }}">
               <option selected>Pilih Kategori</option>

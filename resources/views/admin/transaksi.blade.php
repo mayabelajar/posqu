@@ -75,9 +75,15 @@
         <tbody>
           @foreach ($listPesanan as $pesanan)
           <tr>
+<<<<<<< HEAD
+            <td class="p-2">{{ $pesanan->produks_id}}</td>
+            <td class="p-2">{{ $pesanan->qty }}x</td>
+            <td class="p-2">Rp {{ $pesanan->total }}</td>
+=======
             <td class="p-2">{{ $pesanan->produk->nama ?? 'Produk Tidak Ditemukan' }}</td>
             <td class="p-2">{{ $pesanan->qty }}</td>
             <td class="p-2">{{ number_format($pesanan->total, 0, ',', '.') }}</td>
+>>>>>>> 605fb1d2708e15d74cc36dd088436f411f006bb5
           </tr>
           @endforeach
         </tbody>

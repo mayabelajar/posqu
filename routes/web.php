@@ -48,7 +48,6 @@ Route::post('/prosesData', [PemesananController::class, 'prosesData']);
 Route::get('/transaksi', [ListPesananController::class, 'index'])->name('transaksi.index');
 
 Route::get('/meja', [AdminController::class, 'meja']);
-Route::get('/search', [AdminController::class, 'search'])->name('admin.search');
 Route::get('/diskon', [ModalController::class, 'diskon']);
 Route::get('/nota', [ModalController::class, 'nota']);
 Route::get('/harian', [PemesananController::class, 'harian'])->name('harian');
@@ -61,6 +60,8 @@ Route::get('/admin/search', [AdminController::class, 'searchProduk'])->name('adm
 Route::get('/admin/get-produk', [AdminController::class, 'getProdukByKategori'])->name('admin.get-produk');
 Route::post('/index', [PemesananController::class, 'index'])->name('pemesanan.index');
 Route::get('/pemesanan', [PemesananController::class, 'index']);
+Route::get('/admin/search', [ProdukController::class, 'search'])->name('admin.produks.search');
+Route::get('/admin', [AdminController::class, 'admin'])->name('admin.admin');
 // Route::get('/admin', [PemesananController::class, 'index']);
 
 

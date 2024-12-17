@@ -20,10 +20,7 @@ class PemesananController extends Controller
             'kembalian' => 'required|numeric',
         ]);
 
-        $keranjang = $request->input('keranjang', []); // Ambil data keranjang dari request
-        if (empty($keranjang)) {
-            return response()->json(['message' => 'Keranjang kosong. Tidak ada data untuk diproses.'], 400);
-        }
+        $keranjang = session('keranjang', []); // Ambil data keranjang dari request
 
         $jumlah = 0;
         $harga = 0;

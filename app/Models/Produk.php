@@ -14,7 +14,6 @@ class Produk extends Model
         'image',
         'nama',
         'kategori',
-        'stok',
         'harga',
         'list_pesanans_id',
     ];

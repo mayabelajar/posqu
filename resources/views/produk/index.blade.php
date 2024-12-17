@@ -4,7 +4,7 @@
 <form action="{{ route('produks.store') }}" method="GET" enctype="multipart/form-data">
     <title>Daftar Produk</title>
     <div class="container">
-        <div class="card">
+        <div class="card-produk">
             <h2>List Product</h2>
             <!-- <div class="row mt-3">
               <div class="col-sm">
@@ -44,7 +44,6 @@
                             <th>Nama</th>
                             <th>Kategori</th>
                             <th>Harga</th>
-                            <th>Stok</th>
                             <th>Tanggal ditambahkan</th>
                             <th>Aksi</th>
                         </tr>
@@ -56,7 +55,6 @@
                         <td>{{$data->nama}}</td>
                         <td>{{$data->kategori}}</td>
                         <td>{{$data->harga}}</td>
-                        <td>{{$data->stok}}</td>
                         <td>{{$data->created_at}}</td>
                         <td>
                           <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('produks.destroy', $data->id) }}" method="POST">

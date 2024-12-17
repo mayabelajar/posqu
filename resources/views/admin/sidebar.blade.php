@@ -33,12 +33,12 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex item-center">
-        <div class="image border:none">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex align-item-center">
+        <div class="image">
           <img src="{{ asset('/lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info border:none">
-          <a href="#" class="d-block border:none">Admin</a>
+        <div class="info">
+          <a href="#" class="d-block border:none"><strong>Admin</strong></a>
         </div>
       </div>
 

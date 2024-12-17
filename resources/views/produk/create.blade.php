@@ -23,7 +23,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-row mt-2">
+            <div class="form-row mt-3">
               <div class="col-md-6 mb-3">
                 <label for="validationCustom01">Harga</label>
                 <label class="sr-only" for="inlineFormInputGroup">Harga</label>
@@ -37,14 +37,7 @@
                   </div>
                 </div>
               </div>
-    <div class="col-md-3 mb-3">
-    <label for="validationCustom05">Stok</label>
-      <input type="text" class="form-control" name="stok" placeholder="Masukkan jumlah stok" required>
-      <div class="valid-feedback">
-        Kerja bagus!
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-6 mb-3">
     <label for="inputState">Kategori</label>
       <select class="form-control" name="kategori">
         <option selected>Pilih Kategori</option>
