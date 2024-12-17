@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 @extends('admin.sidebar')
 
 @section('content')
@@ -7,15 +9,10 @@
       <div class="flex items-center justify-between p-4 bg-white shadow">
         <div class="flex items-center">
           <i class="fa fa-search text-gray-500"></i>
-          <input class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text">
+          <input id="filterInput" class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text">
         </div>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Sen, 04 November 2024</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Min, 03 November 2024</a>
-              <a class="dropdown-item" href="#">Sab, 02 November 2024</a>
-            </div>
-          </li>
+        <div class="flex items-center">
+          <input id="tanggal-picker" class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Pilih Tanggal" type="text">
         </div>
       </div>
     </div>
@@ -25,8 +22,10 @@
       <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
         <div class="overflow-auto">
           @foreach ($groupedPesanan as $pemesananId => $pesanans)
-            <div class="flex items-center mb-4">
-              <img alt="QRIS icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
+            <div class="flex items-center mb-4 pesanan-row"
+              data-order-id="{{ $pemesananId }}"
+              data-product-name="{{ strtolower(implode(' ', $pesanans->pluck('produk.nama')->toArray())) }}">
+              <img alt="uang icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
               <div class="ml-4">
                 <div>{{ $pemesananId }}</div>
                 <div>
@@ -90,29 +89,59 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-  const data = [
-    {id:01, metode:"semuametode"},
-    {id:02, metode:"cash"},
-    {id:03, metode:"qris"},
-  ];
+  document.addEventListener("DOMContentLoaded", function () {
+    flatpickr("#tanggal-picker", {
+      dateFormat: "Y-m-d",
+      defaultDate: "{{ $selectedDate ?? now()->format('Y-m-d') }}",
+      onChange: function (selectedDates, dateStr) {
+        window.location.href = `/transaksi?date=${dateStr}`;
+      }
+    });
+  });
 
-  const dataList = document.getElementById('dataList');
   const filterInput = document.getElementById('filterInput');
 
-  function filterData() {
-    const searchTerm = filterInput.value.toLowerCase();
-    const filteredData = data.filter(person => person.name.toLowerCase().includes(searchTerm));
+  filterInput.addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+
+    const pesananRows = document.querySelectorAll('.pesanan-row');
+
+    pesananRows.forEach(function(row) {
+      const orderId = row.getAttribute('data-order-id').toLowerCase();
+      const productNames = row.getAttribute('data-product-name').toLowerCase();
+
+      if (orderId.includes(searchTerm) || productNames.includes(searchTerm)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+
+  // const data = [
+  //   {id:01, metode:"semuametode"},
+  //   {id:02, metode:"cash"},
+  //   {id:03, metode:"qris"},
+  // ];
+
+  // const dataList = document.getElementById('dataList');
+  // const filterInput = document.getElementById('filterInput');
+
+  // function filterData() {
+  //   const searchTerm = filterInput.value.toLowerCase();
+  //   const filteredData = data.filter(person => person.name.toLowerCase().includes(searchTerm));
 
     // Kosongkan daftar sebelum diisi ulang
-    dataList.innerHTML = '';
+    // dataList.innerHTML = '';
 
     // Tambahkan data yang terfilter ke dalam daftar
-    filteredData.forEach(person => {
-      const li = document.createElement('li');
-      li.textContent = person.name;
-      dataList.appendChild(li);
-    });
-  }
+  //   filteredData.forEach(person => {
+  //     const li = document.createElement('li');
+  //     li.textContent = person.name;
+  //     dataList.appendChild(li);
+  //   });
+  // }
 </script>
 @endsection
