@@ -133,7 +133,7 @@ class ProdukController extends Controller
         
         // Cari produk berdasarkan nama
         $produks = Produk::where('nama', 'like', '%' . $query . '%')->get();
-        
+
         return response()->json($produks);
     }
 }

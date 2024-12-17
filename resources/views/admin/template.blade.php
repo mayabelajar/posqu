@@ -633,6 +633,29 @@ $(document).ready(function () {
             }
           });
         });
+
+        $('#produk-list').on('click', '.tambahkeranjang', function() {
+          var id = $(this).data('id');
+          var nama = $(this).data('nama');
+          var harga = $(this).data('harga');
+          var image = $(this).data('image');
+
+
+          // Logika untuk menambahkan ke keranjang (misalnya menggunakan AJAX atau session)
+          console.log('Menambahkan produk ke keranjang:', id, nama, harga, image);
+
+            // Ambil keranjang yang sudah ada dari localStorage
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Tambahkan produk baru ke keranjang
+            cart.push({ id, nama, harga, image });
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+
+          // Anda bisa menambahkan logika untuk menambahkan ke keranjang di sini
+        });
       });
     </script>
 
