@@ -60,18 +60,11 @@
           <form class="form-inline mx-auto" id="searchForm">
             <div class="input-group w-500">
               <input type="text" id="admin-search-input" class="form-control" placeholder="Search" aria-label="Search">
-              <div id="admin-search-result" class="mt-3">
-                <button class="btn btn-navbar" id="addItemButton" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </div>
             </div>
           </form>
 
           <div id="produk-list" class="row mt-4">
             <!-- Produk akan dimuat di sini setelah kategori diklik -->
-          </div>
-          
             <div class="container text-center"> <!-- container -->
               <div class="row"> <!--row -->
               @foreach ($produks as $data)
@@ -102,6 +95,7 @@
                 @endforeach
               </div> <!-- row -->
             </div> <!-- container -->
+          </div>
             
           </div> <!-- card wrapper -->
         </div> <!-- card container -->
@@ -578,22 +572,68 @@ $(document).ready(function () {
       });
 
 
-        $(document).ready(function() {
-        $('#searchForm').on('submit', function(e) {
-            e.preventDefault(); // Mencegah form dari pengiriman biasa
+      $(document).ready(function() {
+        // Ketika pengguna mengetik di input pencarian
+        $('#admin-search-input').on('input', function(e) {
+          var query = $(this).val(); // Ambil nilai input pencarian
 
-            var query = $('#searchQuery').val();
+          // Jika input kosong, kosongkan tampilan hasil pencarian
+          if (query.length < 1) {
+            $('#produk-list').html(''); // Kosongkan daftar produk
+            return;
+          }
 
-            $.ajax({
-                url: '{{ route("admin.admin") }}',
-                method: 'GET',
-                data: { query: query },
-                success: function(data) {
-                    $('#searchResults').html(data);
-                }
-            });
+          // Kirimkan permintaan AJAX ke server untuk pencarian
+          $.ajax({
+            url: "{{ route('admin.produks.search') }}", // Ganti dengan rute pencarian
+            type: 'GET',
+            data: { query: query }, // Kirimkan query pencarian
+            success: function(response) {
+              var html = '';
+              if (response.length > 0) {
+                // Loop dan tampilkan produk yang sesuai dengan pencarian
+                response.forEach(function(produk) {
+                  html += `
+                    <div class="col-3">
+                      <div class="card" style="width: 100%;">
+                      <div class="row">
+                        <div class="col-5">
+                        <img src="{{ asset('/storage/produks/${produk.image}') }}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px" alt="">
+                        </div>
+                        <div class="col-7 mb-5 items-center">
+                        <div class="card-body">
+                          <h5 class="card-title mb-1">${produk.nama}</h5>
+                        </div>
+                        <div class="row">
+                        <div class="col-8 mb-1">
+                          <p class="card-harga mb-1">Rp${produk.harga}</p>
+                        </div>
+                        <div class="col-4">
+                          <button type="button" class="tmbl btn btn-icon tambahkeranjang" data-id="${produk.id}" data-nama="${produk.nama}" data-harga="${produk.harga}" data-image="{{ asset('/storage/produks/${produk.image}') }}">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  `;
+                });
+              } else {
+                // Jika tidak ada hasil pencarian
+                html = '<p>Tidak ada produk yang ditemukan.</p>';
+              }
+
+              // Update tampilan dengan hasil pencarian
+              $('#produk-list').html(html);
+            },
+            error: function() {
+              alert('Terjadi kesalahan saat melakukan pencarian.');
+            }
+          });
         });
-    });
+      });
     </script>
 
 

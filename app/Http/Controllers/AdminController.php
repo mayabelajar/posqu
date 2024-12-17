@@ -91,19 +91,7 @@ class AdminController extends Controller
             return response()->json(['message' => 'Terjadi kesalahan saat menyimpan data.', 'error' => $e->getMessage()], 500);
         }
     }
-
-    public function searchProduk(Request $request)
-    {
-        $keyword = $request->get('query'); // Ambil kata kunci dari request
-
-        // Ambil data dari model Produk
-        $produks = Produk::where('nama', 'LIKE', "%{$keyword}%") // Filter nama produk
-                          ->orWhere('deskripsi', 'LIKE', "%{$keyword}%") // Filter deskripsi
-                          ->get();
-
-        // Kembalikan data sebagai JSON
-        return response()->json($produks);
-    }
+    
 
     public function getProdukByKategori(Request $request)
     {
