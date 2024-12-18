@@ -12,7 +12,7 @@
           <input id="filterInput" class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text">
         </div>
         <div class="flex items-center">
-          <input id="tanggal-picker" class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Pilih Tanggal" type="text">
+          <input id="tanggal-picker" class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Pilih Tanggal" type="date">
         </div>
       </div>
     </div>
@@ -38,28 +38,12 @@
               <div class="ml-auto">{{ $pesanans->first()->pemesanan->created_at ?? '-' }}</div>
             </div>
             @endforeach
-          <div class="flex justify-between items-center mt-4">
-            <span>1 - 1 dari 10 data</span>
-            <nav aria-label="...">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+            <div class="flex justify-between items-center mt-4">
+              <span>{{ $paginatedPesananIds->firstItem() }} - {{ $paginatedPesananIds->lastItem() }} dari {{ $totalPesananIds }} data</span>
+              <nav aria-label="Pagination">
+                  {{ $paginatedPesananIds->appends(['date' => $selectedDate])->links() }}
+              </nav>
+          </div>       
         </div>
       </div>
     </div>

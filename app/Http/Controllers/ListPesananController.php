@@ -12,11 +12,24 @@ class ListPesananController extends Controller
     {
         $selectedDate = $request->query('date', now()->format('Y-m-d'));
 
-        // Filter pemesanan berdasarkan tanggal
+        $paginatedPesananIds = ListPesanan::whereHas('pemesanan', function ($query) use ($selectedDate) {
+            $query->whereDate('created_at', $selectedDate);
+        })
+        ->select('pemesanans_id')
+        ->distinct()
+        ->paginate(10); 
+
         $groupedPesanan = ListPesanan::with(['pemesanan', 'produk'])
-            ->whereDate('created_at', $selectedDate)
+            ->whereIn('pemesanans_id', $paginatedPesananIds->pluck('pemesanans_id'))  // Ambil data berdasarkan ID Pemesanan yang dipilih
             ->get()
-            ->groupBy('pemesanans_id');
+            ->groupBy('pemesanans_id');  
+
+        $totalPesananIds = ListPesanan::whereHas('pemesanan', function ($query) use ($selectedDate) {
+            $query->whereDate('created_at', $selectedDate);
+        })
+        ->select('pemesanans_id')
+        ->distinct()
+        ->count(); 
 
         $listPesanan = ListPesanan::with('produk')
             ->whereHas('pemesanan', function ($query) use ($selectedDate) {
@@ -24,6 +37,6 @@ class ListPesananController extends Controller
             })
             ->get();
 
-        return view('admin.transaksi', compact('groupedPesanan', 'listPesanan', 'selectedDate'));
+        return view('admin.transaksi', compact('groupedPesanan', 'listPesanan', 'selectedDate', 'paginatedPesananIds', 'totalPesananIds'));
     }
 }
