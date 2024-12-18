@@ -62,6 +62,7 @@ Route::post('/index', [PemesananController::class, 'index'])->name('pemesanan.in
 Route::get('/pemesanan', [PemesananController::class, 'index']);
 Route::get('/admin/search', [ProdukController::class, 'search'])->name('admin.produks.search');
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin.admin');
+Route::get('/admin/produk-by-kategori', [AdminController::class, 'getProdukByKategori']);
 // Route::get('/admin', [PemesananController::class, 'index']);
 
 

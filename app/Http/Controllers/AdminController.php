@@ -26,6 +26,10 @@ class AdminController extends Controller
         $query = $request->input('query');
         $kategori = $request->input('kategori');
 
+        $counts = Produk::select('kategori', \DB::raw('COUNT(*) as count'))
+            ->groupBy('kategori')
+            ->pluck('count', 'kategori');
+        
         // Membangun query dasar
         $produks = Produk::query();
 
@@ -54,7 +58,7 @@ class AdminController extends Controller
         $list_pesanans = ListPesanan::all();
 
         // Kembalikan tampilan utama
-        return view('admin.template', compact('produks', 'kategori', 'list_pesanans', 'query'));
+        return view('admin.template', compact('produks', 'kategori', 'list_pesanans', 'query', 'counts'));
     }
     
     public function transaksi() {
@@ -102,17 +106,18 @@ class AdminController extends Controller
         }
     
         try {
-            // Ambil data dari API
-            $response = Http::get(route('produks.index'), ['kategori' => $kategori]);
-    
-            if ($response->successful()) {
-                return response()->json($response->json());
-            }
-    
-            return response()->json(['error' => 'Gagal mengambil data dari API'], $response->status());
+            $produks = Produk::where('kategori', $kategori)->get();
+
+            $html = view('admin.partials.produk-list', compact('produks'))->render();
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $html
+            ]);
         } catch (\Exception $e) {
             \Log::error('Error: ' . $e->getMessage());
             return response()->json(['error' => 'Terjadi kesalahan internal'], 500);
         }
+
     }
 }

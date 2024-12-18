@@ -12,35 +12,35 @@
       <div class="card--wrapper"> <!-- card wrapper -->
         <div class="container text-center"> <!-- container -->
           <div class="row" id="kategori-container"><!-- row -->
-            <div data-kt="kategori" class="ktgr col-4" data-kategori="Makanan"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4" data-kategori="Makanan" onclick="getProdukByKategori('Makanan')"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
-                  <img class="ikon" src="{{ asset('/lte/dist/img/makanan.png') }}" alt="Icon">
+                    <img class="ikon" src="{{ asset('/lte/dist/img/makanan.png') }}" alt="Icon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Makanan</span>
-                    <span class="amount--value">25</span>
+                    <span class="amount--value">{{ $counts['Makanan'] ?? 0 }}</span>
                   </div> <!-- tutup amount -->
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
             </div> <!-- tutup  col -->
-            <div data-kt="kategori" class="ktgr col-4" data-kategori="Minuman"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4" data-kategori="Minuman" onclick="getProdukByKategori('Minuman')"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/minuman.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Minuman</span>
-                    <span class="amount--value">24</span>
+                    <span class="amount--value">{{ $counts['Minuman'] ?? 0 }}</span>
                   </div> <!-- tutup amount -->
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
             </div> <!-- tutup col -->
-            <div data-kt="kategori" class="ktgr col-4" data-kategori="Camilan"> <!-- col -->
+            <div data-kt="kategori" class="ktgr col-4" data-kategori="Camilan" onclick="getProdukByKategori('Camilan')"> <!-- col -->
               <div class="categories"> <!-- categories -->
                 <div class="card--header"> <!-- card header -->
                   <img src="{{ asset('/lte/dist/img/camilan.png') }}" class="ikon">
                   <div class="amount"> <!-- amount -->
                     <span class="title">Camilan</span>
-                    <span class="amount--value">6</span>
+                    <span class="amount--value">{{ $counts['Camilan'] ?? 0 }}</span>
                   </div> <!-- tutup amount -->
                 </div> <!-- tutup card header -->
               </div> <!-- tutup categories -->
@@ -54,7 +54,7 @@
     <!-- Hidangan Populer -->
     <!-- <div class="main--content"> main content -->
       <div class="card--container shadow mt-4"> <!-- card container -->
-        <h3 class="main--title">Hidangan Populer</h3>
+        <h3 id="main-title" class="main--title">Semua Menu</h3>
           <div class="card--wrapper"> <!-- card wrapper -->
             <!-- SEARCH FORM -->
           <form class="form-inline mx-auto" id="searchForm">
@@ -544,36 +544,61 @@ $(document).ready(function () {
       });
       });
 
-      document.querySelectorAll('[data-kt="kategori"]').forEach(element => {
-        element.addEventListener('click', () => {
-          const kategori = element.getAttribute('data-kategori'); // Ambil kategori
-          const produkList = document.getElementById('produk-list'); // Tempat menampilkan produk
+      function getProdukByKategori(kategori) {
+        const mainTitle = document.getElementById('main-title');
+        if (kategori) {
+          mainTitle.textContent = `${kategori}`;
+        } else {
+          mainTitle.textContent = `Semua Menu`;
+        }
 
-          // Tampilkan loading
-          produkList.innerHTML = '<p>Loading...</p>';
+        $.ajax({
+          url: '/admin/produk-by-kategori',
+          method: 'GET',
+          data: { kategori: kategori },
+          success: function(response) {
+            if (response.status === 'success') {
+              $('#produk-list').html(response.data);
+            } else {
+              alert('Gagal mengambil data produk');
+            }
+          },
+          error: function() {
+            alert('Terjadi kesalahan saat memuat produk');
+          }
+        });
+      }
 
-          // Lakukan permintaan ke server
-          fetch(`/admin/get-produk?kategori=${kategori}`)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then(data => {
-              console.log('Data:', data);
-              if (Array.isArray(data)) {
-                // Render data
-              } else {
-                document.getElementById('produk-list').innerHTML = '<p>Tidak ada data.</p>';
-              }
-            })
-            .catch(error => {
-              console.error('Kesalahan:', error);
-              document.getElementById('produk-list').innerHTML = '<p>Terjadi kesalahan saat mengambil data.</p>';
-            });
-          });
-      });
+      // document.querySelectorAll('[data-kt="kategori"]').forEach(element => {
+      //   element.addEventListener('click', () => {
+      //     const kategori = element.getAttribute('data-kategori'); // Ambil kategori
+      //     const produkList = document.getElementById('produk-list'); // Tempat menampilkan produk
+
+      //     // Tampilkan loading
+      //     produkList.innerHTML = '<p>Loading...</p>';
+
+      //     // Lakukan permintaan ke server
+      //     fetch(`/admin/get-produk?kategori=${kategori}`)
+      //       .then(response => {
+      //         if (!response.ok) {
+      //           throw new Error(`HTTP error! status: ${response.status}`);
+      //         }
+      //         return response.json();
+      //       })
+      //       .then(data => {
+      //         console.log('Data:', data);
+      //         if (Array.isArray(data)) {
+      //           // Render data
+      //         } else {
+      //           document.getElementById('produk-list').innerHTML = '<p>Tidak ada data.</p>';
+      //         }
+      //       })
+      //       .catch(error => {
+      //         console.error('Kesalahan:', error);
+      //         document.getElementById('produk-list').innerHTML = '<p>Terjadi kesalahan saat mengambil data.</p>';
+      //       });
+      //     });
+      // });
 
 
       $(document).ready(function() {
@@ -676,134 +701,4 @@ $(document).ready(function () {
         }
       });
     </script>
-
-
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-        <div class="flex items-center justify-center">
-                    <div class="bg-white rounded-lg p-6">
-                        <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-bold text-yellow-500">
-                        <i class="fa fa-tags mr-2">
-                        </i>
-                        Discount Pesanan
-                        </h2>
-                        <button class="text-yellow-500">
-                        </button>
-                        </div>
-                        <div class="mb-4">
-                        <label class="block text-gray-700 mb-2">
-                        Masukkan jumlah diskon
-                        </label>
-                        <div class="flex items-center">
-                        <input class="w-full p-2 border rounded-l" placeholder="0" type="text"/>
-                        <span class="bg-gray-200 p-2 border rounded-r">
-                        %
-                        </span>
-                        </div>
-                        </div>
-                        <div class="mb-4">
-                        <label class="block text-gray-700 mb-2">
-                        Masukkan kode voucher
-                        </label>
-                        <input class="w-full p-2 border rounded" placeholder="Kode Voucher" type="text"/>
-                        </div>
-                        <button class="bg-green-500 text-white px-4 py-2 rounded w-full">
-                        Pakai Diskon
-                        </button>
-                    </div>
-                    </div>
-                </div>
-        </div>
-        </div>
-    </div>
-    </div> -->
-    <!-- <script src="ini.js"></script> 
-    <script>
-    let produks = [
-    {
-        id: 1,
-        name: "Mie Aceh",
-        gambar: "miaceh.JPEG",
-        price: 15000
-    },
-    {
-        id: 2,
-        name: "Es Dawet",
-        images: "esdawet.JPEG",
-        price: 8000
-    },
-    {
-        id: 3,
-        name: "Rendang",
-        images: "rendang.JPEG",
-        price: 25000
-    },
-    {
-        id: 4,
-        name: "Rujak Cingur",
-        images: "rujakcingur.JPEG",
-        price: 12000
-    },
-    {
-        id: 5,
-        name: "Papeda",
-        images: "papeda.JPEG",
-        price: 25000
-    },
-    {
-        id: 6,
-        name: "Lumpia",
-        images: "lumpia.JPEG",
-        price: 10000
-    },
-    {
-        id: 7,
-        name: "Ayam Betutu",
-        images: "ayambetutu.JPEG",
-        price: 20000
-    },
-    {
-        id: 8,
-        name: "Wedang Uwuh",
-        images: "wedanguwuh.JPEG",
-        price: 10000
-    },
-    ]      
-
-    function loadProduks(){
-      produk.foreach(d => {
-        $('#tambahkeranjang').append(`
-          <div class="container text-center">
-              <div class="row"> 
-              @foreach ($produks as $data)
-                <div class="col-3"> 
-                  <div class="card" style="width: 100%;"> 
-                    <img src="{{ asset('/storage/app/public/produks/'.$data->image) }}" class="rounded-circle mx-auto my-3" width="100px" alt="">
-                    <div class="card-body"> 
-                      <h5 class="card-title">{{$data->nama}}</h5>
-                      <p class="card-text">{{$data->deskripsi}}</p>
-                      <h5 class="card-title">Rp{{$data->harga}}</h5>
-                      <button type="button" id="tambahkeranjang" class="tmbl btn btn-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></button> 
-                    </div>
-                  </div> 
-                </div> 
-                @endforeach
-              </div> 
-            </div> 
-            
-        `)
-      })
-    }
-      
-    </script> -->
 @endsection
