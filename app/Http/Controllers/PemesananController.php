@@ -70,6 +70,7 @@ class PemesananController extends Controller
         $pendapatanHarian = Pemesanan::whereDate('created_at', today())->sum('total');
 
         $menuPalingLaku = ListPesanan::select('produks_id', DB::raw('SUM(qty) as total_qty'))
+            ->whereDate('created_at', today())
             ->groupBy('produks_id')
             ->orderByDesc('total_qty')
             ->take(5)

@@ -28,7 +28,7 @@
                     const data1= {
                         labels: {!! json_encode($menuPalingLaku->pluck('produk.nama')) !!},
                         datasets: [{
-                            label: 'Menu Paling Laku',
+                            label: 'Menu Paling Laku Hari Ini',
                             backgroundColor: ['#8979FF', '#FF928A', '#3CC3DF', '#FFAE4C', '#537FF1', '#6FD195'],
                             data: {!! json_encode($menuPalingLaku->pluck('total_qty')) !!},
                             hoverOffset: 4
