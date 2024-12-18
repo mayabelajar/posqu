@@ -37,8 +37,8 @@ class AdminController extends Controller
         // Filter berdasarkan query pencarian jika ada
         if ($query) {
             $produks->where(function($queryBuilder) use ($query) {
-                $queryBuilder->where('title', 'like', "%{$query}%")
-                            ->orWhere('content', 'like', "%{$query}%");
+                // Perbaiki filter pencarian ke kolom 'nama'
+                $queryBuilder->where('nama', 'like', "%{$query}%");
             });
         }
 

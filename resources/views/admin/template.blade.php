@@ -83,7 +83,11 @@
                         <div class="card-harga mb-1">Rp{{$data->harga}}</div>
                       </div>
                       <div class="col-4">
-                        <button type="button" class="tmbl btn btn-icon tambahkeranjang" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-harga="{{$data->harga}}" data-image="{{ asset('/storage/produks/'.$data->image) }}">
+                        <button type="button" class="tmbl btn btn-icon tambahkeranjang" 
+                          data-id="{{$data->id}}" 
+                          data-nama="{{$data->nama}}" 
+                          data-harga="{{$data->harga}}" 
+                          data-image="{{ asset('/storage/produks/'.$data->image) }}">
                           <i class="fa fa-cart-plus" aria-hidden="true"></i>
                         </button> 
                       </div>
@@ -598,7 +602,7 @@ $(document).ready(function () {
                       <div class="card" style="width: 100%;">
                       <div class="row">
                         <div class="col-5">
-                        <img src="{{ asset('/storage/produks/${produk.image}') }}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px" alt="">
+                        <img src="${produk.image}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px">
                         </div>
                         <div class="col-7 mb-5 items-center">
                         <div class="card-body">
@@ -609,7 +613,11 @@ $(document).ready(function () {
                           <p class="card-harga mb-1">Rp${produk.harga}</p>
                         </div>
                         <div class="col-4">
-                          <button type="button" class="tmbl btn btn-icon tambahkeranjang" data-id="${produk.id}" data-nama="${produk.nama}" data-harga="${produk.harga}" data-image="{{ asset('/storage/produks/${produk.image}') }}">
+                          <button type="button" class="tmbl btn btn-icon tambahkeranjang"
+                            data-id="${produk.id}"
+                            data-nama="${produk.nama}" 
+                            data-harga="${produk.harga}" 
+                            data-image="${produk.image}">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                           </button>
                         </div>
@@ -634,28 +642,38 @@ $(document).ready(function () {
           });
         });
 
-        $('#produk-list').on('click', '.tambahkeranjang', function() {
-          var id = $(this).data('id');
-          var nama = $(this).data('nama');
-          var harga = $(this).data('harga');
-          var image = $(this).data('image');
+        $(document).on('click', '.tambahkeranjang', function() {
+          var produkId = $(this).data('id');
+          var produkNama = $(this).data('nama');
+          var produkHarga = $(this).data('harga');
+          var produkImage = $(this).data('image');
 
+          console.log('Tombol klik: ', produkId, produkNama, produkHarga, produkImage);
 
-          // Logika untuk menambahkan ke keranjang (misalnya menggunakan AJAX atau session)
-          console.log('Menambahkan produk ke keranjang:', id, nama, harga, image);
+          tambahKeKeranjang(produkId, produkNama, produkHarga, produkImage);
 
             // Ambil keranjang yang sudah ada dari localStorage
             var cart = JSON.parse(localStorage.getItem('cart')) || [];
 
             // Tambahkan produk baru ke keranjang
-            cart.push({ id, nama, harga, image });
+            cart.push({
+              id: produkId,
+              nama: produkNama,
+              harga: produkHarga,
+              image: produkImage
+            });
 
             // Simpan kembali ke localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
 
+            console.log('Keranjang saat ini: ', cart)
 
           // Anda bisa menambahkan logika untuk menambahkan ke keranjang di sini
         });
+
+        function tambahKeranjang(id, nama, harga, image){
+          console.log(`Produk ${nama} berhasil ditambahkan ke keranjang!`);
+        }
       });
     </script>
 

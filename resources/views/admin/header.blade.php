@@ -8,13 +8,6 @@
 <script src="jquery-3.7.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-    <!-- SEARCH FORM -->
-    <form class="form-inline mx-auto" id="searchForm">
-      <div class="input-group w-500">
-        <input class="seacrh form-control form-control-navbar" id="searchInput" type="search" placeholder="Search" aria-label="Search">
-        <div id="searchResult"></div>
-      </div>
-    </form>
 
     <ul class="navbar-nav ml-auto">
       <li class="nav-item" id="cartButton">

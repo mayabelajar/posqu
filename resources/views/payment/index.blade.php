@@ -59,8 +59,6 @@
         <div class="modal-body">
           <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="bg-white p-8 rounded-lg text-center">
-              <i class="fa fa-check-circle"></i>
-              <div class="text-xl font-bold mb-2">1MK011510240001</div>
               <div class="flex justify-between mb-4">
                 <div>
                   <div class="text-gray-600">Total Pembayaran</div>

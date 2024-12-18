@@ -129,11 +129,15 @@ class ProdukController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
-        
-        // Cari produk berdasarkan nama
-        $produks = Produk::where('nama', 'like', '%' . $query . '%')->get();
-
-        return response()->json($produks);
+        $query = $request->get('query');
+        $produks = Produk::where('nama', 'LIKE', '%' . $query . '%')->get();
+    
+        // Menambahkan path gambar penuh
+        foreach ($produks as $produk) {
+            $produk->image = asset('storage/produks/' . $produk->image);  // Menggunakan asset URL lengkap
+        }
+    
+        return response()->json($produks);  // Mengembalikan data dalam format JSON
     }
+    
 }
