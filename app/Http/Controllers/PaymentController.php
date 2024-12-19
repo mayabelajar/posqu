@@ -82,4 +82,9 @@ class PaymentController extends Controller
             return response()->json(['message' => 'Terjadi kesalahan saat mengambil data.', 'error' => $e->getMessage()], 500); 
         }
     }
+
+    public function cetakStruk()
+    {
+        return view('payment.cetak-struk');
+    }
 }

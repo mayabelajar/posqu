@@ -1,13 +1,11 @@
-
 <html>
 <head>
   <script src="{{ asset('/lte/plugins/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('/lte/dist/js/adminlte.min.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <!-- <link rel="stylesheet" href="{{ asset('/lte/plugins/font-awesome/css/font-awesome.min.css') }}"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="{{ asset('/lte/dist/css/adminlte.min.css') }}">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="{{ asset('/ini.css') }}">
@@ -71,7 +69,7 @@
               </div>
               <div class="flex space-x-4">
                 <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
-                <button class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
+                <button type="button" class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
                 <button type="button" class="baru py-2 px-4"><i class="fa fa-plus"> </i>Baru</button>
               </div>
             </div>
@@ -140,6 +138,18 @@
       const totalUang = parseFloat($("#total-uang").val()) || 0;
       const kembalian = totalUang - subtotal;
 
+      // Simpan data transaksi ke sessionStorage
+      const keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      const total = $("#total-payment").val();
+      const bayar = $("#total-uang").val();
+
+      sessionStorage.setItem("cetakStruk", JSON.stringify({
+        keranjang: keranjang,
+        total: total,
+        bayar: bayar,
+        kembalian: kembalian
+      }));
+
       $("#kembalian-hidden").val(kembalian);
       $("#kembalian").text(formatNumber(kembalian));
     });
@@ -170,22 +180,126 @@
         },
         success: function(response) {
           console.log("Data berhasil disimpan:", response);
-          
-          // Bersihkan data keranjang dari localStorage
           localStorage.removeItem("keranjang");
-
-          // displayCart();
-          // hitungTotal();
-
-          alert("Transaksi berhasil disimpan!");
+          // alert("Transaksi berhasil disimpan!");
           window.location.href = response.redirect_url; 
-          console.log("Akan redirect ke:", response.redirect_url);
         },
         error: function(xhr, status, error) {
           console.error("Gagal menyimpan data:", status, error);
           alert("Terjadi kesalahan saat menyimpan data.");
         }
       });
+    });
+
+    $(".cetak").on("click", function () {
+      const data = JSON.parse(sessionStorage.getItem("cetakStruk"));
+
+      if (!data) {
+          alert("Tidak ada data untuk dicetak.");
+          return;
+      }
+
+      const now = new Date();
+      const tanggal = now.toLocaleDateString('id-ID'); // Format: dd/mm/yyyy
+      const waktu = now.toLocaleTimeString('id-ID'); 
+
+      let html = `
+      <div style="text-align: center; margin-bottom: 15px;">
+        <div style="font-weight: bold; font-size: 18px;">POSq</div>
+        <div>Address: 6010 Alpnach, Swiss</div>
+        <div>Tel: +62 812 3456 7890</div>
+      </div>
+      <div style="text-align: center; margin-bottom: 15px;">
+          <div style="margin-bottom: 5px;">${tanggal}</div>
+          <div style="margin-bottom: 15px;">${waktu}</div>
+      </div>
+      <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <table style="margin: 0 auto; text-align: center; width: 100%;">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>QTY</th>
+              <th>HARGA/QTY</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      data.keranjang.forEach(item => {
+        html += `
+          <tr>
+            <td>${item.nama}</td>
+            <td>${item.quantity}</td>
+            <td>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.harga)}</td>
+          </tr>
+        `;
+      });
+
+      html += `
+      </tbody>
+        </table>
+      </div>
+      <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
+      <div style="text-align: left; margin-top: 20px; margin-bottom: 20px;">
+        <p><strong>Total: </strong>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.total)}</p>
+        <p><strong>Bayar: </strong>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.bayar)}</p>
+        <p><strong>Kembalian: </strong>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.kembalian)}</p>
+      </div>
+      <hr style="border: 1px solid #ccc; margin-bottom: 20px;">
+      <div style="text-align: center; margin-top: 20px;">
+        <strong>Terimakasih</strong><br>
+        Kutunggu kamu kembali kesini
+      </div>
+      `;
+
+      const printWindow = window.open('', '', 'height=400,width=600');
+      printWindow.document.write(html);
+      printWindow.document.close();
+
+      // Mencetak struk
+      printWindow.print();
+
+      // Redirect ketika jendela print ditutup
+      printWindow.onbeforeunload = function () {
+          // Kirim data dengan POST menggunakan AJAX
+          var keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+
+          if (keranjang.length === 0) {
+              alert("Keranjang kosong. Tidak ada data untuk diproses.");
+              return;
+          }
+
+          const total = $("#total-payment").val();
+          const bayar = $("#total-uang").val();
+          const kembalian = $("#kembalian-hidden").val();
+
+          $.ajax({
+              type: "POST",
+              url: "/prosesData",  // Pastikan ini adalah rute yang sesuai
+              headers: {
+                  "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+              },
+              data: {
+                  keranjang: keranjang,
+                  total: total,
+                  bayar: bayar,
+                  kembalian: kembalian,
+              },
+              success: function(response) {
+                  console.log("Data berhasil disimpan:", response);
+                  localStorage.removeItem("keranjang");
+                  // alert("Transaksi berhasil disimpan!");
+                  
+                  // Redirect ke halaman admin setelah sukses
+                  window.location.href = response.redirect_url; // Pastikan URL ini mengarah ke halaman yang benar
+              },
+              error: function(xhr, status, error) {
+                  console.error("Gagal menyimpan data:", status, error);
+                  alert("Terjadi kesalahan saat menyimpan data.");
+              }
+          });
+      };
     });
   });
 </script>

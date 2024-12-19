@@ -41,7 +41,7 @@ Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 Route::post('/payment', [PaymentController::class, 'show'])->name('payment.show');
 Route::post('/set_session_category', [AdminController::class, 'set_session_category']);
 Route::get('/get_session_category', [PaymentController::class, 'get_session_category']);
-Route::post('/prosesData', [PemesananController::class, 'prosesData']);
+Route::post('/prosesData', [PemesananController::class, 'prosesData'])->name('pemesanan.prosesData');
 
 // Route::get('/template', [AdminController::class, 'index']);
 
@@ -63,6 +63,7 @@ Route::get('/pemesanan', [PemesananController::class, 'index']);
 Route::get('/admin/search', [ProdukController::class, 'search'])->name('admin.produks.search');
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin.admin');
 Route::get('/admin/produk-by-kategori', [AdminController::class, 'getProdukByKategori']);
+Route::get('/cetak-struk', [PaymentController::class, 'cetakStruk'])->name('cetak-struk');
 // Route::get('/admin', [PemesananController::class, 'index']);
 
 
