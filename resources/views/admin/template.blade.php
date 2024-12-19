@@ -105,31 +105,33 @@
         </div> <!-- card container -->
       <!-- </div> main content -->
 
-<aside class="control-sidebar control-sidebar-light">
+      <aside class="control-sidebar control-sidebar-light">
   <div class="p-3">
     <div class="keranjang">
       <h4><b>Keranjang</b></h4>
     </div>
     <title>Keranjang Belanja</title>
 
-        <style>
-            /* Gaya CSS di sini */
-            body {
-                font-family: Arial, sans-serif;
-            }
-            .item {
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-            .quantity {
-                width: 20px;    
-                text-align: center;
-            }
-            .price {
-                text-align: right;
-            }
-        </style>
+    <style>
+        /* Gaya CSS di sini */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .quantity {
+            width: 20px;    
+            text-align: center;
+        }
+        .price {
+            text-align: right;
+        }
+    </style>
+
+    <div id="keranjang-list"></div> <!-- Tempat tampilan keranjang akan diupdate -->
 
     <div class="catatan">
       <label for="catatan">Catatan :</label>
@@ -137,10 +139,12 @@
     </div>
     <div class="border-t border-gray-250 mb-3"></div>
     <div class="flex justify-between mb-3">
-        <div class="total" id="totalItems">0</div>
+        <div class="total" id="totalItems">0</div> <!-- Menampilkan jumlah item dan harga -->
     </div>
     <button id="btnTransaksi" class="proses">Proses Transaksi</button>
-  </aside>
+  </div>
+</aside>
+
   
 
      
@@ -235,6 +239,7 @@
 
     // Perbarui badge jumlah item di header
     updateCartBadge();
+    updateKeranjangUI();
 
   });
 
@@ -503,6 +508,7 @@ $(document).ready(function () {
         $(".keranjang").on("click", ".delete", function() {
             var id = $(this).data("id");
             removeFromCart(id);
+            updateCartBadge();
         });
 
         displayCart();
@@ -602,103 +608,176 @@ $(document).ready(function () {
 
 
       $(document).ready(function() {
-        // Ketika pengguna mengetik di input pencarian
-        $('#admin-search-input').on('input', function(e) {
-          var query = $(this).val(); // Ambil nilai input pencarian
+    // Ketika pengguna mengetik di input pencarian
+    $('#admin-search-input').on('input', function(e) {
+        var query = $(this).val(); // Ambil nilai input pencarian
 
-          // Jika input kosong, kosongkan tampilan hasil pencarian
-          if (query.length < 1) {
+        // Jika input kosong, kosongkan tampilan hasil pencarian
+        if (query.length < 1) {
             $('#produk-list').html(''); // Kosongkan daftar produk
             return;
-          }
+        }
 
-          // Kirimkan permintaan AJAX ke server untuk pencarian
-          $.ajax({
+        // Kirimkan permintaan AJAX ke server untuk pencarian
+        $.ajax({
             url: "{{ route('admin.produks.search') }}", // Ganti dengan rute pencarian
             type: 'GET',
             data: { query: query }, // Kirimkan query pencarian
             success: function(response) {
-              var html = '';
-              if (response.length > 0) {
-                // Loop dan tampilkan produk yang sesuai dengan pencarian
-                response.forEach(function(produk) {
-                  html += `
-                    <div class="col-3">
-                      <div class="card" style="width: 100%;">
-                      <div class="row">
-                        <div class="col-5">
-                        <img src="${produk.image}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px">
-                        </div>
-                        <div class="col-7 mb-5 items-center">
-                        <div class="card-body">
-                          <h5 class="card-title mb-1">${produk.nama}</h5>
-                        </div>
-                        <div class="row">
-                        <div class="col-8 mb-1">
-                          <p class="card-harga mb-1">Rp${produk.harga}</p>
-                        </div>
-                        <div class="col-4">
-                          <button type="button" class="tmbl btn btn-icon tambahkeranjang"
-                            data-id="${produk.id}"
-                            data-nama="${produk.nama}" 
-                            data-harga="${produk.harga}" 
-                            data-image="${produk.image}">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                          </button>
-                        </div>
-                        </div>
-                        </div>
-                      </div>
-                      </div>
-                    </div>
-                  `;
-                });
-              } else {
-                // Jika tidak ada hasil pencarian
-                html = '<p>Tidak ada produk yang ditemukan.</p>';
-              }
+                  console.log(response);  // Tambahkan log untuk memverifikasi response dari server
+                  var html = '';
+                  if (response.length > 0) {
+                      response.forEach(function(produk) {
+                          html += `
+                              <div class="col-3">
+                                  <div class="card" style="width: 100%;">
+                                      <div class="row">
+                                          <div class="col-5">
+                                              <img src="${produk.image}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px">
+                                          </div>
+                                          <div class="col-7 mb-5 items-center">
+                                              <div class="card-body">
+                                                  <h5 class="card-title mb-1">${produk.nama}</h5>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-8 mb-1">
+                                                      <p class="card-harga mb-1">Rp${produk.harga}</p>
+                                                  </div>
+                                                  <div class="col-4">
+                                                      <button type="button" class="tmbl btn btn-icon tambahkeranjang"
+                                                          data-id="${produk.id}"
+                                                          data-nama="${produk.nama}" 
+                                                          data-harga="${produk.harga}" 
+                                                          data-image="${produk.image}">
+                                                          <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                      </button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          `;
+                      });
+                  } else {
+                      html = '<p>Tidak ada produk yang ditemukan.</p>';
+                  }
 
-              // Update tampilan dengan hasil pencarian
-              $('#produk-list').html(html);
-            },
+                  // Update tampilan dengan hasil pencarian
+                  $('#produk-list').html(html);
+              },
+
             error: function() {
-              alert('Terjadi kesalahan saat melakukan pencarian.');
+                alert('Terjadi kesalahan saat melakukan pencarian.');
             }
-          });
         });
+    });
+  });
+    $(document).ready(function() {
+    // Event listener untuk tombol tambah ke keranjang
+    $(document).on('click', '.tambahkeranjang', function () {
+        const itemId = $(this).data("id");
+        const itemNama = $(this).data("nama");
+        const itemHarga = $(this).data("harga");
+        const itemImage = $(this).data("image");
 
-        $(document).on('click', '.tambahkeranjang', function() {
-          var produkId = $(this).data('id');
-          var produkNama = $(this).data('nama');
-          var produkHarga = $(this).data('harga');
-          var produkImage = $(this).data('image');
+        console.log("Menambahkan item ke keranjang:", itemId, itemNama, itemHarga, itemImage); // Debug log
 
-          console.log('Tombol klik: ', produkId, produkNama, produkHarga, produkImage);
+        // Ambil data keranjang dari LocalStorage atau buat array baru
+        let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+        console.log("Keranjang sebelum ditambahkan:", keranjang); // Debug log
 
-          tambahKeKeranjang(produkId, produkNama, produkHarga, produkImage);
-
-            // Ambil keranjang yang sudah ada dari localStorage
-            var cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Tambahkan produk baru ke keranjang
-            cart.push({
-              id: produkId,
-              nama: produkNama,
-              harga: produkHarga,
-              image: produkImage
+        // Cek apakah item sudah ada di keranjang
+        const existingItem = keranjang.find(item => item.id === itemId);
+        if (existingItem) {
+            // Jika sudah ada, tambahkan quantity
+            existingItem.quantity ++;  // Menambahkan quantity 1
+            console.log("Item sudah ada, quantity ditambah:", existingItem); // Debug log
+        } else {
+            // Jika belum ada, tambahkan item baru
+            keranjang.push({
+                id: itemId,
+                nama: itemNama,
+                harga: itemHarga,
+                image: itemImage,
+                quantity: 1
             });
-
-            // Simpan kembali ke localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            console.log('Keranjang saat ini: ', cart)
-
-          // Anda bisa menambahkan logika untuk menambahkan ke keranjang di sini
-        });
-
-        function tambahKeranjang(id, nama, harga, image){
-          console.log(`Produk ${nama} berhasil ditambahkan ke keranjang!`);
+            console.log("Item baru ditambahkan:", keranjang); // Debug log
         }
-      });
+
+        // Simpan kembali keranjang ke LocalStorage
+        localStorage.setItem("keranjang", JSON.stringify(keranjang));
+        console.log("Keranjang setelah disimpan:", keranjang); // Debug log
+
+        // Panggil updateCartBadge dan updateKeranjangUI setelah keranjang diperbarui
+        updateCartBadge();
+        updateKeranjangUI();
+    });
+
+    // Fungsi untuk memperbarui badge jumlah item di keranjang
+    function updateCartBadge() {
+        let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+        let totalItems = keranjang.reduce(function(sum, item) {
+            return sum + item.quantity;
+        }, 0);
+
+        // Perbarui tampilan badge jumlah keranjang
+        $('#cartItemCount').text(totalItems); // Ganti dengan ID atau elemen yang digunakan untuk menampilkan jumlah keranjang
+    }
+
+    function updateKeranjangUI() {
+    let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+    let html = '';
+    let totalHarga = 0;
+
+    if (keranjang.length > 0) {
+        keranjang.forEach(function(item) {
+            html += `
+                <div class="pemesanan mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="col-3">
+                            <img class="gambar1" src="${item.image}">
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col">
+                                    <span>${item.nama}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="krj increase" data-id="${item.id}"><i class="fa fa-plus-circle"></i></button>
+                                    <span class="quantity" data-id="${item.id}">${item.quantity}</span>
+                                    <button class="krj decrease" data-id="${item.id}"><i class="fa fa-minus-circle"></i></button>
+                                </div>
+                                <div class="col">
+                                    <span>${formatNumber(item.harga * item.quantity)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="delete btn btn-danger btn-sm" data-id="${item.id}"><span class="bx bx-trash"></span></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    } else {
+        html = '<p>Keranjang kosong.</p>';
+    }
+
+    // Update tampilan keranjang
+    $('#keranjang-list').html(html);  // Pastikan elemen ini ada di DOM
+}
+
+    // Update total harga
+    $('#totalItems').text('Total: Rp' + totalHarga.toLocaleString('id-ID'));
+
+
+    // Panggil fungsi updateCartBadge dan updateKeranjangUI saat pertama kali halaman dimuat
+    updateCartBadge();
+    updateKeranjangUI();
+});
+
     </script>
 @endsection
