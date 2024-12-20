@@ -42,12 +42,9 @@
               <div class="ml-auto">{{ $pesanans->first()->pemesanan->created_at ?? '-' }}</div>
             </div>
             @endforeach
-            <div class="flex justify-between items-center mt-4">
-              <span>{{ $paginatedPesananIds->firstItem() }} - {{ $paginatedPesananIds->lastItem() }} dari {{ $totalPesananIds }} data</span>
-              <nav aria-label="Pagination">
-                  {{ $paginatedPesananIds->appends(['date' => $selectedDate])->links() }}
-              </nav>
-          </div>       
+            <nav aria-label="Pagination">
+              {{ $paginatedPesananIds->appends(['date' => $selectedDate])->links() }}
+          </nav>
         </div>
       </div>
     </div>

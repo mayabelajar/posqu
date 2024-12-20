@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a, .pagination li span {
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+}
+
+.pagination li.active span {
+    background-color: #fbbf24; /* Warna kuning */
+    color: white;
+    border-color: #fbbf24;
+}
+
+.pagination li.disabled span {
+    color: #ccc;
+    pointer-events: none;
+    border-color: #ddd;
+}

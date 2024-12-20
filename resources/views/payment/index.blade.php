@@ -46,42 +46,37 @@
         </div>
       </div>
   </body>
+</form>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div class="bg-white p-8 rounded-lg text-center">
-              <div class="flex justify-between mb-4">
-                <div>
-                  <div class="text-gray-600">Total Pembayaran</div>
-                  <span id="total-bayar" class="text-2xl font-bold"></span>
-                </div>
-                <div>
-                  <div class="text-gray-600">Kembalian</div>
-                  <span id="kembalian" class="text-2xl font-bold"></span>
-                </div>
-              </div>
-              <div class="flex space-x-4">
-                <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button>
-                <button type="button" class="cetak py-2 px-4"><i class="fa fa-print"> </i> Cetak Struk</button>
-                <button type="button" class="baru py-2 px-4"><i class="fa fa-plus"> </i>Baru</button>
-              </div>
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Pembayaran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-between mb-4">
+          <div>
+            <div class="text-muted">Total Pembayaran</div>
+            <span id="total-bayar" class="fs-4 fw-bold"></span>
+          </div>
+          <div>
+            <div class="text-muted">Kembalian</div>
+            <span id="kembalian" class="fs-4 fw-bold"></span>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="d-flex gap-3">
+          <!-- <button class="kirim py-2 px-4"><i class="fa fa-cutlery"> </i> Kirim ke Dapur</button> -->
+          <button type="button" class="cetak btn btn-warning"><i class="fa fa-print"></i> Cetak Struk</button>
+          <button type="button" class="baru btn btn-success"><i class="fa fa-plus"></i> Baru</button>
         </div>
       </div>
     </div>
   </div>
-</form>
+</div>
+
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script>
