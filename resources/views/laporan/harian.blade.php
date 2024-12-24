@@ -19,8 +19,8 @@
             <div><strong class="ml-4">Pendapatan Hari Ini</strong></div>
             <div><strong>Rp {{ number_format($pendapatanHarian, 0, ',', '.') }}</strong></div>
         </div>
-        <div class="menu col mb-4">
-            <div style="width: 400px">
+        <div class="menu col mb-4" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <div style="width: 300px;">
                 <strong class="ml-4">Menu Paling Laku</strong>
                 <canvas id="myChart1"></canvas>
 
