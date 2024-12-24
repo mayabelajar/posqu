@@ -160,6 +160,7 @@
       const total = $("#total-payment").val();
       const bayar = $("#total-uang").val();
       const kembalian = $("#kembalian-hidden").val();
+      // const catatan = localStorage.getItem('catatan') || '';
 
       $.ajax({
         type: "POST",
@@ -172,10 +173,12 @@
           total: total,
           bayar: bayar,
           kembalian: kembalian,
+          // catatan: catatan
         },
         success: function(response) {
           console.log("Data berhasil disimpan:", response);
           localStorage.removeItem("keranjang");
+          localStorage.removeItem("catatan");
           // alert("Transaksi berhasil disimpan!");
           window.location.href = response.redirect_url; 
         },

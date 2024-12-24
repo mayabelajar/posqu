@@ -125,7 +125,7 @@
 
     <div class="catatan">
       <label for="catatan">Catatan :</label>
-      <textarea class="form-control mb-4" name="catatan" rows="4"></textarea>
+      <textarea id="catatan" class="form-control mb-4" name="catatan" rows="4"></textarea>
     </div>
     <div class="border-t border-gray-250 mb-3"></div>
     <div class="flex justify-between mb-3">
@@ -241,6 +241,8 @@
                 quantity: 1
             };
 
+            // var catatan = $('#catatan').val();
+
             var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
             if (existingProductIndex === -1) {
                 storageproduk.push(product);
@@ -248,6 +250,7 @@
                 storageproduk[existingProductIndex].quantity += 1;
             }
 
+            // localStorage.setItem('catatan', catatan);
             localStorage.setItem('keranjang', JSON.stringify(storageproduk));
             displayCart();
             hitungTotal();
