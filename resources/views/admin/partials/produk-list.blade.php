@@ -16,7 +16,7 @@
                         <div class="card-harga mb-1">Rp{{$data->harga}}</div>
                       </div>
                       <div class="col-4">
-                        <button type="button" class="tmbl btn btn-icon tambahkeranjang" 
+                        <button type="button" class="tmbl btn btn-icon" 
                           data-id="{{$data->id}}" 
                           data-nama="{{$data->nama}}" 
                           data-harga="{{$data->harga}}" 
