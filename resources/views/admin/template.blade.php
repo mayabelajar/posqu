@@ -200,8 +200,8 @@
 
         function updateCartBadge() {
             const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
-            const itemCount = keranjang.reduce((total, item) => total + item.quantity, 0);
-            $("#cartItemCount").text(itemCount);
+            const uniqueItemCount = keranjang.length; // Hanya hitung jumlah item unik
+            $("#cartItemCount").text(uniqueItemCount); // Perbarui badge dengan jumlah item unik
         }
 
         function updateQuantity(id, change) {
@@ -209,16 +209,27 @@
             var product = storageproduk.find(item => parseInt(item.id) === parseInt(id));
 
             if (product) {
+                // Jika produk ditemukan, perbarui kuantitas
                 product.quantity += change;
+
                 if (product.quantity <= 0) {
-                    storageproduk = storageproduk.filter(item => item.id !== id);
+                    // Hapus produk jika kuantitas <= 0
+                    storageproduk = storageproduk.filter(item => parseInt(item.id) !== parseInt(id));
                 }
-                localStorage.setItem('keranjang', JSON.stringify(storageproduk));
-                displayCart();
-                hitungTotal();
-                updateCartBadge();
+            } else if (change > 0) {
+                // Tambahkan produk baru jika tidak ditemukan
+                storageproduk.push({ id: id, quantity: change });
             }
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('keranjang', JSON.stringify(storageproduk));
+
+            // Perbarui tampilan
+            displayCart();
+            hitungTotal();
+            updateCartBadge(); // Perbarui badge
         }
+
 
         function removeFromCart(id) {
             var storageproduk = JSON.parse(localStorage.getItem('keranjang')) || [];
