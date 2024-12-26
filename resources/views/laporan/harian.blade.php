@@ -17,7 +17,7 @@
     <div class="row">
         <div class="pendapatan mb-4 mr-4" style="justify-content: center;">
             <div><strong class="ml-4">Pendapatan Hari Ini</strong></div>
-            <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
+            <div style="display: flex; justify-content: center; align-items: center; padding: 110px; width: 100%;">
                 <strong>Rp {{ number_format($pendapatanHarian, 0, ',', '.') }}</strong>
             </div>
         </div>
