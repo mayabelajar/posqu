@@ -18,73 +18,62 @@
     </div>
   </div>
   <div class="row mt-4">
-  <div class="col-8">
-    <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
-      <div class="overflow-auto">
-        @foreach ($groupedPesanan as $pemesananId => $pesanans)
-          <div class="flex items-center mb-4 pesanan-row"
-            data-order-id="{{ $pemesananId }}"
-            data-total-bayar="{{ $pesanans->first()->pemesanan->total ?? 0 }}"
-            data-total-belanja="{{ $pesanans->sum(fn($pesanan) => $pesanan->produk->harga * $pesanan->qty) }}">
-            <img alt="uang icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
-            <div class="ml-4">
-              <div>{{ $pemesananId }}</div>
-              <div>
-                @foreach ($pesanans as $pesanan)
-                  <span class="pesanan" data-product-name="{{ $pesanan->produk->nama ?? 'Produk Tidak Ditemukan' }}" 
-                        data-qty="{{ $pesanan->qty }}" 
-                        data-amount="Rp{{ number_format($pesanan->produk->harga * $pesanan->qty, 0, ',', '.') }}">
-                    {{ $pesanan->qty }}x {{ $pesanan->produk->nama ?? 'Produk Tidak Ditemukan' }}
-                  </span>@if (!$loop->last), @endif
-                @endforeach
+    <div class="col-8">
+      <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
+        <div class="overflow-auto">
+          @foreach ($groupedPesanan as $pemesananId => $pesanans)
+              <div class="flex items-center mb-4 pesanan-row"
+                data-order-id="{{ $pemesananId }}"
+                data-product-name="{{ strtolower(implode(' ', $pesanans->pluck('produk.nama')->toArray())) }}"
+                data-bayar="{{ $pesanans->first()->pemesanan->bayar ?? 0 }}"
+                data-kembalian="{{ $pesanans->first()->pemesanan->kembalian ?? 0 }}">
+                <img alt="uang icon" class="w-10 h-10" height="40" src="{{ asset('/lte/dist/img/uang.png') }}" width="40">
+                <div class="ml-4">
+                  <div>{{ $pemesananId }}</div>
+                  <div>
+                  @foreach ($pesanans as $pesanan)
+                    <span class="pesanan" data-product-name="{{ $pesanan->produk->nama ?? 'Produk Tidak Ditemukan' }}" 
+                          data-qty="{{ $pesanan->qty }}" 
+                          data-amount="Rp{{ number_format($pesanan->produk->harga * $pesanan->qty, 0, ',', '.') }}">
+                      {{ $pesanan->qty }}x {{ $pesanan->produk->nama ?? 'Produk Tidak Ditemukan' }}
+                    </span>@if (!$loop->last), @endif
+                  @endforeach
+                </div>
+                <div>{{ $pesanans->first()->pemesanan->metode_pembayaran ?? '-'}} - Rp{{ number_format($pesanans->first()->pemesanan->total ?? 0, 0, ',', '.') }}</div>
               </div>
-              <div>{{ $pesanans->first()->pemesanan->metode_pembayaran ?? '-'}} - Rp{{ number_format($pesanans->first()->pemesanan->total ?? 0, 0, ',', '.') }}</div>
+              <div class="ml-auto">{{ $pesanans->first()->pemesanan->created_at ?? '-' }}</div>
             </div>
-            <div class="ml-auto">{{ $pesanans->first()->pemesanan->created_at ?? '-' }}</div>
-          </div>
-        @endforeach
-        <nav aria-label="Pagination">
-          {{ $paginatedPesananIds->appends(['date' => $selectedDate])->links() }}
-        </nav>
+            @endforeach
+            <nav aria-label="Pagination">
+              {{ $paginatedPesananIds->appends(['date' => $selectedDate])->links() }}
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="kecil col-4 bg-white shadow rounded-lg p-4">
+      <table class="w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2">Item</th>
+            <th class="p-2">QTY</th>
+            <th class="p-2">Jumlah</th>
+          </tr>
+        </thead>
+        <tbody id="detailTransaksiTable">
+          <tr>
+            <td colspan="3" class="text-center text-gray-500 p-4">
+              Klik salah satu transaksi untuk melihat detail.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="total flex justify-between items-center mt-4">
+        <span>Total</span>
+        <span id="totalAmount" class="font-bold">0</span>
       </div>
     </div>
   </div>
-
-  <div class="col-4 bg-white shadow rounded-lg p-4">
-    <table class="w-full">
-      <thead>
-        <tr class="bg-gray-200">
-          <th class="p-2">Item</th>
-          <th class="p-2">QTY</th>
-          <th class="p-2">Jumlah</th>
-        </tr>
-      </thead>
-      <tbody id="detailTransaksiTable">
-        <tr>
-          <td colspan="3" class="text-center text-gray-500 p-4">
-            Klik salah satu transaksi untuk melihat detail.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="bayar-kembalian mt-4">
-      <div class="flex justify-between items-center">
-        <span>Bayar:</span>
-        <span id="totalBayar" class="font-bold">Rp0</span>
-      </div>
-      <div class="flex justify-between items-center mt-2">
-        <span>Kembalian:</span>
-        <span id="kembalian" class="font-bold">Rp0</span>
-      </div>
-    </div>
-
-    <div class="total flex justify-end items-center mt-4">
-      <span id="totalAmount" class="font-bold">Rp0</span>
-    </div>
-  </div>
-  </div>
-
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -98,7 +87,6 @@
     }
   });
 
-  // Filter input untuk pencarian
   const filterInput = document.getElementById('filterInput');
 
   filterInput.addEventListener('input', function () {
@@ -108,7 +96,7 @@
     pesananRows.forEach(function(row) {
       const orderId = row.getAttribute('data-order-id').toLowerCase();
       const productNames = row.getAttribute('data-product-name').toLowerCase();
-    
+
       if (orderId.includes(searchTerm) || productNames.includes(searchTerm)) {
         row.style.display = '';
       } else {
@@ -120,80 +108,63 @@
   function formatNumber(number) {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
   }
-  
-  // Menangani klik pada baris pesanan
+
   const pesananRows = document.querySelectorAll('.pesanan-row');
-  const tableBody = document.getElementById('detailTransaksiTable');
+  const tableBody = document.querySelector('#detailTransaksiTable');
   const totalAmount = document.getElementById('totalAmount');
-  const totalBayar = document.getElementById('totalBayar');
-  const kembalian = document.getElementById('kembalian');
 
   pesananRows.forEach(row => {
-      row.addEventListener('click', function () {
-          const orderId = row.getAttribute('data-order-id');
-          
-          // Ambil data total bayar dan total belanja
-          const totalBayarValue = parseInt(row.getAttribute('data-total-bayar') || '0', 10);
-          const totalBelanja = parseInt(row.getAttribute('data-total-belanja') || '0', 10);
+    row.addEventListener('click', function () {
+      const orderId = row.getAttribute('data-order-id');
+      const productNames = row.getAttribute('data-product-name').split(' '); // Memisahkan nama produk menjadi array
+      const bayar = row.getAttribute('data-bayar');
+      const kembalian = row.getAttribute('data-kembalian');
 
-          // Kosongkan tabel detail transaksi
-          tableBody.innerHTML = '';
+      tableBody.innerHTML = '';
 
-          // Menambahkan data pesanan ke dalam tabel
-          row.querySelectorAll('.pesanan').forEach(function(pesanan) {
-              const productName = pesanan.getAttribute('data-product-name') || 'Produk Tidak Ditemukan';
-              const qty = pesanan.getAttribute('data-qty') || '0';
-              const amount = pesanan.getAttribute('data-amount') || '0';
+      let total = 0;
 
-              const tr = document.createElement('tr');
-              tr.innerHTML = `
-                <td class="p-2">${productName}</td>
-                <td class="p-2">${qty}</td>
-                <td class="p-2">${amount}</td>
-              `;
-              tableBody.appendChild(tr);
-          });
+      row.querySelectorAll('.pesanan').forEach(function(pesanan) {
+        const productName = pesanan.getAttribute('data-product-name');
+        const qty = pesanan.getAttribute('data-qty');
+        const amount = pesanan.getAttribute('data-amount');
 
-          // Perhitungan kembalian
-          const kembalianValue = totalBayarValue - totalBelanja;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="p-2">${productName}</td>
+          <td class="p-2">${qty}</td>
+          <td class="p-2">${amount}</td>
+        `;
+        tableBody.appendChild(tr);
 
-          // Perbarui tampilan total, bayar, dan kembalian
-          totalAmount.textContent = `Total Belanja: ${formatNumber(totalBelanja)}`;
-          totalBayar.textContent = `Bayar: ${formatNumber(totalBayarValue)}`;
-          kembalian.textContent = `Kembalian: ${formatNumber(kembalianValue)}`;
+        total += parseInt(amount.replace('Rp', '').replace('.', '').replace('', ''), 10);
       });
+
+      const separator = document.createElement('tr');
+      separator.innerHTML = `
+        <td colspan="3" style="border-top: 1px solid #ddd; padding-top: 10px;"></td>
+      `;
+      tableBody.appendChild(separator);
+
+      const bayarRow = document.createElement('tr');
+      bayarRow.innerHTML = `
+        <td class="p-2 font-bold">Bayar</td>
+        <td></td>
+        <td class="p-2">${formatNumber(bayar)}</td>
+      `;
+      tableBody.appendChild(bayarRow);
+
+      const kembalianRow = document.createElement('tr');
+      kembalianRow.innerHTML = `
+        <td class="p-2 font-bold">Kembalian</td>
+        <td></td>
+        <td class="p-2">${formatNumber(kembalian)}</td>
+      `;
+      tableBody.appendChild(kembalianRow);
+
+      totalAmount.textContent = `${formatNumber(total)}`;
+    });
   });
-
-  // Fungsi format angka
-  function formatNumber(number) {
-      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
-  }
-
-
 });
-  
-  // const data = [
-  //   {id:01, metode:"semuametode"},
-  //   {id:02, metode:"cash"},
-  //   {id:03, metode:"qris"},
-  // ];
-
-  // const dataList = document.getElementById('dataList');
-  // const filterInput = document.getElementById('filterInput');
-
-  // function filterData() {
-  //   const searchTerm = filterInput.value.toLowerCase();
-  //   const filteredData = data.filter(person => person.name.toLowerCase().includes(searchTerm));
-
-    // Kosongkan daftar sebelum diisi ulang
-    // dataList.innerHTML = '';
-
-    // Tambahkan data yang terfilter ke dalam daftar
-  //   filteredData.forEach(person => {
-  //     const li = document.createElement('li');
-  //     li.textContent = person.name;
-  //     dataList.appendChild(li);
-  //   });
-  // }
 </script>
 @endsection

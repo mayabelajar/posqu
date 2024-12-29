@@ -13,7 +13,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="bulanan">
+    <div class="bulanan py-4 px-4">
       <canvas id="myChart" width="400" height="200"></canvas>
 
       <script> 
