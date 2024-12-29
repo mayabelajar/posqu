@@ -160,7 +160,7 @@
       const total = $("#total-payment").val();
       const bayar = $("#total-uang").val();
       const kembalian = $("#kembalian-hidden").val();
-      // const catatan = localStorage.getItem('catatan') || '';
+      const catatan = localStorage.getItem('catatan') || '';
 
       $.ajax({
         type: "POST",
@@ -173,7 +173,7 @@
           total: total,
           bayar: bayar,
           kembalian: kembalian,
-          // catatan: catatan
+          catatan: catatan
         },
         success: function(response) {
           console.log("Data berhasil disimpan:", response);
@@ -255,12 +255,10 @@
       printWindow.document.write(html);
       printWindow.document.close();
 
-      // Mencetak struk
       printWindow.print();
 
-      // Redirect ketika jendela print ditutup
       printWindow.onbeforeunload = function () {
-          // Kirim data dengan POST menggunakan AJAX
+
           var keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
 
           if (keranjang.length === 0) {
@@ -271,10 +269,11 @@
           const total = $("#total-payment").val();
           const bayar = $("#total-uang").val();
           const kembalian = $("#kembalian-hidden").val();
+          const catatan = localStorage.getItem('catatan') || '';
 
           $.ajax({
               type: "POST",
-              url: "/prosesData",  // Pastikan ini adalah rute yang sesuai
+              url: "/prosesData",
               headers: {
                   "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
               },
@@ -283,14 +282,14 @@
                   total: total,
                   bayar: bayar,
                   kembalian: kembalian,
+                  catatan: catatan
               },
               success: function(response) {
                   console.log("Data berhasil disimpan:", response);
                   localStorage.removeItem("keranjang");
                   // alert("Transaksi berhasil disimpan!");
-                  
-                  // Redirect ke halaman admin setelah sukses
-                  window.location.href = response.redirect_url; // Pastikan URL ini mengarah ke halaman yang benar
+
+                  window.location.href = response.redirect_url;
               },
               error: function(xhr, status, error) {
                   console.error("Gagal menyimpan data:", status, error);

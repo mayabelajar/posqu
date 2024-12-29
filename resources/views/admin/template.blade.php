@@ -88,8 +88,8 @@
         </div>
       </div>
     </div>
-
-
+  </div>
+</div>
 
 <aside class="control-sidebar control-sidebar-light">
   <div class="p-3">
@@ -194,8 +194,8 @@
 
         function updateCartBadge() {
             const keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
-            const uniqueItemCount = keranjang.length; // Hanya hitung jumlah item unik
-            $("#cartItemCount").text(uniqueItemCount); // Perbarui badge dengan jumlah item unik
+            const uniqueItemCount = keranjang.length;
+            $("#cartItemCount").text(uniqueItemCount);
         }
 
         function updateQuantity(id, change) {
@@ -203,25 +203,21 @@
             var product = storageproduk.find(item => parseInt(item.id) === parseInt(id));
 
             if (product) {
-                // Jika produk ditemukan, perbarui kuantitas
+
                 product.quantity += change;
 
                 if (product.quantity <= 0) {
-                    // Hapus produk jika kuantitas <= 0
                     storageproduk = storageproduk.filter(item => parseInt(item.id) !== parseInt(id));
                 }
             } else if (change > 0) {
-                // Tambahkan produk baru jika tidak ditemukan
                 storageproduk.push({ id: id, quantity: change });
             }
 
-            // Simpan kembali ke localStorage
             localStorage.setItem('keranjang', JSON.stringify(storageproduk));
 
-            // Perbarui tampilan
             displayCart();
             hitungTotal();
-            updateCartBadge(); // Perbarui badge
+            updateCartBadge();
         }
 
 
@@ -246,7 +242,7 @@
                 quantity: 1
             };
 
-            // var catatan = $('#catatan').val();
+            var catatan = $('#catatan').val();
 
             var existingProductIndex = storageproduk.findIndex(item => item.id === product.id);
             if (existingProductIndex === -1) {
@@ -255,7 +251,7 @@
                 storageproduk[existingProductIndex].quantity += 1;
             }
 
-            // localStorage.setItem('catatan', catatan);
+            localStorage.setItem('catatan', catatan);
             localStorage.setItem('keranjang', JSON.stringify(storageproduk));
             displayCart();
             hitungTotal();
@@ -267,12 +263,15 @@
           console.log("Data keranjang di localStorage:", storageproduk);
           if (storageproduk.length > 0) {
             sessionStorage.setItem('dataKeranjang', JSON.stringify(storageproduk));
+
+            var catatan = localStorage.getItem('catatan') || '';
+            console.log("Catatan yang dikirim:", catatan);
             
             $.ajax({
               type: "POST",
               url: "/set_session_category",
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              data: JSON.stringify({ data: storageproduk }),
+              data: JSON.stringify({ data: storageproduk, catatan: catatan }),
               // JSON.stringify({ key1:JSON.stringify(storageproduk)  }),
               contentType: "application/json",
               success: function(response) {

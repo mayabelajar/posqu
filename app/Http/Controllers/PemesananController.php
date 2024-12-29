@@ -12,7 +12,7 @@ class PemesananController extends Controller
 {
     public function prosesData(Request $request)
     {
-        // dd($requesut->input()); die;
+        // dd($request->input()); die;
         $request->validate([
             'catatan' => 'nullable|string',
             'total' => 'required|numeric',

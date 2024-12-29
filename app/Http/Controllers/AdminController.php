@@ -48,9 +48,9 @@ class AdminController extends Controller
             return view('admin.partials.results', compact('produks'));
         }
 
-        $list_pesanans = ListPesanan::all();
+        // $list_pesanans = ListPesanan::all();
 
-        return view('admin.template', compact('produks', 'kategori', 'list_pesanans', 'query', 'counts'));
+        return view('admin.template', compact('produks', 'kategori', 'query', 'counts'));
     }
     
     public function transaksi() {
