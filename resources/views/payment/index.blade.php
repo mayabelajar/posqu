@@ -133,7 +133,6 @@
       const totalUang = parseFloat($("#total-uang").val()) || 0;
       const kembalian = totalUang - subtotal;
 
-      // Simpan data transaksi ke sessionStorage
       const keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
       const total = $("#total-payment").val();
       const bayar = $("#total-uang").val();
@@ -160,7 +159,6 @@
       const total = $("#total-payment").val();
       const bayar = $("#total-uang").val();
       const kembalian = $("#kembalian-hidden").val();
-      const catatan = localStorage.getItem('catatan') || '';
 
       $.ajax({
         type: "POST",
@@ -172,13 +170,11 @@
           keranjang: keranjang,
           total: total,
           bayar: bayar,
-          kembalian: kembalian,
-          catatan: catatan
+          kembalian: kembalian
         },
         success: function(response) {
           console.log("Data berhasil disimpan:", response);
           localStorage.removeItem("keranjang");
-          localStorage.removeItem("catatan");
           // alert("Transaksi berhasil disimpan!");
           window.location.href = response.redirect_url; 
         },
@@ -269,7 +265,6 @@
           const total = $("#total-payment").val();
           const bayar = $("#total-uang").val();
           const kembalian = $("#kembalian-hidden").val();
-          const catatan = localStorage.getItem('catatan') || '';
 
           $.ajax({
               type: "POST",
@@ -281,8 +276,7 @@
                   keranjang: keranjang,
                   total: total,
                   bayar: bayar,
-                  kembalian: kembalian,
-                  catatan: catatan
+                  kembalian: kembalian
               },
               success: function(response) {
                   console.log("Data berhasil disimpan:", response);
