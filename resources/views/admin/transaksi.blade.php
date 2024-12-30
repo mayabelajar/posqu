@@ -3,10 +3,10 @@
 @extends('admin.sidebar')
 
 @section('content')
-<div class="container"> 
+<div class="container" style="height: 100vh; overflow: hidden;"> 
   <div class="row"> 
     <div class="col-sm">
-      <div class="flex items-center justify-between p-4 bg-white shadow">
+      <div class="flex items-center justify-between p-4 bg-white shadow rounded-lg">
         <div class="flex items-center">
           <i class="fa fa-search text-gray-500"></i>
           <input id="filterInput" class="ml-2 p-2 w-64 bg-gray-100 rounded-full focus:outline-none" placeholder="Search" type="text">
@@ -17,10 +17,10 @@
       </div>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col-8">
-      <div class="bg-white shadow rounded-lg p-4 overflow-y-auto">
-        <div class="overflow-auto">
+  <div class="row mt-4" style="height: calc(100vh - 80px); overflow: hidden;">
+    <div class="col-8" style="height: 100%; overflow-y: auto; padding-bottom: 60px;">
+      <div class="bg-white shadow rounded-lg p-4">
+        <div>
           @foreach ($groupedPesanan as $pemesananId => $pesanans)
               <div class="flex items-center mb-4 pesanan-row"
                 data-order-id="{{ $pemesananId }}"
@@ -56,7 +56,7 @@
           <tr class="bg-gray-200">
             <th class="p-2">Item</th>
             <th class="p-2">QTY</th>
-            <th class="p-2">Jumlah</th>
+            <th class="p-2">Harga</th>
           </tr>
         </thead>
         <tbody id="detailTransaksiTable">
@@ -74,7 +74,6 @@
     </div>
   </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
@@ -148,17 +147,17 @@
 
       const bayarRow = document.createElement('tr');
       bayarRow.innerHTML = `
-        <td class="p-2 font-bold">Bayar</td>
+        <td class="p-2">Uang Bayar</td>
         <td></td>
-        <td class="p-2">${formatNumber(bayar)}</td>
+        <td class="p-2 font-bold">${formatNumber(bayar)}</td>
       `;
       tableBody.appendChild(bayarRow);
 
       const kembalianRow = document.createElement('tr');
       kembalianRow.innerHTML = `
-        <td class="p-2 font-bold">Kembalian</td>
+        <td class="p-2">Kembalian</td>
         <td></td>
-        <td class="p-2">${formatNumber(kembalian)}</td>
+        <td class="p-2 font-bold">${formatNumber(kembalian)}</td>
       `;
       tableBody.appendChild(kembalianRow);
 
