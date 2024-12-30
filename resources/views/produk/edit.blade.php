@@ -6,7 +6,7 @@
     <form action="{{ route('produks.update', $produks->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-      <h2>Add New Product</h2>
+      <h2>Edit Product</h2>
         <div class="form-row mt-3">
           <div class="col-md-6 mb-3">
             <label for="product-image">Gambar Produk</label>
@@ -17,13 +17,13 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nama Produk</label>
-            <input type="text" class="form-control" value="{{ old('nama', $produks->nama) }}" name="nama" placeholder="Masukkan nama produk" required>
+            <input type="text" class="form-control" name="nama" placeholder="Masukkan nama produk" required>
             <div class="valid-feedback">
-              Looks good!
+              Kerja bagus!
             </div>
           </div>
         </div>
-        <div class="form-row mt-2">
+        <div class="form-row mt-3">
           <div class="col-md-6 mb-3">
             <label for="validationCustom01">Harga</label>
             <label class="sr-only" for="inlineFormInputGroup">Harga</label>
@@ -31,21 +31,27 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">Rp</div>
               </div>
-              <input type="text" class="form-control" name="harga" value="{{ old('harga', $produks->harga) }}" placeholder="Masukkan harga produk">
-            </div>
+              <input type="text" class="form-control" name="harga" placeholder="Masukkan harga produk">
+              <div class="valid-feedback">
+                Kerja bagus!
+              </div>
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="inputState">Kategori</label>
-            <select class="form-control" name="kategori" value="{{ old('kategori', $produks->kategori) }}">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="inputState">Kategori</label>
+            <select class="form-control" name="kategori">
               <option selected>Pilih Kategori</option>
               <option>Makanan</option>
               <option>Minuman</option>
               <option>Camilan</option>
             </select>
-          </div>
+            <div class="valid-feedback">
+              Kerja bagus!
+            </div>
         </div>
-        <button class="btn btn-simpan mt-3" type="submit">Tambahkan</button>
+        <button class="btn btn-simpan mt-3 ml-top" type="submit">Tambahkan</button>
     </form>
+  </div>
   </div>
 </div>
 
