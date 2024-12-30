@@ -26,7 +26,7 @@
     <!-- Brand Logo -->
     <div style="text=align: center;">
       <a href="#" class="brand-link border:none">
-        <img src="{{ asset('/lte/dist/img/logoPOS.png') }}" alt="POSq Logo" style="opacity: .8; display: block; margin: 0 auto;">
+        <img src="{{ asset('/lte/dist/img/logo.png') }}" alt="POSq Logo" style="opacity: .8; display: block; margin: 0 auto;">
       </a>
     </div>
 

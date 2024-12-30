@@ -352,32 +352,28 @@
             response.forEach(function(produk) {
                 html += `
                     <div class="col-3">
-                        <div class="card" style="width: 100%;">
-                            <div class="row">
-                                <div class="col-5">
-                                    <img src="${produk.image}" alt="${produk.nama}" class="rounded-circle mb-2" width="80px">
-                                </div>
-                                <div class="col-7 mb-5 items-center">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-1">${produk.nama}</h5>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-8 mb-1">
-                                            <p class="card-harga mb-1">Rp${produk.harga}</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <button type="button" class="tmbl btn btn-icon"
-                                                data-id="${produk.id}"
-                                                data-nama="${produk.nama}" 
-                                                data-harga="${produk.harga}" 
-                                                data-image="${produk.image}">
-                                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                      <div class="card" style="width: 100%;">
+                        <div class="row align-items-center">
+                          <div class="col-5 text-center">
+                            <img src="${produk.image}" class="rounded-circle mb-2" width="55px" alt="${produk.nama}">
+                          </div>
+                          <div class="col-7">
+                            <div class="d-flex flex-column">
+                              <div class="card-title mb-2">${produk.nama}</div>
+                              <div class="d-flex align-items-center justify-content-between">
+                                <div class="card-harga">Rp${produk.harga}</div>
+                                <button type="button" class="tmbl btn btn-icon btn-sm ms-2" 
+                                  data-id="${produk.id}" 
+                                  data-nama="${produk.nama}" 
+                                  data-harga="${produk.harga}" 
+                                  data-image="${produk.image}">
+                                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </button>
+                              </div>
                             </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
                 `;
             });
