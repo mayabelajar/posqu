@@ -17,7 +17,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="validationCustom01">Nama Produk</label>
-            <input type="text" class="form-control" name="nama" placeholder="Masukkan nama produk" required>
+            <input type="text" class="form-control" value="{{ old('nama', $produks->nama) }}" name="nama" placeholder="Masukkan nama produk" required>
             <div class="valid-feedback">
               Kerja bagus!
             </div>
@@ -31,7 +31,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">Rp</div>
               </div>
-              <input type="text" class="form-control" name="harga" placeholder="Masukkan harga produk">
+              <input type="text" class="form-control" value="{{ old('harga', $produks->harga) }}" name="harga" placeholder="Masukkan harga produk">
               <div class="valid-feedback">
                 Kerja bagus!
               </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-6 mb-3">
           <label for="inputState">Kategori</label>
-            <select class="form-control" name="kategori">
+            <select class="form-control" name="kategori" value="{{ old('kategori', $produks->kategori) }}">
               <option selected>Pilih Kategori</option>
               <option>Makanan</option>
               <option>Minuman</option>
