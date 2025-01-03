@@ -48,8 +48,6 @@ Route::post('/prosesData', [PemesananController::class, 'prosesData'])->name('pe
 Route::get('/transaksi', [ListPesananController::class, 'index'])->name('transaksi.index');
 
 Route::get('/meja', [AdminController::class, 'meja']);
-Route::get('/diskon', [ModalController::class, 'diskon']);
-Route::get('/nota', [ModalController::class, 'nota']);
 Route::get('/harian', [PemesananController::class, 'harian'])->name('harian');
 Route::get('/bulanan', [PemesananController::class, 'bulanan'])->name('bulanan');
 Route::get('/tahunan', [PemesananController::class, 'tahunan'])->name('tahunan');
