@@ -6,7 +6,6 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ModalController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PemesananController;
